@@ -2,9 +2,7 @@ class HomepageController < ApplicationController
   def index
   end
 
-  def request
-    @time = Time.now
-  end
+ 
 
 
   def homepage
