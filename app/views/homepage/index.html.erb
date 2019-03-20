@@ -1,26 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" type="text/css" href="homepage.css">
 
 <header>
-<div class="container">
+<header class="container">
     <div class="row">
         <div class="col-lg-12 text-center">
-            <h1 class="mt-5">Company name</h1>
+            
         </div>
     </div>
 </div>
 </header>
 
 <body>
-    <div class="nav">
-        <ul>
-            
-        <li> <%= link_to "Home", homepage_index_path %> </li>
-        <li> <%= link_to "Request Travel", say_request_path %> </li>
-        <li> <%= link_to "Travel History", say_history_path %> </li>
-        <li> <%= link_to "My Info", say_info_path %> </li>
-        <li> <%= link_to "Post-Travel", say_post_path %> </li>
-        </ul>
+<body>
+<div class="nav">
+    <ul>
+    <li> <%= link_to "Home", homepage_index_path %> </li>
+    <li> <%= link_to "Request Travel", say_request_path %> </li>
+    <li> <%= link_to "Travel History", say_history_path %> </li>
+    <li> <%= link_to "My Info", say_info_path %> </li>
+    <li> <%= link_to "Post-Travel", say_post_path %> </li>
+    </ul>
+</div>
+
+
+  <title>Seasholtz Studios Photography</title>
+  <meta charset="utf-8" />
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+  <header class="container">
+    <div class="row">
+      <img src="http://files.seasholtz-studios2.webnode.com/200000000-7cbdc7dbe9/200/Seasholtz-Studios-Final%20jpeg.jpg" alt="logo"
+        height="100" width="150" />
+      <h1 class="col-sm-4">Seasholtz Studios</h1>
+     
+  </header>
+  <section class="jumbotron">
+    <div class="container">
+      <div class="row text-center">
+        <h2>Photography with a Passion  </h2>
+    
+        <a class="btn btn-primary" href="accounts/sign_in" role="button">Sign In</a>
+      </div>
     </div>
-</body>
-</html>
+  </section>
+  <section class="container">
+    <div class="row">
+      <figure class="col-sm-4">
+        <p>Family Walks on Beach</p>
+        <img src="http://files.seasholtz-studios2.webnode.com/200000004-097530a73b/450/beach_trip-3.png" alt="family" height="250"
+          width="200" />
+      </figure>
+      <figure class="col-sm-4">
+        <p>New Perspective</p>
+        <img src="http://files.seasholtz-studios2.webnode.com/200000030-914f192518/450/File%20Sep%2014,%2011%2028%2011%20PM.jpg"
+          alt="perspective" height="250" width="200" />
+      </figure>
+      <figure class="col-sm-4">
+        <p>The Colors of Autumn</p>
+        <img src="http://files.seasholtz-studios2.webnode.com/200000013-5a8c55b892/450/IMG_0813.JPG" alt="fall" height="250" width="200"
+        />
+      </figure>
+    </div>
+    <div class="row">
+      <figure class="col-sm-4">
+        <p>Senior Session!</p>
+        <img src="http://files.seasholtz-studios2.webnode.com/200000040-71b0472b21/450/graduating_education_major_valdosta_photographer_seasholtz_studios-18-3.png"
+          alt="senior" height="250" width="200" />
+      </figure>
+      <figure class="col-sm-4">
+        <p>Sports</p>
+        <img src="http://files.seasholtz-studios2.webnode.com/200000014-b0aadb1a5a/450/IMG_3602.JPG" alt="sports" height="250" width="200"
+        />
+      </figure>
+      <figure class="col-sm-4">
+        <p>Personal Collection</p>
+        <img src="http://files.seasholtz-studios2.webnode.com/200000015-4cc524dbe8/450/IMG_4696.JPG" alt="personal" height="250"
+          width="200" />
+      </figure>
+    </div>
+  </section>
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="http://files.seasholtz-studios2.webnode.com/200000039-eddf8eeded/newyearsFINAL2.jpg" alt="Life">
+        </div>
+
+        <div class="item">
+          <img src="http://files.seasholtz-studios2.webnode.com/200000003-4b8134c70f/beach_trip_family-momadadysmall.png" alt="Family">
+        </div>
+
+        <div class="item">
+          <img src="http://files.seasholtz-studios2.webnode.com/200000009-3b9803c9f7/beach_trip_family.png" alt="Life">
+        </div>
+      </div>
+
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+    </div>
