@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-    devise_for :accounts
+  devise_for :accounts,  :controllers => { :registrations => 'registrations' }
     root 'homepage#index', as: 'homepage_index'
     get 'homepage/index'
     get 'say/request'
