@@ -2,9 +2,6 @@ class HomepageController < ApplicationController
   def index
   end
 
- 
-
-
   def homepage
   end
 
