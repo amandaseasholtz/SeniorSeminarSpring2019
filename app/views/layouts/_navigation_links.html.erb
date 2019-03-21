@@ -1,17 +1,28 @@
-
-
 <% if account_signed_in? %>
-<li class="nav-item">
-    <%= link_to 'Edit account', edit_account_registration_path, class:"nav-link" %>
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="editAccountDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Edit Settings (<%= (current_account.accountable.name.nil? or current_account.accountable.name == "") ? "No Name" : current_account.accountable.name %>)
+  </a>
+  <div class="dropdown-menu" aria-labelledby="editAccountDropdownMenuLink">
+    <% if current_account.accountable_type == "Employee" %>
+      <%= link_to 'Employee Profile', edit_employee_path(current_account.accountable_id), class: "dropdown-item" %><% 
+        elsif current_account.accountable_type == "BudgetApprover"%>
+      <%= link_to 'BudgetApprover Profile', edit_budgetApprover_path(current_account.accountable_id), class: "dropdown-item"  %>
+        else
+            <%= link_to 'PaymentManager Profile', edit_paymentManager_path(current_account.accountable_id), class: "dropdown-item"  %>
+
+    <% end %>
+    <%= link_to 'Account Settings', edit_account_registration_path, class: "dropdown-item"  %>
+  </div>
 </li>
 <li class="nav-item">
-    <%= link_to 'Sign out', destroy_account_session_path, :method=>'delete', class:"nav-link" %>
+  <%= link_to 'Sign out', destroy_account_session_path, :method=>'delete', class:"nav-link" %>
 </li>
 <% else %>
 <li class="nav-item">
-    <%= link_to 'Sign in', new_account_session_path, class:"nav-link" %>
+  <%= link_to 'Sign in', new_account_session_path, class:"nav-link" %>
 </li>
 <li class="nav-item">
-    <%= link_to 'Sign up', new_account_registration_path,  class:"nav-link" %>
+  <%= link_to 'Sign up', new_account_registration_path,  class:"nav-link" %>
 </li>
 <% end %>
