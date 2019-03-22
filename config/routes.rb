@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :experiences
   devise_for :accounts,  :controllers => { :registrations => 'registrations' }
     root 'homepage#index', as: 'homepage_index'
     get 'homepage/index'
