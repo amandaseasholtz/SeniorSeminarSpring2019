@@ -1,0 +1,20 @@
+<% if @paymentManager.name.nil? or @paymentManager.name == "" %>
+    <h2>Edit PaymentManager's Profile</h2>
+<% else %>
+    <h2>Edit <%= @paymentManager.name %>'s Profile</h2>
+<% end %>
+
+<%= simple_form_for(@paymentManager, as: @paymentManager, url: paymentManager_path(@paymentManager), html: { method: :patch }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name, required: true, autofocus: true %>
+    <%= f.input :idNum, required: true %>
+    <%= f.input :department, required: true %>
+    <%= f.input :title, required: true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Update" %>
+  </div>
+<% end %>

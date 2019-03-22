@@ -62,9 +62,10 @@ body {
    
   @media screen and (min-width: 600px) {
     .nav li {
-      width: 200px;
+      width: 400px;
+      length: 200;
       border-bottom: none;
-      height: 50px;
+      height: 20px;
       line-height: 50px;
       font-size: 1.4em;
     }

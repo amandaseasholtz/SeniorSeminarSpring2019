@@ -1,0 +1,17 @@
+@import "bootstrap";
+
+.registrations,
+.sessions,
+.passwords,
+.employees,
+.budgetApprovers,
+.paymentManagers {
+    width: 80%;
+    margin: 0 auto;
+
+    .form-actions {
+        .btn {
+            @extend .btn-primary
+        }
+    }
+}
