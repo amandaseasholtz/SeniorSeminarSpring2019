@@ -26,29 +26,16 @@
     <%end%>
     <li> <%= link_to "Request Travel", say_request_path %> </li>
     <li> <%= link_to "Travel History", say_history_path %> </li>
-    <li> <%= link_to "My Info", say_info_path %> </li>
-    <li> <%= link_to "Post-Travel", say_post_path %> </li>
 
-    <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="editAccountDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Edit Settings
-    </a>
-    <div class="dropdown-menu" aria-labelledby="editAccountDropdownMenuLink">
-      <% if current_account.accountable_type == "Employee" %>
-        <%= link_to 'Employee Profile', edit_employee_path(current_account.accountable_id), class: "dropdown-item" %> 
-        <%  elsif current_account.accountable_type == "BudgetApprover"%>
-        <%= link_to 'BudgetApprover Profile', edit_budgetapprover_path(current_account.accountable_id), class: "dropdown-item"  %>
-          <%else%>
-              <%= link_to 'PaymentManager Profile', edit_paymentmanager_path(current_account.accountable_id), class: "dropdown-item"  %>
-  
-      <% end %>
-  
-      <%= link_to 'Account Settings', edit_account_registration_path, class: "dropdown-item"  %>
-    </div>
-  </li>
+    <% if current_account.accountable_type == "Employee" %>
+        <li><%= link_to 'My Info', edit_employee_path(current_account.accountable_id), class: "dropdown-item" %> </li>
+    <% elsif current_account.accountable_type == "Budget"%>
+        <li><%= link_to 'My Info', edit_budget_path(current_account.accountable_id), class: "dropdown-item"  %></li>
+    <% else%>
+         <li> <%= link_to 'My Info', edit_payment_path(current_account.accountable_id), class: "dropdown-item"  %></li>
+    <% end %>
 
-
-
+    <li><%= link_to 'Account Settings', edit_account_registration_path, class: "dropdown-item"  %></li>
 
     <li><%= link_to 'Sign out', destroy_account_session_path, :method=>'delete', class:"nav-link" %><li>
     </ul>
@@ -86,10 +73,11 @@
     <div class="container">
       <div class="row text-center">
         <h2>Photography with a Passion  </h2>
+    
         <% if account_signed_in? %>
-        
+
         <%else%>
-        <a class="btn btn-primary" href="accounts/sign_in" role="button">Sign In</a>
+          <a class="btn btn-primary" href="accounts/sign_in" role="button">Sign In</a>
         <%end%>
       </div>
     </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_20_085912) do
+ActiveRecord::Schema.define(version: 2019_03_31_203028) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,11 +23,13 @@ ActiveRecord::Schema.define(version: 2019_03_20_085912) do
     t.string "accountable_type"
     t.integer "accountable_id"
     t.index ["accountable_type", "accountable_id"], name: "index_accounts_on_accountable_type_and_accountable_id"
+    t.index ["email"], name: "index_accounts_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
 
-  create_table "budget_approvers", force: :cascade do |t|
+  create_table "budgets", force: :cascade do |t|
     t.string "name"
-    t.string "idNum"
+    t.string "bid"
     t.string "department"
     t.string "title"
     t.datetime "created_at", null: false
@@ -36,16 +38,16 @@ ActiveRecord::Schema.define(version: 2019_03_20_085912) do
 
   create_table "employees", force: :cascade do |t|
     t.string "name"
-    t.string "idNum"
+    t.string "eid"
     t.string "department"
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "payment_managers", force: :cascade do |t|
+  create_table "payments", force: :cascade do |t|
     t.string "name"
-    t.string "idNum"
+    t.string "pid"
     t.string "department"
     t.string "title"
     t.datetime "created_at", null: false
