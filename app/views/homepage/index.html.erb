@@ -6,7 +6,7 @@
 <header class="container">
     <div class="row">
         <div class="col-lg-12 text-center">
-            
+
         </div>
     </div>
 </div>
@@ -46,10 +46,10 @@
       <% if current_account.accountable_type == "Employee" %>
 
       <li> <%= link_to "Request Travel", say_request_path %> </li>
-        
+
         <li><%= link_to 'My Info', edit_employee_path(current_account.accountable_id), class: "dropdown-item" %> </li>
         <li><%= link_to 'Account Settings', edit_account_registration_path, class: "dropdown-item"  %></li>
-        <li><%= link_to 'Sign out', destroy_account_session_path, :method=>'delete', class:"nav-link" %><li> 
+        <li><%= link_to 'Sign out', destroy_account_session_path, :method=>'delete', class:"nav-link" %><li>
       <% end %>
 
       <%if current_account.accountable_type == "SuperAccount" %>
@@ -85,21 +85,20 @@
       <img src="http://files.seasholtz-studios2.webnode.com/200000000-7cbdc7dbe9/200/Seasholtz-Studios-Final%20jpeg.jpg" alt="logo"
         height="100" width="150" />
       <h1 class="col-sm-4">Seasholtz Studios</h1>
-     
+
   </header>
   <section class="jumbotron">
     <div class="container">
       <div class="row text-center">
         <h2>Photography with a Passion  </h2>
-    
-        <% if account_signed_in? %>
+        
 
-        <%else%>
-          <a class="btn btn-primary" href="accounts/sign_in" role="button">Sign In</a>
-        <%end%>
       </div>
     </div>
   </section>
+
+  <% if account_signed_in? %>
+
   <section class="container">
     <div class="row">
       <figure class="col-sm-4">
@@ -169,4 +168,7 @@
     <span class="glyphicon glyphicon-chevron-right"></span>
     <span class="sr-only">Next</span>
   </a>
+  <%else%>
+
+    <%end%>
     </div>
