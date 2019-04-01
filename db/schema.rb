@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_01_003434) do
+ActiveRecord::Schema.define(version: 2019_04_01_061426) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,15 +27,6 @@ ActiveRecord::Schema.define(version: 2019_04_01_003434) do
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
 
-  create_table "budgets", force: :cascade do |t|
-    t.string "name"
-    t.string "bid"
-    t.string "department"
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "employees", force: :cascade do |t|
     t.string "name"
     t.string "eid"
@@ -50,6 +41,17 @@ ActiveRecord::Schema.define(version: 2019_04_01_003434) do
     t.string "pid"
     t.string "department"
     t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.string "name"
+    t.string "purpose"
+    t.string "days"
+    t.string "destination"
+    t.string "expenses"
+    t.string "payment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
