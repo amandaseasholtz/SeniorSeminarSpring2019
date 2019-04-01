@@ -1,15 +1,15 @@
-<% if @employee.name.nil? or @employee.name == "" %>
-    <h2>Edit Employee's Profile</h2>
+<% if @payment.name.nil? or @payment.name == "" %>
+    <h2>Edit Payment Managers's Profile</h2>
 <% else %>
-    <h2>Edit <%= @employee.name %>'s Profile</h2>
+    <h2>Edit <%= @payment.name %>'s Profile</h2>
 <% end %>
 
-<%= simple_form_for(@employee, as: @employee, url: employee_path(@employee), html: { method: :patch }) do |f| %>
+<%= simple_form_for(@payment, as: @payment, url: payment_path(@payment), html: { method: :patch }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.input :name, required: true, autofocus: true %>
-    <%= f.input :eid, required: true %>
+    <%= f.input :pid, required: true %>
     <%= f.input :department, required: true %>
     <%= f.input :title, required: true %>
   </div>

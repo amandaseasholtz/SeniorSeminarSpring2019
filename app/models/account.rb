@@ -1,9 +1,9 @@
 class Account < ApplicationRecord
-  belongs_to :accountable, polymorphic: true
-  ACCOUNT_TYPES=["Employee", "BudgetApprover", "PaymentManager"]
-  attr_accessor :type
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  belongs_to :accountable, polymorphic: true
+  ACCOUNT_TYPES=["SuperAccount", "Employee", "Payment", "Budget"]
+  attr_accessor :type
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 end

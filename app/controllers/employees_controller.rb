@@ -4,12 +4,11 @@ class EmployeesController < ApplicationController
 
     def edit
     end
-  
 
     def update
       respond_to do |format|
         if @employee.update(employee_params)
-          format.html { redirect_to homepage_index_url, notice: "The profile of the employee #{@employee.name} was successfully updated." }
+          format.html { redirect_to homepage_index_url, notice: "The profile of the Employee #{@employee.name} was successfully updated." }
           format.json { head :no_content }
         else
           format.html { render action: 'edit' }
@@ -26,6 +25,6 @@ class EmployeesController < ApplicationController
   
       # Never trust parameters from the scary internet, only allow the white list through.
       def employee_params
-        params.require(:employee).permit(:name, :idNum, :department, :title)
+        params.require(:employee).permit(:name, :eid, :department, :title)
       end
   end

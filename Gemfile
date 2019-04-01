@@ -74,3 +74,5 @@ gem "font-awesome-rails"
 gem 'devise'
 
 gem 'simple_form'
+
+gem 'administrate'
