@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  namespace :admin do
+      resources :super_accounts
+      resources :accounts
+      resources :budgets
+      resources :employees
+      resources :payments
+
+      root to: "accounts#index"
+    end
   devise_for :accounts,  :controllers => { :registrations => 'registrations' }
     root 'homepage#index', as: 'homepage_index'
     get 'homepage/index'

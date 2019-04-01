@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_31_203028) do
+ActiveRecord::Schema.define(version: 2019_04_01_003434) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -50,6 +50,12 @@ ActiveRecord::Schema.define(version: 2019_03_31_203028) do
     t.string "pid"
     t.string "department"
     t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "super_accounts", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
