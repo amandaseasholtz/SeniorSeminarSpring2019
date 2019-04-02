@@ -76,3 +76,7 @@ gem 'devise'
 gem 'simple_form'
 
 gem 'administrate'
+
+gem 'carrierwave'
+gem 'carrierwave-aws'
+gem 'mini_magick'
