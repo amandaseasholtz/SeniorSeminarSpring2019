@@ -7,6 +7,9 @@ Rails.application.routes.draw do
       resources :payments
       resources :requests
 
+
+
+      
       root to: "accounts#index"
     end
   devise_for :accounts,  :controllers => { :registrations => 'registrations' }
