@@ -1,83 +1,74 @@
-
 class RequestsController < ApplicationController
-    def index   
-    end  
-  
-    # GET /orders/1
-    # GET /orders/1.json
-    def show
-      @requestTotal = 0
-      authorize @request  
-    end
-  
-    # GET /orders/new
-    def new
-      @request = Request.new
-      authorize @request
-      if current_account && current_account.accountable_type == "Employee"
-          @request.name     = current_account.accountable.name
-          @request.email  = current_account.email
-      end
-      respond_to do |format|
-        format.html
-      end
-    end
-  
-    # GET /orders/1/edit
-    def edit
-      authorize @request
-    end
-  
-    # POST /orders
-    # POST /orders.json
-    def create
-      @request = Request.new(order_params)
-      authorize @request
-      if current_account && current_account.accountable_type == "Employee"
-        @request.employee = current_account.accountable
-      end
-      respond_to do |format|
-        if @request.save
-          format.html { redirect_to homepage_index_url, notice: 'Travel request was made.' }
-          format.json { render :show, status: :created, location: @request }
-        else
-          format.html { render :new }
-          format.json { render json: @request.errors, status: :unprocessable_entity }
-        end
-      end
-    end
-  
-    # PATCH/PUT /orders/1
-    # PATCH/PUT /orders/1.json
-    def update
-      authorize @request
-      respond_to do |format|
-        if @request.update(order_params)
-          format.html { redirect_to @request, notice: 'Request was successfully updated.' }
-          format.json { render :show, status: :ok, location: @request }
-        else
-          format.html { render :edit }
-          format.json { render json: @request.errors, status: :unprocessable_entity }
-        end
-      end
-    end
-  
-    # DELETE /orders/1
-    # DELETE /orders/1.json
-    def destroy
-      authorize @request
-      @request.destroy
-      respond_to do |format|
-        format.html { redirect_to requests_url, notice: 'Request was successfully destroyed.' }
-        format.json { head :no_content }
-      end
-    end
-  
-    private
-      # Use callbacks to share common setup or constraints between actions.
-      def set_request
-        @request = Request.find(params[:id])
-      end
-  
+  before_action :set_request, only: [:show, :edit, :update, :destroy]
+
+  # GET /requests
+  # GET /requests.json
+  def index
+    @requests = Request.all
   end
-  
+
+  # GET /requests/1
+  # GET /requests/1.json
+  def show
+  end
+
+  # GET /requests/new
+  def new
+    @request = Request.new
+  end
+
+  # GET /requests/1/edit
+  def edit
+  end
+
+  # POST /requests
+  # POST /requests.json
+  def create
+    @request = Request.new(request_params)
+
+    respond_to do |format|
+      if @request.save
+        format.html { redirect_to @request, notice: 'Request was successfully created.' }
+        format.json { render :show, status: :created, location: @request }
+      else
+        format.html { render :new }
+        format.json { render json: @request.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /requests/1
+  # PATCH/PUT /requests/1.json
+  def update
+    respond_to do |format|
+      if @request.update(request_params)
+        format.html { redirect_to @request, notice: 'Request was successfully updated.' }
+        format.json { render :show, status: :ok, location: @request }
+      else
+        format.html { render :edit }
+        format.json { render json: @request.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /requests/1
+  # DELETE /requests/1.json
+  def destroy
+    @request.destroy
+    respond_to do |format|
+      format.html { redirect_to requests_url, notice: 'Request was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_request
+      @request = Request.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def request_params
+      params.require(:request).permit(:name, :destination, :requested_travel_days, :purpose, :expected_expenses, :payment_information)
+    end
+end

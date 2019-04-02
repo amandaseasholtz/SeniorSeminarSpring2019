@@ -6,7 +6,11 @@ Rails.application.routes.draw do
       resources :budgets
       resources :employees
       resources :payments
+      resources :requests
 
+
+
+      
       root to: "accounts#index"
     end
 

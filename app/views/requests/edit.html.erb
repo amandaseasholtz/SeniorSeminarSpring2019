@@ -1,5 +1,7 @@
-<h1>Enter Travel Information</h1>
+<h1>Editing Request</h1>
 
-<%= render 'form'%>
+<%= render 'form', request: @request %>
 
-<%= link_to 'Back', homepage_path %>
+<%= link_to 'Show', @request %> |
+<%= link_to 'Back', requests_path %>
+<%= link_to 'Home', homepage_index_path %>

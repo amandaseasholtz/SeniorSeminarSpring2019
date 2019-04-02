@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong> name:</strong>
+  <%= @request. name %>
+</p>
+
+<p>
+  <strong>Destination:</strong>
+  <%= @request.destination %>
+</p>
+
+<p>
+  <strong>Requested travel days:</strong>
+  <%= @request.requested_travel_days %>
+</p>
+
+<p>
+  <strong>Purpose:</strong>
+  <%= @request.purpose %>
+</p>
+
+<p>
+  <strong>Expected expenses:</strong>
+  <%= @request.expected_expenses %>
+</p>
+
+<p>
+  <strong>Payment information:</strong>
+  <%= @request.payment_information %>
+</p>
+
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', homepage_index_path %>

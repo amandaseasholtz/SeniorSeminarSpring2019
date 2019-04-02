@@ -36,3 +36,7 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+
+# Ignore images stored during local development
+/public/uploads
