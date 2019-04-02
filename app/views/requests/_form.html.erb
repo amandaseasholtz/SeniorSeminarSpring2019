@@ -1,78 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
+<%= form_with(model: request, local: true) do |form| %>
+  <% if request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(request.errors.count, "error") %>
+      prohibited this request from being submitted:</h2>
+      <ul>
+        <% request.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
 
-<header>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12 text-center">
-           
-        </div>
-    </div>
-
-    <div class="nav">
-        <ul>
-            <li> <%= link_to "Home", homepage_index_path %> </li>
-            <li> <%= link_to "Request Travel", say_request_path %> </li>
-            <li> <%= link_to "Travel History", say_history_path %> </li>
-            <li> <%= link_to "My Info", say_info_path %> </li>
-            <li> <%= link_to "Post-Travel", say_post_path %> </li>
-        </ul>
-    </div>
-
-</div>
-</header>
-
-<body>
-
-<%= form_with do |form| %>
-
-    <div class="field">
-        <%= form.label :ID %>
-        <%= form.text_field :name, id: :order_name, size: 40 %>
-    </div>
-
-    <div class="field">
-      <%= form.label :Name %>
-      <%= form.text_field :name, id: :order_name, size: 40 %>
-    </div>
-  
-
-
-    <div class="field">
-        <%= form.label :Destination %>
-        <%= form.text_field :purpose, id: :request_purpose, size: 40 %>
-    </div>
-
-
-    <div class="field">
-        <%= form.label :"Requested Travel Days" %>
-        <%= form.text_field :purpose, id: :request_purpose, size: 40 %>
-    </div>
-
-
-
-    <div class="field">
-      <%= form.label :Purpose %>
-      <%= form.text_area :purpose, id: :request_purpose, rows: 4, cols: 40 %>
-    </div>
-
-    <div class="field">
-        <%= form.label :"Expected Expenses" %>
-        <%= form.text_area :purpose, id: :request_purpose, rows: 4, cols: 40 %>
-    </div>
-
-    <div class="field">
-        <%= form.label :"payment Information" %>
-        <%= form.text_area :purpose, id: :request_purpose, rows: 4, cols: 40 %>
-    </div>
-  
-
-     
-    <div class="actions">
-      <%= form.submit 'Submit' %>
     </div>
   <% end %>
 
-    
-</body>
-</html>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :request_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Destination %>
+    <%= form.text_field :Destination, id: :request_Destination, size: 40 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Requested_Travel_Days %>
+    <%= form.text_field :Requested_Travel_Days, id: :request_Requested_Travel_Days, size: 40 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :purpose %>
+    <%= form.text_area :purpose, id: :request_purpose, rows: 10, cols: 60 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Expected_Expenses %>
+    <%= form.text_area :Expected_Expenses, id: :request_Expected_Expenses, rows: 4, cols: 40 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :payment_Information %>
+    <%= form.text_area :payment_Information, id: :request_payment_Information, rows: 4, cols: 40 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>

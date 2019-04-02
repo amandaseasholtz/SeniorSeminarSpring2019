@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :requests
   namespace :admin do
       resources :super_accounts
       resources :accounts
