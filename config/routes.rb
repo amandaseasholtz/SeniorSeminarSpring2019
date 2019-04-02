@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources :employees, only: [:edit, :update]
     resources :budgets, only: [:edit, :update]
     resources :payments, only: [:edit, :update]
-  
+    resources :requests
   
   end
 
