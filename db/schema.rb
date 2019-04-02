@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(version: 2019_04_02_023014) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "experiences", force: :cascade do |t|
+    t.string "title"
+    t.string "First_Name"
+    t.string "Last_Name"
+    t.text "Experience"
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "payments", force: :cascade do |t|
     t.string "name"
     t.string "pid"
