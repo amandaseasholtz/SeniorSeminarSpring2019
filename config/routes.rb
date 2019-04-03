@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :post_travels
   namespace :admin do
       resources :super_accounts
       resources :accounts
