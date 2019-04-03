@@ -21,11 +21,6 @@
       <% if current_account.accountable_type == "Budget" %>
         <li> <%= link_to "Approve Budgets", requests_path%> </li>
 
-
-
-
-
-
         <li> <%= link_to "Travel History", say_history_path %> </li>
         <li> <%= link_to "Post-Travel", new_post_travel_path%> </li>
         <li><%= link_to 'My Info', edit_budget_path(current_account.accountable_id), class: "dropdown-item"  %></li>
