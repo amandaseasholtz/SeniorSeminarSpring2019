@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  resources :requests
+
   namespace :admin do
       resources :super_accounts
       resources :accounts
       resources :budgets
       resources :employees
       resources :payments
+      resources :requests
 
       root to: "accounts#index"
     end
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
     resources :employees, only: [:edit, :update]
     resources :budgets, only: [:edit, :update]
     resources :payments, only: [:edit, :update]
+    resources :requests
   
   
   end
