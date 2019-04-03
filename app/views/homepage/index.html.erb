@@ -27,7 +27,7 @@
 
 
         <li> <%= link_to "Travel History", say_history_path %> </li>
-        <li> <%= link_to "Post-Travels", new_post_travel_path%> </li>
+        <li> <%= link_to "Post-Travel", new_post_travel_path%> </li>
         <li><%= link_to 'My Info', edit_budget_path(current_account.accountable_id), class: "dropdown-item"  %></li>
         <li><%= link_to 'Account Settings', edit_account_registration_path, class: "dropdown-item"  %></li>
         <li><%= link_to 'Sign out', destroy_account_session_path, :method=>'delete', class:"nav-link" %><li>
