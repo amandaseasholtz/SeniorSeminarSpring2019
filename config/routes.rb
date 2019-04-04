@@ -7,10 +7,6 @@ Rails.application.routes.draw do
       resources :employees
       resources :payments
       resources :requests
-<<<<<<< HEAD
-=======
-
->>>>>>> 03f2326d557d31a043a9bd334fcd125928816205
 
 
       
