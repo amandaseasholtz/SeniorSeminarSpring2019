@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :post_travels
   namespace :admin do
       resources :super_accounts
       resources :accounts
@@ -25,7 +26,6 @@ Rails.application.routes.draw do
     resources :budgets, only: [:edit, :update]
     resources :payments, only: [:edit, :update]
     resources :requests
-  
   
   end
 

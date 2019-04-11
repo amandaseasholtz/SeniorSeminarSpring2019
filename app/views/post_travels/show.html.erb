@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @post_travel.name %>
+</p>
+
+<p>
+  <strong>Destination:</strong>
+  <%= @post_travel.destination %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @post_travel.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @post_travel.end_date %>
+</p>
+
+<p>
+  <strong>Purpose:</strong>
+  <%= @post_travel.purpose %>
+</p>
+
+<p>
+  <strong>Expected expenses:</strong>
+  <%= @post_travel.expected_expenses %>
+</p>
+
+<p>
+  <strong>Actual expenses:</strong>
+  <%= @post_travel.actual_expenses %>
+</p>
+
+<p>
+  <strong>Payment infomation:</strong>
+  <%= @post_travel.payment_infomation %>
+</p>
+
+<%= link_to 'Edit', edit_post_travel_path(@post_travel) %> |
+<%= link_to 'Back', post_travels_path %>

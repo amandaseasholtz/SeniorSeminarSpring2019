@@ -1,0 +1,2 @@
+class PostTravel < ApplicationRecord
+end
