@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
+=======
+
+  resources :post_travels
+>>>>>>> master
   namespace :admin do
       resources :super_accounts
       resources :accounts
@@ -8,10 +13,10 @@ Rails.application.routes.draw do
       resources :requests
 
 
-
       
       root to: "accounts#index"
     end
+
   devise_for :accounts,  :controllers => { :registrations => 'registrations' }
     root 'homepage#index', as: 'homepage_index'
     get 'homepage/index'
@@ -24,7 +29,6 @@ Rails.application.routes.draw do
     resources :budgets, only: [:edit, :update]
     resources :payments, only: [:edit, :update]
     resources :requests
-  
   
   end
 

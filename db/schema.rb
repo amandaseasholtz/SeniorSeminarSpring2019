@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_02_023014) do
+ActiveRecord::Schema.define(version: 2019_04_03_160240) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -45,11 +45,34 @@ ActiveRecord::Schema.define(version: 2019_04_02_023014) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "experiences", force: :cascade do |t|
+    t.string "title"
+    t.string "First_Name"
+    t.string "Last_Name"
+    t.text "Experience"
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "payments", force: :cascade do |t|
     t.string "name"
     t.string "pid"
     t.string "department"
     t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "post_travels", force: :cascade do |t|
+    t.string "name"
+    t.string "destination"
+    t.date "start_date"
+    t.date "end_date"
+    t.text "purpose"
+    t.decimal "expected_expenses"
+    t.decimal "actual_expenses"
+    t.text "payment_infomation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
