@@ -34,12 +34,14 @@
 
   <div class="field">
     <%= form.label :Expected_Expenses %>
-    <%= form.text_area :expected_expenses, id: :request_expected_expenses, rows: 4, cols: 40 %>
+    <input type="button" value= "add new expense" id="add">
+    <%= form.select :expected_expenses, options_for_select([["Choose Different cost(s)", ""], "food", "hotel", "travel"])%>
   </div>
 
   <div class="field">
     <%= form.label :payment_Information %>
     <%= form.select :payment_information, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3", "Dept4"])%>
+    
 
   </div>
 
