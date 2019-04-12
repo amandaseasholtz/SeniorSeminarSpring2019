@@ -7,6 +7,7 @@ class CreateRequests < ActiveRecord::Migration[5.2]
       t.string :purpose
       t.string :expected_expenses
       t.string :payment_information
+      
 
       t.timestamps
     end

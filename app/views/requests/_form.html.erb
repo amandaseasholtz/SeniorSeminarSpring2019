@@ -39,7 +39,8 @@
 
   <div class="field">
     <%= form.label :payment_Information %>
-    <%= form.text_area :payment_information, id: :request_payment_information, rows: 4, cols: 40 %>
+    <%= form.select :payment_information, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3", "Dept4"])%>
+
   </div>
 
   <div class="actions">
