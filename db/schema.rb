@@ -30,7 +30,8 @@ ActiveRecord::Schema.define(version: 2019_04_12_062349) do
   create_table "budgets", force: :cascade do |t|
     t.string "name"
     t.string "bid"
-    t.string "department"
+    #t.string "department"
+    t.decimal "department"
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
