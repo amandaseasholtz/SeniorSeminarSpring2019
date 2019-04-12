@@ -1,10 +1,10 @@
-Rails.application.routes.draw do
-<<<<<<< HEAD
-=======
 
+
+Rails.application.routes.draw do
   resources :post_travels
->>>>>>> master
-  namespace :admin do
+
+
+namespace :admin do
       resources :super_accounts
       resources :accounts
       resources :budgets
