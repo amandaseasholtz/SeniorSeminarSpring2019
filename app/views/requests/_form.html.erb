@@ -14,17 +14,28 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :request_name %>
+    <%= form.text_field :name, id: :employee_name %>
   </div>
+
+
+
+
+
+
+
+
+
+
+
 
   <div class="field">
     <%= form.label :Destination %>
-    <%= form.text_field :Destination, id: :request_Destination, size: 40 %>
+    <%= form.text_field :destination, id: :request_destination, size: 40 %>
   </div>
 
   <div class="field">
     <%= form.label :Requested_Travel_Days %>
-    <%= form.text_field :Requested_Travel_Days, id: :request_Requested_Travel_Days, size: 40 %>
+    <%= form.text_field :requested_travel_days, id: :request_requested_travel_days, size: 40 %>
   </div>
 
   <div class="field">
@@ -34,13 +45,27 @@
 
   <div class="field">
     <%= form.label :Expected_Expenses %>
-    <%= form.text_area :Expected_Expenses, id: :request_Expected_Expenses, rows: 4, cols: 40 %>
+    <input type="button" value= "add new expense" id="add">
+    <%= form.select :expected_expenses, options_for_select([["Choose Different cost(s)", ""], "food", "hotel", "travel"])%>
   </div>
 
   <div class="field">
     <%= form.label :payment_Information %>
-    <%= form.text_area :payment_Information, id: :request_payment_Information, rows: 4, cols: 40 %>
-  </div>
+    <%= form.select :payment_information, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3", "Dept4"])%>
+    </div>
+
+    <div class="field">
+      <%= form.label :employee_department %>
+      <%= form.select :employ_department, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3", "Dept4"])%>
+    </div>
+
+
+
+
+
+
+
+
 
   <div class="actions">
     <%= form.submit %>

@@ -1,15 +1,19 @@
+
+
+
 Rails.application.routes.draw do
 
   resources :departments
   resources :post_travels
-  namespace :admin do
+
+
+namespace :admin do
       resources :super_accounts
       resources :accounts
       resources :budgets
       resources :employees
       resources :payments
       resources :requests
-
 
 
       

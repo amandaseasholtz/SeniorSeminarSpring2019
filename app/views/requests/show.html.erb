@@ -2,7 +2,7 @@
 
 <p>
   <strong> name:</strong>
-  <%= @request. name %>
+  <%= @request.name %>
 </p>
 
 <p>
@@ -29,6 +29,12 @@
   <strong>Payment information:</strong>
   <%= @request.payment_information %>
 </p>
+
+<p>
+  <strong>Your department:</strong>
+  <%= @request.employ_department %>
+</p>
+
 
 <%= link_to 'Edit', edit_request_path(@request) %> |
 <%= link_to 'Back', homepage_index_path %>

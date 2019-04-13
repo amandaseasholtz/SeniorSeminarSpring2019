@@ -4,6 +4,7 @@ class CreateBudgets < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :bid
       t.string :department
+      #t.decimal :department
       t.string :title
 
       t.timestamps

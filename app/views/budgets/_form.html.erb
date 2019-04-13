@@ -10,7 +10,7 @@
   <div class="form-inputs">
     <%= f.input :name, required: true, autofocus: true %>
     <%= f.input :bid, required: true %>
-    <%= f.input :department, required: true %>
+    <%= f.select :department, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3", "Dept4"])%>
     <%= f.input :title, required: true %>
   </div>
 
