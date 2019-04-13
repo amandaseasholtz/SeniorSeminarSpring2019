@@ -91,11 +91,7 @@ ActiveRecord::Schema.define(version: 2019_04_12_062349) do
     t.string "name"
     t.string "destination"
     t.string "requested_travel_days"
-
-    
     t.string "employ_department"
-
-
     t.string "budget_department"
     t.string "purpose"
     t.string "expected_expenses"
