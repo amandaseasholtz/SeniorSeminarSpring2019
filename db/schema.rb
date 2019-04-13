@@ -91,17 +91,20 @@ ActiveRecord::Schema.define(version: 2019_04_12_062349) do
     t.string "name"
     t.string "destination"
     t.string "requested_travel_days"
-    t.string "employee_department"
+
+    
+    t.string "employ_department"
+
+
     t.string "budget_department"
     t.string "purpose"
     t.string "expected_expenses"
     t.string "payment_information"
+    t.string "status"
     t.integer "employee_id"
     t.integer "budget_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-
-    
     t.index ["budget_id"], name: "index_requests_on_budget_id"
     t.index ["employee_id"], name: "index_requests_on_employee_id"
   end

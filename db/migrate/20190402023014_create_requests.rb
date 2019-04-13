@@ -4,11 +4,18 @@ class CreateRequests < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :destination
       t.string :requested_travel_days
-      t.string "employee_department"
-      t.string "budget_department"
+
+
+      t.string :employ_department
+
+      
+      t.string :budget_department
       t.string :purpose
       t.string :expected_expenses
       t.string :payment_information
+      t.string :status
+
+
       t.references :employee, foreign_key: true
       t.references :budget, foreign_key: true
       
