@@ -4,12 +4,12 @@
 
 <header>
 <header class="container">
-    
+
         <div class="text-center">
         <img src="http://files.seasholtz-studios2.webnode.com/200000000-7cbdc7dbe9/200/Seasholtz-Studios-Final%20jpeg.jpg" alt="logo"
         height="60" width="100" />
         </div>
-   
+
 </header>
 
 <body>
@@ -42,7 +42,8 @@
 
       <% if current_account.accountable_type == "Employee" %>
 
-
+      <li><%= link_to "Request Travel", new_request_path(spa: false) %></li>
+      <li><%= link_to "Request Travel (SPA)", new_request_path(spa: true) %></li>
       <li> <%= link_to "Request Travel", new_request_path %> </li>
       <li> <%= link_to "Travel History", requests_path%> </li>
       <li> <%= link_to "Post-Travels", new_post_travel_path%> </li>
@@ -67,7 +68,7 @@
 </div>
 
 
-  
+
   <meta charset="utf-8" />
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -80,7 +81,7 @@
 </head>
 
 <body>
-      
+
 
   </header>
   <section class="jumbotron">
