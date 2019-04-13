@@ -69,6 +69,8 @@ class RequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
 
+
+    
     ##NEED TO REMEMBER THIS LINE FOR LATER!!!!!!!!!!!!!!!
     def request_params
       params.require(:request).permit(:name, :destination, :requested_travel_days, :purpose, :expected_expenses, :payment_information, :employ_department)
