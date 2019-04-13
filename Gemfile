@@ -78,3 +78,5 @@ gem 'carrierwave'
 gem 'carrierwave-aws'
 gem 'mini_magick'
 
+gem 'cocoon' #for nested forms
+

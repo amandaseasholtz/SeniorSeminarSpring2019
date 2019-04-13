@@ -17,6 +17,23 @@
     <%= form.text_field :name, id: :request_name %>
   </div>
 
+
+
+  <div class="field">
+    <%= form.label :employee_department %>
+    <%= form.select :employee_department, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3", "Dept4"])%>
+    <%= form.text_field :employee_department, employee_department: :request_employee_department, size: 40 %>
+  
+  
+    </div>
+
+
+
+
+
+
+
+
   <div class="field">
     <%= form.label :Destination %>
     <%= form.text_field :destination, id: :request_destination, size: 40 %>
@@ -44,6 +61,14 @@
     
 
   </div>
+
+
+
+
+
+
+
+
 
   <div class="actions">
     <%= form.submit %>

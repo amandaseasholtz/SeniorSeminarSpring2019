@@ -30,19 +30,20 @@ ActiveRecord::Schema.define(version: 2019_04_12_062349) do
   create_table "budgets", force: :cascade do |t|
     t.string "name"
     t.string "bid"
-    #t.string "department"
-    t.decimal "department"
+    t.string "department"
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "departments", force: :cascade do |t|
+    t.integer "budget_id"
     t.string "did"
     t.string "dname"
     t.decimal "dbudget"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["budget_id"], name: "index_departments_on_budget_id"
   end
 
   create_table "employees", force: :cascade do |t|
@@ -90,12 +91,19 @@ ActiveRecord::Schema.define(version: 2019_04_12_062349) do
     t.string "name"
     t.string "destination"
     t.string "requested_travel_days"
+    t.string "employee_department"
+    t.string "budget_department"
     t.string "purpose"
     t.string "expected_expenses"
     t.string "payment_information"
+    t.integer "employee_id"
+    t.integer "budget_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "status"
+
+    
+    t.index ["budget_id"], name: "index_requests_on_budget_id"
+    t.index ["employee_id"], name: "index_requests_on_employee_id"
   end
 
   create_table "super_accounts", force: :cascade do |t|
