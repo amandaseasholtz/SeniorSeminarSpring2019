@@ -3,18 +3,6 @@
 <h1>Requests</h1>
 <% if current_account.accountable_type == "Employee" %>
 
-
-
-
-
-
-
-
-
-
-
-
-
 <table>
   <thead>
     <tr>
@@ -27,6 +15,7 @@
       <th>Expected expenses</th>
       <th>Payment information</th>
       <th>Your department</th>
+      <th>Notes from Budget approver</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -35,19 +24,19 @@
     <% @requests.each do |request| %>
       <tr>
 
-
-
           <td><%= request.name %></td>
 
 
+          <%if request.status == nil%>
+            <td>Pending</td>
 
+          <%elsif request.status == "Accept"%>
+          <td>Accepted</td>
 
-
-          <td>pending</td>
-
-
-
-
+          <%else%>
+          <td>Rejected</td>
+          
+          <%end%>
 
           <td><%= request.destination %></td>
           <td><%= request.requested_travel_days %></td>
@@ -57,6 +46,10 @@
 
 
           <td><%= request.employ_department %></td>
+
+          <td><%= request.reasoning %></td>
+
+
           <td><%= link_to 'Show', request %></td>
           <td><%= link_to 'Edit', edit_request_path(request) %></td>
           <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -65,13 +58,7 @@
   </tbody>
 </table>
 
-
-
-
 <%elsif current_account.accountable_type == "Budget"%>
-
-
-  
 
   <table>
     <thead>
@@ -85,51 +72,65 @@
 
     <tbody>
       <% @requests.each do |request| %>
-
-          
+  
         <%if request.employ_department == "Dept1" && request.payment_information == "Dept1" %>
-        <tr>
-        <td><%= request.name %></td>
-
-
-
-
-
-        <td><%= request.employ_department %></td>
-
-
-        <td><%= link_to 'Show', request %></td>
-      </tr>
-
-
-        <%elsif request.employ_department == "Dept1" && request.payment_information == "Dept2"%>
-        <tr>
-        <td><%= request.name %></td>
-
-
-
-
-
-        <td><%= request.employ_department %></td>
-
-
-        <td><%= link_to 'Show', request %></td>
-      </tr>
-
-
-
-        <%elsif request.employ_department == "Dept2" && request.payment_information == "Dept2"%>
           <tr>
             <td><%= request.name %></td>
-
-
-
-
 
             <td><%= request.employ_department %></td>
 
 
             <td><%= link_to 'Show', request %></td>
+          </tr>
+
+
+        <%elsif request.employ_department == "Dept1" && request.payment_information == "Dept2"%>
+          <tr>
+            <td><%= request.name %></td>
+
+            <td><%= request.employ_department %></td>
+
+            <td><%= link_to 'Show', request %></td>
+          </tr>
+
+        <%elsif request.employ_department == "Dept2" && request.payment_information == "Dept2"%>
+          <tr>
+            <td><%= request.name %></td>
+
+            <td><%= request.employ_department %></td>
+
+            <td><%= request.status%></td>
+
+
+            <td><%= link_to 'Show', request %></td>
+
+            <td>
+              <%if request.status == nil%>
+                <%= form_with(model: request, local: true) do |form| %>
+                  <div class="field">
+                    <%= form.select :status, options_for_select([["Choose to accept or reject", ""], "Accept", "Rejected"])%>
+                  </div>
+
+
+
+
+                  <div class="actions">
+                    <%= form.submit %>
+                  </div>
+
+                  <td>
+                  <div class="field">
+                  <%= form.label :Notes %>
+                   <%= form.text_area :reasoning, id: :request_reasoning, rows: 10, cols: 60 %>
+                </div>
+                  
+                  
+                  </td>
+                <%end%>
+              <%end%>
+
+            </td>
+
           </tr>
 
 
@@ -141,19 +142,7 @@
       <% end %>
     </tbody>
   </table>
-
-
-
-
-
-
-
 <%else%>
-
-
-
-
-
 <%end%>
 
 <br>

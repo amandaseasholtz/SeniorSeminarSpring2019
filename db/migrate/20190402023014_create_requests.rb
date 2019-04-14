@@ -5,7 +5,7 @@ class CreateRequests < ActiveRecord::Migration[5.2]
       t.string :destination
       t.string :requested_travel_days
 
-
+      t.string :reasoning
       t.string :employ_department
 
       
