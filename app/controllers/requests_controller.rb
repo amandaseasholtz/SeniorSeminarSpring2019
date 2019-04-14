@@ -82,6 +82,6 @@ class RequestsController < ApplicationController
 
     ##NEED TO REMEMBER THIS LINE FOR LATER!!!!!!!!!!!!!!!
     def request_params
-      params.require(:request).permit(:name, :destination, :requested_travel_days, :purpose, :expected_expenses, :payment_information, :employ_department)
+      params.require(:request).permit(:name, :destination, :start_date, :end_date, :purpose, :expected_expenses, :payment_information, :employ_department)
     end
 end

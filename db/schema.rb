@@ -55,16 +55,6 @@ ActiveRecord::Schema.define(version: 2019_04_12_062349) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "experiences", force: :cascade do |t|
-    t.string "title"
-    t.string "First_Name"
-    t.string "Last_Name"
-    t.text "Experience"
-    t.string "image_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "payments", force: :cascade do |t|
     t.string "name"
     t.string "pid"
@@ -90,7 +80,8 @@ ActiveRecord::Schema.define(version: 2019_04_12_062349) do
   create_table "requests", force: :cascade do |t|
     t.string "name"
     t.string "destination"
-    t.string "requested_travel_days"
+    t.date "start_date"
+    t.date "end_date"
     t.string "employ_department"
     t.string "budget_department"
     t.string "purpose"
