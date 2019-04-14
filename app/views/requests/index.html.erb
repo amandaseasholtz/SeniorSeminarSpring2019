@@ -3,26 +3,15 @@
 <h1>Requests</h1>
 <% if current_account.accountable_type == "Employee" %>
 
-
-
-
-
-
-
-
-
-
-
-
-
 <table>
   <thead>
     <tr>
-    
+
       <th> name</th>
       <th>Status</th>
       <th>Destination</th>
-      <th>Requested travel days</th>
+      <th>Start date</th>
+      <th>End date</th>
       <th>Purpose</th>
       <th>Expected expenses</th>
       <th>Payment information</th>
@@ -35,22 +24,13 @@
     <% @requests.each do |request| %>
       <tr>
 
-
-
           <td><%= request.name %></td>
-
-
-
-
 
           <td>pending</td>
 
-
-
-
-
           <td><%= request.destination %></td>
-          <td><%= request.requested_travel_days %></td>
+          <td><%= post_travel.start_date %></td>
+          <td><%= post_travel.end_date %></td>
           <td><%= request.purpose %></td>
           <td><%= request.expected_expenses %></td>
           <td><%= request.payment_information %></td>
@@ -71,7 +51,7 @@
 <%elsif current_account.accountable_type == "Budget"%>
 
 
-  
+
 
   <table>
     <thead>
@@ -86,14 +66,10 @@
     <tbody>
       <% @requests.each do |request| %>
 
-          
+
         <%if request.employ_department == "Dept1" && request.payment_information == "Dept1" %>
         <tr>
         <td><%= request.name %></td>
-
-
-
-
 
         <td><%= request.employ_department %></td>
 
@@ -107,9 +83,6 @@
         <td><%= request.name %></td>
 
 
-
-
-
         <td><%= request.employ_department %></td>
 
 
@@ -117,36 +90,18 @@
       </tr>
 
 
-
         <%elsif request.employ_department == "Dept2" && request.payment_information == "Dept2"%>
           <tr>
             <td><%= request.name %></td>
-
-
-
-
-
             <td><%= request.employ_department %></td>
-
-
             <td><%= link_to 'Show', request %></td>
           </tr>
-
-
         <%else%>
-        
-
 
         <%end%>
       <% end %>
     </tbody>
   </table>
-
-
-
-
-
-
 
 <%else%>
 

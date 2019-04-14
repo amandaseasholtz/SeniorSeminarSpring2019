@@ -12,25 +12,30 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-inputs">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :employee_name %>
+    <%= form.text_field :name, id: :employee_name,size: 40%>
   </div>
 
 
-  <div class="field">
+  <div class="form-inputs">
     <%= form.label :Destination %>
     <%= form.text_field :destination, id: :request_destination, size: 40 %>
   </div>
 
-  <div class="field">
-    <%= form.label :Requested_Travel_Days %>
-    <%= form.text_field :requested_travel_days, id: :request_requested_travel_days, size: 40 %>
+  <div class="form-inputs">
+    <%= form.label :start_date %>
+    <%= form.text_field :start_date, id: :start_date, size: 40 %>
+  </div>
+
+  <div class="form-inputs">
+    <%= form.label :end_date %>
+    <%= form.text_field :end_date, id: :end_date, size: 40 %>
   </div>
 
   <div class="field">
     <%= form.label :purpose %>
-    <%= form.text_area :purpose, id: :request_purpose, rows: 10, cols: 60 %>
+    <%= form.text_area :purpose, id: :request_purpose, rows: 5, cols: 60 %>
   </div>
 
   <div class="field">
