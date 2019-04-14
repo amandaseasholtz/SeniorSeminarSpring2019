@@ -3,18 +3,6 @@
 <h1>Requests</h1>
 <% if current_account.accountable_type == "Employee" %>
 
-
-
-
-
-
-
-
-
-
-
-
-
 <table>
   <thead>
     <tr>
@@ -35,26 +23,15 @@
     <% @requests.each do |request| %>
       <tr>
 
-
-
           <td><%= request.name %></td>
 
-
-
-
-
           <td>pending</td>
-
-
-
-
 
           <td><%= request.destination %></td>
           <td><%= request.requested_travel_days %></td>
           <td><%= request.purpose %></td>
           <td><%= request.expected_expenses %></td>
           <td><%= request.payment_information %></td>
-
 
           <td><%= request.employ_department %></td>
           <td><%= link_to 'Show', request %></td>
@@ -65,13 +42,7 @@
   </tbody>
 </table>
 
-
-
-
 <%elsif current_account.accountable_type == "Budget"%>
-
-
-  
 
   <table>
     <thead>
@@ -92,9 +63,6 @@
         <td><%= request.name %></td>
 
 
-
-
-
         <td><%= request.employ_department %></td>
 
 
@@ -107,23 +75,15 @@
         <td><%= request.name %></td>
 
 
-
-
-
         <td><%= request.employ_department %></td>
 
 
         <td><%= link_to 'Show', request %></td>
       </tr>
 
-
-
         <%elsif request.employ_department == "Dept2" && request.payment_information == "Dept2"%>
           <tr>
             <td><%= request.name %></td>
-
-
-
 
 
             <td><%= request.employ_department %></td>
@@ -134,25 +94,13 @@
 
 
         <%else%>
-        
-
 
         <%end%>
       <% end %>
     </tbody>
   </table>
 
-
-
-
-
-
-
 <%else%>
-
-
-
-
 
 <%end%>
 
