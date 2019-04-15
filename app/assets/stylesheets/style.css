@@ -1,11 +1,11 @@
 .section {
 	position: relative;
-	height: 100vh;
+	height: 85vh;
 }
 
 .section .section-center {
 	position: absolute;
-	top: 50%;
+	top: 45%;
 	left: 0;
 	right: 0;
 	-webkit-transform: translateY(-50%);
@@ -14,27 +14,23 @@
 
 #booking {
 	font-family: 'Alice', serif;
-	
 }
 
 .booking-form {
-	
 	max-width: 1000px;
 	width: 100%;
 	margin: auto;
 	background: rgb(176, 255, 183);
 	border-radius: 6px;
-	-webkit-box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.1);
-	box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 0px 20px 40px -20px rgba(0, 0, 0, 0.9);
+	box-shadow: 0px 20px 40px -20px rgba(0, 0, 0, 0.9);
 }
 
 .booking-form .booking-bg {
-	
 	left: 25px;
 	top: -25px;
 	bottom: -25px;
 	width: 400px;
-	
 	
 	background-position: center;
 	padding: 25px;
@@ -169,11 +165,11 @@
 	display: block;
 	width: 100%;
 	color: #fff;
-	background-color: rgba(133, 104, 73, 0.9);
+	background-color: rgba(34, 151, 40, 0.9);
 	font-weight: 700;
 	font-size: 18px;
 	border: none;
-	border-radius: 40px;
+	border-radius: 60px;
 	height: 55px;
 	-webkit-transition: 0.2s all;
 	transition: 0.2s all;
@@ -181,7 +177,7 @@
 
 .booking-form .submit-btn:hover,
 .booking-form .submit-btn:focus {
-	background-color: rgba(133, 104, 73, 1);
+	background-color: rgb(5, 63, 20);
 }
 
 
