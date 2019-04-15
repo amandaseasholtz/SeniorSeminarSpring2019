@@ -71,9 +71,9 @@
                 </div>
 
                 <span class="form-label">StartDate</span>
-                  
-                  <%= form.date_select :remainderDate, {:order => [:month, :day, :year],:prompt => true, :start_year => Time.now.year, :end_year => 2030} %>
+                  <%= form.date_select :start_date, {:order => [:month, :day, :year],:prompt => true, :start_year => Time.now.year, :end_year => 2030} %>
 
+                  
 								<div class="col-md-6">
 									<div class="form-group">
 										<span class="form-label">End Date</span>
