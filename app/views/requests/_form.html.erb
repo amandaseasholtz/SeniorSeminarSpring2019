@@ -63,23 +63,27 @@
             </div>
 
 							<div class="row">
-								<div class="col-md-6">
+							  <!--	<div class="col-md-6">
 									<div class="form-group">
 										<span class="form-label">Start Date</span>
 										<input class="form-control" type="date" required>
 									</div>
+                </div>-->
+
+                <!-- <div class="col-md-6">
+                  <div class="form-group">
+                    <span class="form-label">End Date</span>
+                    <input class="form-control" type="date" required>
+                  </div>
+                </div> -->
+                <div class="col-md-6">
+                  <span class="form-label">Start Date</span>
+                    <%= form.date_select :start_date, {:order => [:month, :day, :year],:prompt => true, :start_year => Time.now.year, :end_year => 2030} %>
                 </div>
-
-                <span class="form-label">StartDate</span>
-                  <%= form.date_select :start_date, {:order => [:month, :day, :year],:prompt => true, :start_year => Time.now.year, :end_year => 2030} %>
-
-                  
-								<div class="col-md-6">
-									<div class="form-group">
-										<span class="form-label">End Date</span>
-										<input class="form-control" type="date" required>
-									</div>
-								</div>
+                <div class="col-md-6">
+                  <span class="form-label">End Date</span>
+                    <%= form.date_select :end_date, {:order => [:month, :day, :year],:prompt => true, :start_year => Time.now.year, :end_year => 2030} %>
+                </div>
               </div>
             
 
