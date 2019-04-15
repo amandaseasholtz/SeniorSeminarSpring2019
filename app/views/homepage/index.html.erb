@@ -29,10 +29,9 @@
       <%end%>
 
       <% if current_account.accountable_type == "Payment" %>
-        <li> <%= link_to "Manage Budgets", say_info_path %> </li>
-        <li><%= link_to 'Manage bdugets', edit_employee_path(current_account.accountable_id), class: "dropdown-item" %> </li>
-        <li> <%= link_to "Travel History", say_history_path %> </li>
-        <li> <%= link_to "Post-Travels", new_post_travel_path%> </li>
+        <li><%= link_to 'budgets approved', requests_path %> </li>
+        <li> <%= link_to "Travel History", requests_path%> </li>
+        <li> <%= link_to "manage Post-Travels", post_travels_path%> </li>
         <li> <%= link_to 'My Info', edit_payment_path(current_account.accountable_id), class: "dropdown-item"  %></li>
         <li><%= link_to 'Account Settings', edit_account_registration_path, class: "dropdown-item"  %></li>
         <li><%= link_to 'Sign out', destroy_account_session_path, :method=>'delete', class:"nav-link" %><li>
