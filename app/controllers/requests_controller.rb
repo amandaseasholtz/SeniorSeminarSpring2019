@@ -3,8 +3,12 @@ class RequestsController < ApplicationController
 
   # GET /requests
   # GET /requests.json
+
+
   def index
-    @requests = Request.all
+      #@requests = Request.all
+        @requests = Request.where(budget_name: "brenda")
+
   end
 
   # GET /requests/1
@@ -70,10 +74,8 @@ class RequestsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
 
 
-    
-    ##NEED TO REMEMBER THIS LINE FOR LATER!!!!!!!!!!!!!!!
     def request_params
       params.require(:request).permit(:name, :destination, :requested_travel_days, :purpose, 
-      :expected_expenses, :payment_information, :employ_department,:employee_id, :status, :reasoning)
+      :expected_expenses, :payment_information, :employ_department,:employee_id, :status, :reasoning, :budget_name)
     end
 end

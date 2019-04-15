@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2019_04_12_062349) do
     t.string "name"
     t.string "bid"
     t.string "department"
+    t.decimal "dmoney"
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -93,6 +94,7 @@ ActiveRecord::Schema.define(version: 2019_04_12_062349) do
     t.string "requested_travel_days"
     t.string "reasoning"
     t.string "employ_department"
+    t.string "budget_name"
     t.string "budget_department"
     t.string "purpose"
     t.string "expected_expenses"

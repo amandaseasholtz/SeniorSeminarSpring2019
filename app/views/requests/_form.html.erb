@@ -14,7 +14,7 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :employee_name, enabled: true, hint: 'You cannot change your username.' %>
+    <%= form.text_field :name, id: :employee_name %>
   </div>
 
 
@@ -38,6 +38,7 @@
     <%= form.text_field :requested_travel_days, id: :request_requested_travel_days, size: 40 %>
   </div>
 
+<%if request.name == nil%>
   <div class="field">
     <%= form.label :purpose %>
     <%= form.text_area :purpose, id: :request_purpose, rows: 10, cols: 60 %>
@@ -50,14 +51,47 @@
 
   <div class="field">
     <%= form.label :payment_Information %>
-    <%= form.select :payment_information, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3", "Dept4"])%>
+      <%= form.select :payment_information, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3"])%>
     </div>
 
     <div class="field">
       <%= form.label :employee_department %>
-      <%= form.select :employ_department, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3", "Dept4"])%>
+      <%= form.select :employ_department, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3"])%>
     </div>
 
+    <%else %>
+
+
+
+  
+    <%end%>
+
+
+    <%if request.budget_name == nil && request.payment_information == "Dept1"%>
+
+      <div class="field">
+        <%= form.label :your_advisor_is  %>
+        <%= form.select :budget_name, options_for_select([["Choose Department(s)", ""], "bobby"])%>
+      </div>
+    <%elsif request.budget_name == nil && request.payment_information == "Dept2"%>
+      <div class="field">
+        <%= form.label :your_advisor_is  %>
+        <%= form.select :budget_name, options_for_select([["Choose Department(s)", ""], "brenda"])%>
+      </div>
+
+      <%elsif request.budget_name == nil && request.payment_information == "Dept3"%>
+        <div class="field">
+        <%= form.label :your_advisor_is  %>
+        <%= form.select :budget_name, options_for_select([["Choose Department(s)", ""], "billy"])%>
+      </div>
+
+    <%else%>
+
+
+    <%end%>
+
+
+  
 
 
 
