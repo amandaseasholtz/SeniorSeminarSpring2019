@@ -14,7 +14,12 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :employee_name %>
+    <%if request.name == nil%>
+      <%= form.text_field :name, id: :employee_name, enabled: true %>
+    <%else%>
+      <%= form.text_field :name, id: :employee_name, disabled: true %>
+    <%end%>
+
   </div>
 
 
