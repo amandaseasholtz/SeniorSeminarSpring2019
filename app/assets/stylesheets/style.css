@@ -1,6 +1,6 @@
 .section {
 	position: relative;
-	height: 85vh;
+	height: 155vh;
 }
 
 .section .section-center {
@@ -31,7 +31,7 @@
 	top: -25px;
 	bottom: -25px;
 	width: 400px;
-	
+
 	background-position: center;
 	padding: 25px;
 	border-radius: 6px;
@@ -77,14 +77,14 @@
 }
 
 .booking-form .form-group {
-	
+
 	margin-bottom: 20px;
 }
 
 .booking-form .form-control {
 	background-color: #fff;
 	height: 45px;
-	
+
 	color: #151515;
 	border: 1px solid #e5e5e5;
 	font-size: 16px;
@@ -131,7 +131,7 @@
 }
 
 .booking-form select.form-control+.select-arrow {
-	
+
 	line-height: 32px;
 	height: 32px;
 	text-align: center;
@@ -154,7 +154,7 @@
 	height: 24px;
 	font-size: 14px;
 	font-weight: 400;
-	
+
 }
 
 .booking-form .form-btn {
