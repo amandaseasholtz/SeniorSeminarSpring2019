@@ -14,24 +14,8 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%if request.name == nil%>
-      <%= form.text_field :name, id: :employee_name, enabled: true %>
-    <%else%>
-      <%= form.text_field :name, id: :employee_name, disabled: true %>
-    <%end%>
-
+    <%= form.text_field :name, id: :employee_name, enabled: true %>
   </div>
-
-
-
-
-
-
-
-
-
-
-
 
   <div class="field">
     <%= form.label :Destination %>
@@ -64,13 +48,9 @@
       <%= form.select :employ_department, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3"])%>
     </div>
 
-    <%else %>
-
-
-
+  <%else %>
   
-    <%end%>
-
+  <%end%>
 
     <%if request.budget_name == nil && request.payment_information == "Dept1"%>
 
@@ -92,19 +72,7 @@
 
     <%else%>
 
-
     <%end%>
-
-
-  
-
-
-
-
-
-
-
-
   <div class="actions">
     <%= form.submit %>
   </div>
