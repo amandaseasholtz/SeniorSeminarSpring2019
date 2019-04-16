@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,10 +32,10 @@
 <body>
 	<div id="booking" class="section">
 		<div class="section-center">
-			
+
 				<div class="row">
 					<div class="booking-form">
-						
+
             <%= form_with(model: request, local: true) do |form| %>
               <% if request.errors.any? %>
                 <div id="error_explanation">
@@ -45,7 +46,7 @@
                       <li><%= message %></li>
                     <% end %>
                   </ul>
-            
+
                 </div>
               <% end %>
 
@@ -55,8 +56,8 @@
                 <%= form.text_field :name, id: :employee_name %>
               </p>
             </div>
-          
-          
+
+
             <div class="field">
             <span class="form-label">Destination</span>
               <%= form.text_field :destination, id: :request_destination, size: 40 %>
@@ -85,15 +86,15 @@
                     <%= form.date_select :end_date, {:order => [:month, :day, :year],:prompt => true, :start_year => Time.now.year, :end_year => 2030} %>
                 </div>
               </div>
-            
 
+							<%if request.name == nil%>
             <div class="field">
             <span class="form-label">Purpose</span>
             <div class="form-group">
               <%= form.text_area :purpose, id: :request_purpose, rows: 10, cols: 60 %>
             </div>
             </div>
-          
+
             <div class="field">
             <span class="form-label">Expected Expenses</span>
               <input type="button" value= "add new expense" id="add">
@@ -104,22 +105,46 @@
 									<div class="form-group">
             <div class="form-group">
             <span class="form-label">Payment_Department_Info</span>
-              <%= form.select :payment_information, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3", "Dept4"])%>
+              <%= form.select :payment_information, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3"])%>
               </div>
                </div>
                 </div>
-          
+
 								 <div class="form-group">
                  <span class="form-label">Employee_Department</span>
-                 <%= form.select :employ_department, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3", "Dept4"])%>
+                 <%= form.select :employ_department, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3"])%>
                  </div>
                </div>
-              
-						
+
+							 <%else %>
+
+							 <%end%>
+
+							 <%if request.budget_name == nil && request.payment_information == "Dept1"%>
+
+	 				      <div class="field">
+	 				        <%= form.label :your_advisor_is  %>
+	 				        <%= form.select :budget_name, options_for_select([["Choose Department(s)", ""], "bobby"])%>
+	 				      </div>
+	 				    <%elsif request.budget_name == nil && request.payment_information == "Dept2"%>
+	 				      <div class="field">
+	 				        <%= form.label :your_advisor_is  %>
+	 				        <%= form.select :budget_name, options_for_select([["Choose Department(s)", ""], "brenda"])%>
+	 				      </div>
+
+	 				      <%elsif request.budget_name == nil && request.payment_information == "Dept3"%>
+	 				        <div class="field">
+	 				        <%= form.label :your_advisor_is  %>
+	 				        <%= form.select :budget_name, options_for_select([["Choose Department(s)", ""], "billy"])%>
+	 				      </div>
+
+	 				    <%else%>
+
+	 				    <%end%>
 							<div class="form-btn">
 								<button class="submit-btn">Submit Request</button>
 							</div>
-						</form>
+<%end%>
 					</div>
 			</div>
 		</div>
@@ -127,9 +152,3 @@
 </body>
 
 </html>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-
-<% end %>

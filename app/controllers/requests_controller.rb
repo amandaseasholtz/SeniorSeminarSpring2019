@@ -3,18 +3,21 @@ class RequestsController < ApplicationController
 
   # GET /requests
   # GET /requests.json
+
+
   def index
-    @requests = Request.all
-    respond_to do |format|
-        format.html {
-            if (params[:spa] && params[:spa] == "true")
-                render 'index_spa'
-            # the else case below is by default
-            else
-               render 'index'
-            end
-        }
-        format.json {render json: @products}
+      #@requests = Request.all
+      if current_account.accountable.name == "brenda"
+        @requests = Request.where(budget_name: "brenda")
+
+    elsif current_account.accountable.name == "bobby"
+      @requests = Request.where(budget_name: "bobby")
+
+    elsif current_account.accountable.name == "billy"
+      @requests = Request.where(budget_name: "billy")
+
+    else
+      @requests = Request.all
     end
   end
 
@@ -80,8 +83,12 @@ class RequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
 
-    ##NEED TO REMEMBER THIS LINE FOR LATER!!!!!!!!!!!!!!!
+
     def request_params
-      params.require(:request).permit(:name, :destination, :start_date, :end_date, :purpose, :expected_expenses, :payment_information, :employ_department)
+
+      params.require(:request).permit(:name, :destination, :start_date, :end_date, :purpose,
+        :expected_expenses, :payment_information, :employ_department,:employ_department,:employee_id, :status, :reasoning, :budget_name)
+
+
     end
 end

@@ -6,8 +6,9 @@ class CreateRequests < ActiveRecord::Migration[5.2]
       t.date :start_date
       t.date :end_date
 
-
+      t.string :reasoning
       t.string :employ_department
+      t.string :budget_name
 
 
       t.string :budget_department

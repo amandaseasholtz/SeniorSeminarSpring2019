@@ -9,10 +9,12 @@ class BudgetDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     account: Field::HasOne,
+    requests: Field::HasMany,
     id: Field::Number,
     name: Field::String,
     bid: Field::String,
     department: Field::String,
+    dmoney: Field::String.with_options(searchable: false),
     title: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -25,19 +27,21 @@ class BudgetDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :account,
+    :requests,
     :id,
     :name,
-    :bid,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :account,
+    :requests,
     :id,
     :name,
     :bid,
     :department,
+    :dmoney,
     :title,
     :created_at,
     :updated_at,
@@ -48,9 +52,11 @@ class BudgetDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :account,
+    :requests,
     :name,
     :bid,
     :department,
+    :dmoney,
     :title,
   ].freeze
 
