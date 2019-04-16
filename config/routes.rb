@@ -14,6 +14,7 @@ namespace :admin do
       resources :employees
       resources :payments
       resources :requests
+      
 
 
       
@@ -32,6 +33,7 @@ namespace :admin do
     resources :budgets, only: [:edit, :update]
     resources :payments, only: [:edit, :update]
     resources :requests
+    resources :post_travels
   
   end
 
