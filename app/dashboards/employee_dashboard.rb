@@ -9,7 +9,6 @@ class EmployeeDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     account: Field::HasOne,
-    requests: Field::HasMany,
     id: Field::Number,
     name: Field::String,
     eid: Field::String,
@@ -26,16 +25,15 @@ class EmployeeDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :account,
-    :requests,
     :id,
     :name,
+    :eid,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :account,
-    :requests,
     :id,
     :name,
     :eid,
@@ -50,7 +48,6 @@ class EmployeeDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :account,
-    :requests,
     :name,
     :eid,
     :department,

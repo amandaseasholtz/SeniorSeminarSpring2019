@@ -24,7 +24,6 @@ class SuperAccountDashboard < Administrate::BaseDashboard
     :account,
     :id,
     :name,
-    :created_at,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -45,10 +44,10 @@ class SuperAccountDashboard < Administrate::BaseDashboard
     :name,
   ].freeze
 
-  # Overwrite this method to customize how super accounts are displayed
+  # Overwrite this method to customize how sellers are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(super_account)
-  #   "SuperAccount ##{super_account.id}"
+  # def display_resource(seller)
+  #   "Seller ##{seller.id}"
   # end
 end
