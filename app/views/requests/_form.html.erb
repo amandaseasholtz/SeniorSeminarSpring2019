@@ -100,6 +100,15 @@
               <input type="button" value= "add new expense" id="add">
               <%= form.select :expected_expenses, options_for_select([["Choose Different cost(s)", ""], "food", "hotel", "travel"])%>
             </div>
+
+            <div class="field">
+            <span class="form-label">Expected Costs</span>
+              <input type="button" value= "add new costs amount" id="add">
+              <%= form.text_area :expected_costs, id: :expected_costs, rows: 1, cols: 20 %>
+            </div>
+
+
+
           	<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">

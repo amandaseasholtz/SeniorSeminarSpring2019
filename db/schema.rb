@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 2019_04_12_062349) do
     t.string "reasoning"
     t.string "employ_department"
     t.string "budget_name"
+    t.decimal "expected_costs"
     t.string "budget_department"
     t.string "purpose"
     t.string "expected_expenses"

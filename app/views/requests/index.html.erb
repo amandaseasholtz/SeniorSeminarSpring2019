@@ -66,12 +66,33 @@
       <% @requests.each do |request| %>
         <%if request.budget_name == "bobby" %>
 
-          <tr>
-            <td><%= request.name %></td>
-            <td><%= request.employ_department %></td>
-            <td><%= request.budget_name%></td>
-            <td><%= link_to 'Show', request %></td>
-          </tr>
+        <tr>
+          <td><%= request.name %></td>
+          <td><%= request.employ_department %></td>
+          <td><%= request.budget_name%></td>
+          <td><%= link_to 'Show', request %></td>
+          <td>
+          <%if request.status == nil%>
+            <%= form_with(model: request, local: true) do |form| %>
+              <div class="field">
+                <%= form.label :Status %>
+                <%= form.select :status, options_for_select([["Choose Department(s)", ""], "Accept", "Reject"])%>
+              </div>
+            <%= form.label :Notes %>
+            <%= form.text_area :reasoning, id: :request_reasoning, rows: 5, cols: 30 %>
+            </div>
+
+
+
+
+          <div class="actions">
+          <%= form.submit %>
+        </div>
+        <%end%>
+        <%end%>
+
+      </tr>
+      </td>
         <%elsif request.budget_name == "brenda"%>
 
 
@@ -102,16 +123,38 @@
             <%end%>
 
           </tr>
-                  </td>
+          </td>
 
 
         <%elsif request.budget_name == "billy"%>
-          <tr>
-            <td><%= request.name %></td>
-            <td><%= request.employ_department %></td>
-            <td><%= request.budget_name%></td>
-            <td><%= link_to 'Show', request %></td>
-          </tr>
+        <tr>
+          <td><%= request.name %></td>
+          <td><%= request.employ_department %></td>
+          <td><%= request.budget_name%></td>
+          <td><%= link_to 'Show', request %></td>
+          <td>
+        <%if request.status == nil%>
+          <%= form_with(model: request, local: true) do |form| %>
+            <div class="field">
+            <%= form.label :Status %>
+              <%= form.select :status, options_for_select([["Choose Department(s)", ""], "Accept", "Reject"])%>
+            </div>
+
+            <%= form.label :Notes %>
+            <%= form.text_area :reasoning, id: :request_reasoning, rows: 5, cols: 30 %>
+            </div>
+
+
+
+
+          <div class="actions">
+          <%= form.submit %>
+        </div>
+        <%end%>
+        <%end%>
+
+      </tr>
+      </td>
         <%else%>
 
 
