@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_04_12_062349) do
     t.date "start_date"
     t.date "end_date"
     t.text "purpose"
+    t.string "receipts_url"
     t.decimal "expected_expenses"
     t.decimal "actual_expenses"
     t.text "payment_infomation"

@@ -69,6 +69,6 @@ class PostTravelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_travel_params
-      params.require(:post_travel).permit(:name, :destination, :start_date, :end_date, :purpose, :expected_expenses, :actual_expenses, :payment_infomation)
+      params.require(:post_travel).permit(:name, :destination, :start_date, :end_date, :purpose, :expected_expenses, :actual_expenses, :payment_infomation, :receipts_url)
     end
 end

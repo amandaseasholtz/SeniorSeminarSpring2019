@@ -88,7 +88,7 @@ class RequestsController < ApplicationController
 
       params.require(:request).permit(:name, :destination, :start_date, :end_date, :purpose,
         :expected_expenses, :payment_information, :employ_department,:employ_department,:employee_id, 
-        :status, :reasoning, :budget_name, :expected_costs)
+        :status, :reasoning, :budget_name, :expected_costs, :dmoney)
 
 
     end
