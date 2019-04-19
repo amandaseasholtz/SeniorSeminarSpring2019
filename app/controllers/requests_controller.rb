@@ -7,17 +7,34 @@ class RequestsController < ApplicationController
 
   def index
       #@requests = Request.all
-      if current_account.accountable.name == "brenda"
-        @requests = Request.where(budget_name: "brenda")
+      respond_to do |format|
+        format.html {
+            if (params[:spa] && params[:spa] == "true")
+                render 'index_spa'
+            # the else case below is by default
+            else
+               render 'index'
+            end
+        }
+        #format.json {render json: @products}
+      end
 
-    elsif current_account.accountable.name == "bobby"
-      @requests = Request.where(budget_name: "bobby")
 
-    elsif current_account.accountable.name == "billy"
-      @requests = Request.where(budget_name: "billy")
+      if current_account != nil
+        if current_account.accountable.name == "brenda"
+          @requests = Request.where(budget_name: "brenda")
 
-    else
-      @requests = Request.all
+        elsif current_account.accountable.name == "bobby"
+          @requests = Request.where(budget_name: "bobby")
+
+        elsif current_account.accountable.name == "billy"
+          @requests = Request.where(budget_name: "billy")
+
+        else
+          @requests = Request.all
+        end
+      else
+
     end
   end
 
@@ -89,7 +106,5 @@ class RequestsController < ApplicationController
       params.require(:request).permit(:name, :destination, :start_date, :end_date, :purpose,
         :expected_expenses, :payment_information, :employ_department,:employ_department,:employee_id, 
         :status, :reasoning, :budget_name, :expected_costs)
-
-
     end
 end

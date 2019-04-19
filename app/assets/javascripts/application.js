@@ -14,6 +14,5 @@
 //= require activestorage
 
 //= require cocoon
-//= require turbolinks
 
-//= require_tree .
+//= require_tree 
