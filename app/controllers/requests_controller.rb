@@ -46,6 +46,10 @@ class RequestsController < ApplicationController
   # GET /requests/new
   def new
     @request = Request.new
+
+    if (params[:spa] && params[:spa] == "true")
+      render 'index_spa'
+    end
   end
 
   # GET /requests/1/edit
