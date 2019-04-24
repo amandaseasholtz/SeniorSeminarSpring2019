@@ -9,6 +9,8 @@ export default class Trip extends React.Component {
         name: null, 
         destination: null,
         start_date: null,
+        end_date: null,
+        purpose: null,
     };
 
     onButtonClick(event){
@@ -64,10 +66,19 @@ export default class Trip extends React.Component {
                             value={this.state.destination}
                             onChange = {e => this.setState({destination: e.target.value})}
                         />
+                        <label>Start Date</label>
                         <Calendar
                             onChange={(start_date) => this.setState({start_date})}
                             value={this.state.start_date}
                         />
+                        <label>End Date</label>
+                        <Calendar
+                            onChange={(end_date) => this.setState({end_date})}
+                            value={this.state.end_date}
+                        />
+                        <label>Purpose</label>
+                        <textarea name="textarea" placeholder = 'Purpose' value={this.state.purpose} onChange = {e => this.setState({purpose: e.target.value})}></textarea>
+            
                         <button onClick={this.onButtonClick}>
                             Submit Request
                         </button>
