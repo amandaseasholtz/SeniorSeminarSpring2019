@@ -29,10 +29,18 @@ class RequestsController < ApplicationController
   # GET /requests/new
   def new
     @request = Request.new
+    3.times do
+      @request.expected_expenses.build
+      @request.expected_costs.build
+      @request.payment_informations.build
+    end
   end
 
   # GET /requests/1/edit
   def edit
+    @request.expected_expenses.build
+    @request.expected_costs.build
+    @request.payment_informations.build
   end
 
   # POST /requests
@@ -86,9 +94,11 @@ class RequestsController < ApplicationController
 
     def request_params
 
-      params.require(:request).permit(:name, :destination, :start_date, :end_date, :purpose,
-        :expected_expenses, :payment_information, :employ_department,:employ_department,:employee_id, 
-        :status, :reasoning, :budget_name, :expected_costs, :dmoney)
+      params.require(:request).permit(:name, :destination, :start_date, :end_date, :purpose,:employee_id, 
+        :status, :reasoning, :budget_name, expected_expenses_attributes: [:id, :_destroy, :request_id, :expense], 
+        payment_information_attributes: 
+        [:id, :_destroy, :request_id, :payment_information],
+        payment_information_attributes: [:id, :_destroy, :request_id, :cost])
 
 
     end
