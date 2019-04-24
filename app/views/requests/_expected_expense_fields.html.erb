@@ -1,5 +1,27 @@
 
 <tr class="nested-fields">
 
-  <td><%= f.select :expense, options_for_select([["Choose Different cost(s)", ""], "food", "hotel", "travel"]), label: false %></td>
-</tr>
+  <td><%= f.select :expense, options_for_select([["Choose Different expenses(s)", ""], "food", "hotel", "travel"]), label: false %></td>
+
+
+  <tbody class='expected_costs_fields'>
+  <%= f.label "Expected Costs"%>
+  <%= f.simple_fields_for :expected_cost do |builder| %>
+    <%= render 'expected_cost_fields', f: builder %>
+
+
+  <% end %>
+  
+</tbody>
+
+
+
+<tbody class='payment_informations_fields'>
+<%= f.simple_fields_for :payment_information do |builder| %>
+  <%= render 'payment_information_fields', f: builder %>
+
+
+<% end %>
+</tbody>
+
+  </tr>

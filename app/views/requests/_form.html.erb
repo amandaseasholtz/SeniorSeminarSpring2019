@@ -91,7 +91,9 @@
                   <%= render 'expected_expense_fields', f: builder %>
 
 
-
+                  <%= link_to_add_association 'Add expense', f, :expected_expenses, class: 'btn btn-primary', 
+                  data: { association_insertion_node: '.expenses', association_insertion_method: :append } %>
+              
                 <%end%>
 
               </tbody>
@@ -101,28 +103,9 @@
 
 
 
-            <tbody class='payment_informations_fields'>
-            <%= f.simple_fields_for :payment_information do |builder| %>
-              <%= render 'payment_information_fields', f: builder %>
-
-              <%= link_to_add_association 'Add department', f, :payment_informations, class: 'btn btn-primary', 
-              data: { association_insertion_node: '.payment_information_fields', association_insertion_method: :append } %>
-        
-            <% end %>
-          </tbody>
 
 
-          <tbody class='expected_costs_fields'>
-          <%= f.label "Expected Costs"%>
-          <%= f.simple_fields_for :expected_cost do |builder| %>
-            <%= render 'expected_cost_fields', f: builder %>
 
-            <%= link_to_add_association 'Add cost', f, :expected_costs, class: 'btn btn-primary', 
-                data: { association_insertion_node: '.expected_cost_fields', association_insertion_method: :append } %>
-							
-          <% end %>
-          
-        </tbody>
 
 
 
