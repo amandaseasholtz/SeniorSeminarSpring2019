@@ -6,19 +6,21 @@ class RequestsController < ApplicationController
 
 
   def index
-      #@requests = Request.all
-      if current_account.accountable.name == "brenda"
-        @requests = Request.where(budget_name: "brenda")
-
-    elsif current_account.accountable.name == "bobby"
-      @requests = Request.where(budget_name: "bobby")
-
-    elsif current_account.accountable.name == "billy"
-      @requests = Request.where(budget_name: "billy")
-
-    else
       @requests = Request.all
-    end
+      
+     # if current_account.accountable.name == "brenda"
+     #   @requests = Request.where(budget_name: "brenda")
+
+#    elsif current_account.accountable.name == "bobby"
+ #     @requests = Request.where(budget_name: "bobby")
+
+  #  elsif current_account.accountable.name == "billy"
+   #   @requests = Request.where(budget_name: "billy")
+
+  #  else
+  #    @requests = Request.all
+  #  end
+  #@requests = expected_cost.all
   end
 
   # GET /requests/1
@@ -29,11 +31,10 @@ class RequestsController < ApplicationController
   # GET /requests/new
   def new
     @request = Request.new
-    3.times do
+
       @request.expected_expenses.build
       @request.expected_costs.build
       @request.payment_informations.build
-    end
   end
 
   # GET /requests/1/edit
@@ -95,10 +96,14 @@ class RequestsController < ApplicationController
     def request_params
 
       params.require(:request).permit(:name, :destination, :start_date, :end_date, :purpose,:employee_id, 
-        :status, :reasoning, :budget_name, expected_expenses_attributes: [:id, :_destroy, :request_id, :expense], 
+        :status, :reasoning, :budget_name, expected_expense_attributes: [:id, :_destroy, :request_id, :expense], 
         payment_information_attributes: 
         [:id, :_destroy, :request_id, :payment_information],
-        payment_information_attributes: [:id, :_destroy, :request_id, :cost])
+        expected_cost_attributes: [:id, :_destroy, :request_id, :cost]
+        
+        
+        
+        )
 
 
     end
