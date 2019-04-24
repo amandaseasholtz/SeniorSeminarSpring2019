@@ -6,21 +6,21 @@ class RequestsController < ApplicationController
 
 
   def index
+
       @requests = Request.all
-      
-     # if current_account.accountable.name == "brenda"
-     #   @requests = Request.where(budget_name: "brenda")
 
-#    elsif current_account.accountable.name == "bobby"
- #     @requests = Request.where(budget_name: "bobby")
 
-  #  elsif current_account.accountable.name == "billy"
-   #   @requests = Request.where(budget_name: "billy")
-
-  #  else
-  #    @requests = Request.all
-  #  end
-  #@requests = Expected_cost.all
+      respond_to do |format|
+        format.html {
+            if (params[:spa] && params[:spa] == "true")
+                render 'index_spa'
+            # the else case below is by default
+            else
+               render 'index'
+            end
+        }
+        #format.json {render json: @products}
+      end
   end
 
   # GET /requests/1
@@ -32,9 +32,15 @@ class RequestsController < ApplicationController
   def new
     @request = Request.new
 
+
       @request.expected_expenses.build
       @request.expected_costs.build
       @request.payment_informations.build
+
+    if (params[:spa] && params[:spa] == "true")
+      render 'index_spa'
+    end
+
   end
 
   # GET /requests/1/edit
@@ -48,7 +54,7 @@ class RequestsController < ApplicationController
   # POST /requests.json
   def create
     @request = Request.new(request_params)
-    
+
 
     respond_to do |format|
       if @request.save
@@ -96,12 +102,14 @@ class RequestsController < ApplicationController
 
     def request_params
 
-      params.require(:request).permit(:name, :destination, :start_date, :end_date, :purpose,:employee_id, 
-        :status, :reasoning, :budget_name, 
-        expected_expense_attributes: [:id, :_destroy, :request_id, :expense], 
+
+      params.require(:request).permit(:name, :destination, :start_date, :end_date, :purpose,:employee_id,
+        :status, :reasoning, :budget_name,
+        expected_expense_attributes: [:id, :_destroy, :request_id, :expense],
         payment_information_attributes: [:id, :_destroy, :request_id, :payment_information],
         expected_cost_attributes: [:id, :_destroy, :request_id, :cost]
-        
+
         )
+
     end
 end

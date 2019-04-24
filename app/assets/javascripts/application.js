@@ -17,4 +17,4 @@
 
 //= require cocoon
 
-//= require_tree .
+//= require_tree 

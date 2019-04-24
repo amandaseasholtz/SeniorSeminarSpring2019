@@ -1,0 +1,1 @@
+import "trip"; // This implies to use app/javascript/trip/index.js

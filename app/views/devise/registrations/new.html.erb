@@ -15,8 +15,13 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+<<<<<<< HEAD
     <%= f.input :type, required: true, as: :radio_buttons, 
                 label: "Type of Account", collection: Account::ACCOUNT_TYPES.drop(3), checked: 'Employee' %>
+=======
+    <%= f.input :type, required: true, as: :radio_buttons,
+                label: "Type of Account", collection: Account::ACCOUNT_TYPES.drop(1), checked: 'Employee' %>
+>>>>>>> 4c1c1ec8e64a088c4778b418cec8454d581a78f9
   </div>
 
   <div class="form-actions">
