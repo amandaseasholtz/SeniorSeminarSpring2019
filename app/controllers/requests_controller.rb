@@ -20,7 +20,7 @@ class RequestsController < ApplicationController
   #  else
   #    @requests = Request.all
   #  end
-  #@requests = expected_cost.all
+  #@requests = Expected_cost.all
   end
 
   # GET /requests/1
@@ -48,6 +48,7 @@ class RequestsController < ApplicationController
   # POST /requests.json
   def create
     @request = Request.new(request_params)
+    
 
     respond_to do |format|
       if @request.save
@@ -96,15 +97,11 @@ class RequestsController < ApplicationController
     def request_params
 
       params.require(:request).permit(:name, :destination, :start_date, :end_date, :purpose,:employee_id, 
-        :status, :reasoning, :budget_name, expected_expense_attributes: [:id, :_destroy, :request_id, :expense], 
-        payment_information_attributes: 
-        [:id, :_destroy, :request_id, :payment_information],
+        :status, :reasoning, :budget_name, 
+        expected_expense_attributes: [:id, :_destroy, :request_id, :expense], 
+        payment_information_attributes: [:id, :_destroy, :request_id, :payment_information],
         expected_cost_attributes: [:id, :_destroy, :request_id, :cost]
         
-        
-        
         )
-
-
     end
 end
