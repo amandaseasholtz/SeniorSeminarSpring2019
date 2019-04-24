@@ -89,37 +89,6 @@
                 </div>
 
 
-                <div class="row">
-
-
-                <tbody class='expenses'>
-                <%= f.simple_fields_for :expected_expense do |builder| %>
-                  <%= render 'expected_expense_fields', f: builder %>
-                  <%end%>
-                  <%= link_to_add_association 'Add expense', f,  :expected_expenses, class: 'btn btn-primary'%>
-              </tbody>
-
-
-              <tbody class='costs'>
-              <%= f.simple_fields_for :expected_cost do |builder| %>
-                <%= render 'expected_cost_fields', f: builder %>
-                <%end%>
-                <%= link_to_add_association 'Add cost', f,  :expected_costs, class: 'btn btn-primary'%>
-            </tbody>
-
-
-
-
-
-            <tbody class='pays'>
-            <%= f.simple_fields_for :payment_information do |builder| %>
-              <%= render 'payment_information_fields', f: builder %>
-              <%end%>
-              <%= link_to_add_association 'Add pay from Department', f,  :payment_informations, class: 'btn btn-primary'%>
-          </tbody>
-
-          </div>
-
 
 
 
@@ -133,6 +102,39 @@
             </div>
             </div>
 
+
+						<div class="row">
+
+
+						<tbody class='expenses'>
+						<%= f.simple_fields_for :expected_expense do |builder| %>
+							<%= render 'expected_expense_fields', f: builder %>
+							<%end%>
+							<%= link_to_add_association 'Add expense', f,  :expected_expenses, class: 'btn btn-primary'%>
+
+					</tbody>
+
+
+					<tbody class='costs'>
+					<%= f.simple_fields_for :expected_cost do |builder| %>
+						<%= render 'expected_cost_fields', f: builder %>
+						<%end%>
+						<%= link_to_add_association 'Add cost', f,  :expected_costs, class: 'btn btn-primary'%>
+					</tbody>
+
+
+
+
+
+					<tbody class='pays'>
+					<%= f.simple_fields_for :payment_information do |builder| %>
+					<%= render 'payment_information_fields', f: builder %>
+					<%end%>
+					<%= link_to_add_association 'Add pay from Department', f,  :payment_informations, class: 'btn btn-primary'%>
+					
+					</tbody>
+
+					</div>
 
 
 
