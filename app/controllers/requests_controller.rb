@@ -6,7 +6,7 @@ class RequestsController < ApplicationController
 
 
   def index
-      #@requests = Request.all
+      @requests = Request.all
       respond_to do |format|
         format.html {
             if (params[:spa] && params[:spa] == "true")
@@ -18,24 +18,6 @@ class RequestsController < ApplicationController
         }
         #format.json {render json: @products}
       end
-
-
-      if current_account != nil
-        if current_account.accountable.name == "brenda"
-          @requests = Request.where(budget_name: "brenda")
-
-        elsif current_account.accountable.name == "bobby"
-          @requests = Request.where(budget_name: "bobby")
-
-        elsif current_account.accountable.name == "billy"
-          @requests = Request.where(budget_name: "billy")
-
-        else
-          @requests = Request.all
-        end
-      else
-
-    end
   end
 
   # GET /requests/1
