@@ -6,14 +6,10 @@ class RequestsController < ApplicationController
 
 
   def index
-<<<<<<< HEAD
-      @requests = Request.all
-=======
 
       @requests = Request.all
 
 
->>>>>>> 2d355dd31b0de7302167807140960e23c90786a8
       respond_to do |format|
         format.html {
             if (params[:spa] && params[:spa] == "true")

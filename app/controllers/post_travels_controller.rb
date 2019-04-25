@@ -5,6 +5,20 @@ class PostTravelsController < ApplicationController
   # GET /post_travels.json
   def index
     @post_travels = PostTravel.all
+
+    #@post_travels = Request.all
+
+
+      respond_to do |format|
+        format.html {
+            if (params[:spa] && params[:spa] == "true")
+                render 'index_spa'
+            # the else case below is by default
+            else
+               render 'index'
+            end
+        }
+      end
   end
 
   # GET /post_travels/1

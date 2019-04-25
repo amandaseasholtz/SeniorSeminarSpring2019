@@ -1,0 +1,1 @@
+import "post_travel"; // This implies to use app/javascript/post_travel/index.js
