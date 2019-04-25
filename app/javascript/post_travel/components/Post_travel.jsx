@@ -14,12 +14,8 @@ export default class post_travel extends React.Component {
         expected_expenses: null,
         expected_costs: null,
         payment_information: null,
-<<<<<<< HEAD
         actual_expenses: null,
     
-=======
-
->>>>>>> df259e35df1ddf69a307ae65e00164e22bcca75b
     };
 
     onButtonClick(event){
@@ -97,17 +93,10 @@ export default class post_travel extends React.Component {
                             <option value="travel">Travel</option>
                         </select>
 
-<<<<<<< HEAD
                         <label>Est Price</label>
                         <input 
                             type="text" 
                             placeholder = 'Est Price' 
-=======
-                        <label>Price</label>
-                        <input
-                            type="text"
-                            placeholder = 'Price'
->>>>>>> df259e35df1ddf69a307ae65e00164e22bcca75b
                             value={this.state.expected_costs}
                             onChange = {e => this.setState({expected_costs: e.target.value})}
                         />
@@ -119,7 +108,6 @@ export default class post_travel extends React.Component {
                         </select>
 
 
-<<<<<<< HEAD
 
                         <label>Actual Expenses</label>
                         <input 
@@ -129,8 +117,6 @@ export default class post_travel extends React.Component {
                             onChange = {e => this.setState({actual_expenses: e.target.value})}
                         />
 
-=======
->>>>>>> df259e35df1ddf69a307ae65e00164e22bcca75b
                         <button onClick={this.onButtonClick}>
                             Submit Request
 
