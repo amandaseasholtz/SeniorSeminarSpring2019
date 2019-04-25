@@ -29,6 +29,11 @@ class PostTravelsController < ApplicationController
   # GET /post_travels/new
   def new
     @post_travel = PostTravel.new
+
+    if (params[:spa] && params[:spa] == "true")
+      render 'index_spa'
+    end
+    
   end
 
   # GET /post_travels/1/edit

@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types'
+
 import Calendar from 'react-calendar';
 
 export default class Post_travel extends React.Component {
@@ -14,6 +14,7 @@ export default class Post_travel extends React.Component {
         expected_expenses: null,
         expected_costs: null,
         payment_information: null,
+        actual_expenses: null,
     
     };
 
@@ -34,7 +35,7 @@ export default class Post_travel extends React.Component {
         var self = this;
         axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
         axios
-            .post("/requests", { ...this.state })
+            .post("/post_travels", { ...this.state })
             .then(function (response) {
                 console.log(response.data);
                 //self.props.history.push({
@@ -90,10 +91,10 @@ export default class Post_travel extends React.Component {
                             <option value="travel">Travel</option>
                         </select> 
 
-                        <label>Price</label>
+                        <label>Est Price</label>
                         <input 
                             type="text" 
-                            placeholder = 'Price' 
+                            placeholder = 'Est Price' 
                             value={this.state.expected_costs}
                             onChange = {e => this.setState({expected_costs: e.target.value})}
                         />
@@ -104,7 +105,15 @@ export default class Post_travel extends React.Component {
                             <option value="Dept3">Dept3</option>
                         </select> 
 
-                      
+
+                        <label>Actual Expenses</label>
+                        <input 
+                            type="text" 
+                            placeholder = 'Actual Cost' 
+                            value={this.state.actual_expenses}
+                            onChange = {e => this.setState({actual_expenses: e.target.value})}
+                        />
+
                         <button onClick={this.onButtonClick}>
                             Submit Request
                             
