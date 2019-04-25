@@ -11,6 +11,10 @@ export default class Trip extends React.Component {
         start_date: null,
         end_date: null,
         purpose: null,
+        expected_expenses: null,
+        expected_costs: null,
+        payment_information: null,
+    
     };
 
     onButtonClick(event){
@@ -79,6 +83,28 @@ export default class Trip extends React.Component {
                         <label>Purpose</label>
                         <textarea name="textarea" placeholder = 'Purpose' value={this.state.purpose} onChange = {e => this.setState({purpose: e.target.value})}></textarea>
             
+
+                        <select onChange = {e => this.setState({expected_expenses: e.target.value})}>
+                            <option value="food">Food</option>
+                            <option value="hotel">Hotel</option>
+                            <option value="travel">Travel</option>
+                        </select> 
+
+                        <label>Price</label>
+                        <input 
+                            type="text" 
+                            placeholder = 'Price' 
+                            value={this.state.expected_costs}
+                            onChange = {e => this.setState({expected_costs: e.target.value})}
+                        />
+
+                        <select onChange = {e => this.setState({payment_information: e.target.value})}>
+                            <option value="Dept1">Dept1</option>
+                            <option value="Dept2">Dept2</option>
+                            <option value="Dept3">Dept3</option>
+                        </select> 
+
+
                         <button onClick={this.onButtonClick}>
                             Submit Request
                         </button>
