@@ -11,7 +11,7 @@ class RequestsController < ApplicationController
         @requests = Request.where(budget_name: "brenda") + Request.where(budget_name2: "brenda") + Request.where(budget_name3: "brenda")
 
     elsif current_account.accountable.name == "bobby"
-      @requests = Request.where(budget_name: "bobby") + Request.where(budget_name2: "bobby") + @requests = Request.where(budget_name3: "bobby")
+      @requests = Request.where(budget_name: "bobby") + Request.where(budget_name2: "bobby") + Request.where(budget_name3: "bobby")
 
 
     elsif current_account.accountable.name == "billy"
@@ -89,7 +89,7 @@ class RequestsController < ApplicationController
 
       params.require(:request).permit(:name, :destination, :start_date, :end_date, :purpose,
         :expected_expenses,:expected_expenses2,:expected_expenses3, :payment_information,:payment_information2,:payment_information3, :employee_id, 
-        :status, :reasoning, :budget_name,:budget_name2,:budget_name3, :expected_costs,:expected_costs2,:expected_costs3,:field_num)
+        :status, :reasoning, :budget_name,:budget_name2,:budget_name3, :expected_costs,:expected_costs2,:expected_costs3,:field_num, :total_costs)
 
 
     end

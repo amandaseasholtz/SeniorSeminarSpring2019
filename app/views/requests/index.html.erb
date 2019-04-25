@@ -29,9 +29,12 @@
           <td>Pending</td>
         <%elsif request.status == "Accept"%>
           <td>Accepted</td>
+        <%elsif request.status == "Resubmit"%>
+        <td>Pending</td>
         <%else%>
           <td>Rejected</td>
         <%end%>
+
           <td><%= request.destination %></td>
           <td><%= request.start_date %></td>
           <td><%= request.end_date %></td>
@@ -74,38 +77,35 @@
           <td><%= request.expected_costs%></td>      
           <td><%= link_to 'Show', request %></td>
           <td>
-          <%if request.status == nil%>
+          
             <%= form_with(model: request, local: true) do |form| %>
               <div class="field">
                 <%= form.label :Status %>
-                <%= form.select :status, options_for_select([["Choose Department(s)", ""], "Accept", "Reject"])%>
+                <%= form.select :status, options_for_select([["Choose Department(s)", ""], "Accept", "Reject", "Resubmit"])%>
               </div>
-            <%= form.label :Notes %>
-            <%= form.text_area :reasoning, id: :request_reasoning, rows: 5, cols: 30 %>
-            </div>
-          <div class="actions">
-          <%= form.submit %>
-        </div>
-        <%end%>
-        <%end%>
-
-      </tr>
-      </td>
-        <%elsif request.budget_name == "brenda"%>
+                <%= form.label :Notes %>
+                <%= form.text_area :reasoning, id: :request_reasoning, rows: 5, cols: 30 %>
+              </div>
+              <div class="actions">
+                <%= form.submit %>
+              </div>
+            <%end%>
+          </td>
+        </tr>
+        <%elsif request.budget_name2 == "brenda"%>
 
 
           <tr>
             <td><%= request.name %></td>
-            <td><%= request.budget_name%></td>
             <td><%= request.expected_expenses%></td>
-            <td><%= request.expected_costs%></td>
+            <td><%= request.expected_costs2%></td>
             <td><%= link_to 'Show', request %></td>
             <td>
-            <%if request.status == nil%>
+
               <%= form_with(model: request, local: true) do |form| %>
                 <div class="field">
                 <%= form.label :Status %>
-                  <%= form.select :status, options_for_select([["Choose Department(s)", ""], "Accept", "Reject"])%>
+                  <%= form.select :status, options_for_select([["Choose Department(s)", ""], "Accept", "Reject", "Resubmit"])%>
                 </div>
                 <%= form.label :Notes %>
                 <%= form.text_area :reasoning, id: :request_reasoning, rows: 5, cols: 30 %>
@@ -113,11 +113,11 @@
               <div class="actions">
               <%= form.submit %>
             </div>
-            <%end%>
-            <%end%>
 
+            <%end%>
+            </td>
           </tr>
-          </td>
+          
 
 
         <%elsif request.budget_name == "billy"%>
@@ -128,11 +128,11 @@
           <td><%= request.expected_costs%></td>
           <td><%= link_to 'Show', request %></td>
           <td>
-        <%if request.status == nil%>
+
           <%= form_with(model: request, local: true) do |form| %>
             <div class="field">
             <%= form.label :Status %>
-              <%= form.select :status, options_for_select([["Choose Department(s)", ""], "Accept", "Reject"])%>
+              <%= form.select :status, options_for_select([["Choose Department(s)", ""], "Accept", "Reject", "Resubmit"])%>
             </div>
 
             <%= form.label :Notes %>
@@ -145,11 +145,11 @@
           <div class="actions">
           <%= form.submit %>
         </div>
-        <%end%>
-        <%end%>
 
+        <%end%>
+        </td>
       </tr>
-      </td>
+      
         <%else%>
 
 

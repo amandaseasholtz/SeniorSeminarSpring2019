@@ -109,6 +109,11 @@
               <%= form.number_field :field_num, id: :request_field_num, rows: 1, cols: 20 %>
             </div>
 
+            <div class="field">
+            <span class="form-label">Total amount request</span>
+              <%= form.number_field :total_costs, id: :request_total_costs, rows: 1, cols: 20 %>
+            </div>
+
 
             <%if request.field_num == 1 || request.field_num == nil%>
 

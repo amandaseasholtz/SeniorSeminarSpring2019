@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 2019_04_12_062349) do
     t.string "budget_name3"
     t.string "purpose"
     t.string "status"
+    t.decimal "total_costs"
     t.integer "employee_id"
     t.integer "budget_id"
     t.datetime "created_at", null: false

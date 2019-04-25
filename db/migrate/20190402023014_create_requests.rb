@@ -17,6 +17,8 @@ class CreateRequests < ActiveRecord::Migration[5.2]
       t.string :payment_information
       t.string :budget_name
 
+      
+
 
 
       t.string :expected_expenses2
@@ -46,6 +48,8 @@ class CreateRequests < ActiveRecord::Migration[5.2]
 
 
       t.string :status
+
+      t.decimal :total_costs
 
 
       t.references :employee, foreign_key: true
