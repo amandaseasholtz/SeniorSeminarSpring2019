@@ -1,12 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types'
+
 import Calendar from 'react-calendar';
 
-export default class Post_travel extends React.Component {
+export default class post_travel extends React.Component {
 
-    state = { 
-        name: null, 
+    state = {
+        name: null,
         destination: null,
         start_date: null,
         end_date: null,
@@ -14,7 +14,7 @@ export default class Post_travel extends React.Component {
         expected_expenses: null,
         expected_costs: null,
         payment_information: null,
-    
+
     };
 
     onButtonClick(event){
@@ -50,23 +50,25 @@ export default class Post_travel extends React.Component {
 
     render = () => {
         return(
+
             <div>
+
                 <h3>
                     Request Post
                 </h3>
                 <div className="ui container" style={{marginLeft:'40px'}}>
                     <form onSubmit ={this.onFormSubmit} className= "ui form" >
                         <label>Name</label>
-                        <input 
-                            type="text" 
-                            placeholder = 'Name' 
+                        <input
+                            type="text"
+                            placeholder = 'Name'
                             value={this.state.name}
                             onChange = {e => this.setState({name: e.target.value})}
                         />
                         <label>Destination</label>
-                        <input 
-                            type="text" 
-                            placeholder = 'Destination' 
+                        <input
+                            type="text"
+                            placeholder = 'Destination'
                             value={this.state.destination}
                             onChange = {e => this.setState({destination: e.target.value})}
                         />
@@ -82,18 +84,18 @@ export default class Post_travel extends React.Component {
                         />
                         <label>Purpose</label>
                         <textarea name="textarea" placeholder = 'Purpose' value={this.state.purpose} onChange = {e => this.setState({purpose: e.target.value})}></textarea>
-            
+
 
                         <select onChange = {e => this.setState({expected_expenses: e.target.value})}>
                             <option value="food">Food</option>
                             <option value="hotel">Hotel</option>
                             <option value="travel">Travel</option>
-                        </select> 
+                        </select>
 
                         <label>Price</label>
-                        <input 
-                            type="text" 
-                            placeholder = 'Price' 
+                        <input
+                            type="text"
+                            placeholder = 'Price'
                             value={this.state.expected_costs}
                             onChange = {e => this.setState({expected_costs: e.target.value})}
                         />
@@ -102,16 +104,16 @@ export default class Post_travel extends React.Component {
                             <option value="Dept1">Dept1</option>
                             <option value="Dept2">Dept2</option>
                             <option value="Dept3">Dept3</option>
-                        </select> 
+                        </select>
 
-                      
+
                         <button onClick={this.onButtonClick}>
                             Submit Request
-                            
+
                         </button>
                     </form>
                 </div>
             </div>
         );
-    }; 
-}   
+    };
+}
