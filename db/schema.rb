@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_12_062349) do
+ActiveRecord::Schema.define(version: 2019_04_23_221854) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -56,6 +56,30 @@ ActiveRecord::Schema.define(version: 2019_04_12_062349) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "expected_costs", force: :cascade do |t|
+    t.integer "request_id"
+    t.decimal "cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["request_id"], name: "index_expected_costs_on_request_id"
+  end
+
+  create_table "expected_expenses", force: :cascade do |t|
+    t.integer "request_id"
+    t.string "expense"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["request_id"], name: "index_expected_expenses_on_request_id"
+  end
+
+  create_table "payment_informations", force: :cascade do |t|
+    t.integer "request_id"
+    t.string "payment_information"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["request_id"], name: "index_payment_informations_on_request_id"
+  end
+
   create_table "payments", force: :cascade do |t|
     t.string "name"
     t.string "pid"
@@ -71,6 +95,7 @@ ActiveRecord::Schema.define(version: 2019_04_12_062349) do
     t.date "start_date"
     t.date "end_date"
     t.text "purpose"
+    t.string "receipts_url"
     t.decimal "expected_expenses"
     t.decimal "actual_expenses"
     t.text "payment_infomation"
@@ -86,11 +111,8 @@ ActiveRecord::Schema.define(version: 2019_04_12_062349) do
     t.string "reasoning"
     t.string "employ_department"
     t.string "budget_name"
-    t.decimal "expected_costs"
     t.string "budget_department"
     t.string "purpose"
-    t.string "expected_expenses"
-    t.string "payment_information"
     t.string "status"
     t.integer "employee_id"
     t.integer "budget_id"

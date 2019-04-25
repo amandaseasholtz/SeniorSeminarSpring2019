@@ -39,6 +39,9 @@
   <strong>Payment infomation:</strong>
   <%= @post_travel.payment_infomation %>
 </p>
-
+<p>
+  <strong> Receipts From Employee</strong>
+  <%=@post_travel.receipts_url%>
+</p>
 <%= link_to 'Edit', edit_post_travel_path(@post_travel) %> |
 <%= link_to 'Back', post_travels_path %>

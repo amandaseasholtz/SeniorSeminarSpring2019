@@ -9,13 +9,18 @@ class CreateRequests < ActiveRecord::Migration[5.2]
       t.string :reasoning
       t.string :employ_department
       t.string :budget_name
-      t.decimal :expected_costs
+
+
+      
+      #t.references :budget, foreign_key: true
 
 
       t.string :budget_department
       t.string :purpose
-      t.string :expected_expenses
-      t.string :payment_information
+
+
+
+
       t.string :status
 
 

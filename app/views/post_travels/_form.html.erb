@@ -1,3 +1,50 @@
+<div class="nav">
+<% if account_signed_in? %>
+    <ul>
+      <li> <%= link_to "Home", homepage_index_path %> </li>
+      <% if current_account.accountable_type == "Budget" %>
+        <li> <%= link_to "Approve Budgets", requests_path%> </li>
+        <li> <%= link_to "Travel History", say_history_path %> </li>
+        <li> <%= link_to "Post-Travel", new_post_travel_path%> </li>
+        <li><%= link_to 'My Info', edit_budget_path(current_account.accountable_id), class: "dropdown-item"  %></li>
+        <li><%= link_to 'Account Settings', edit_account_registration_path, class: "dropdown-item"  %></li>
+        <li><%= link_to 'Sign out', destroy_account_session_path, :method=>'delete', class:"nav-link" %><li>
+      <%end%>
+
+      <% if current_account.accountable_type == "Payment" %>
+        <li><%= link_to 'Approve Payments', requests_path %> </li>
+        <li> <%= link_to "Travel History", requests_path%> </li>
+        <li> <%= link_to "Manage Post-Travels", post_travels_path%> </li>
+        <li> <%= link_to 'My Info', edit_payment_path(current_account.accountable_id), class: "dropdown-item"  %></li>
+        <li><%= link_to 'Account Settings', edit_account_registration_path, class: "dropdown-item"  %></li>
+        <li><%= link_to 'Sign out', destroy_account_session_path, :method=>'delete', class:"nav-link" %><li>
+      <%end%>
+
+
+      <% if current_account.accountable_type == "Employee" %>
+        <li><%= link_to "Request Travel", new_request_path(spa: false) %></li>
+        <li><%= link_to "Request Travel (SPA)", new_request_path(spa: true) %></li>
+        <li> <%= link_to "Travel History", requests_path%> </li>
+        <li> <%= link_to "Post-Travels", new_post_travel_path%> </li>
+        <li> <%= link_to "post Travels history", post_travels_path%> </li>
+        <li><%= link_to 'My Info', edit_employee_path(current_account.accountable_id), class: "dropdown-item" %> </li>
+        <li><%= link_to 'Account Settings', edit_account_registration_path, class: "dropdown-item"  %></li>
+        <li><%= link_to 'Sign out', destroy_account_session_path, :method=>'delete', class:"nav-link" %><li>
+      <%end%>
+
+      <%if current_account.accountable_type == "SuperAccount" %>
+        <li><a class = "nav-link" href = "/admin">Admin Dasboard</a></li>
+        <li><%= link_to 'Sign out', destroy_account_session_path, :method=>'delete', class:"nav-link" %><li>
+      <%end%>
+    </ul>
+  <%else%>
+    <ul>
+      <li> <%= link_to "Home", homepage_index_path %> </li>
+      <li><%= link_to 'Sign in', new_account_session_path%></li>
+      <li><%= link_to 'Sign up', new_account_registration_path%></li>
+    </ul>
+    <%end%>
+</div>
 
 <%= simple_form_for(@post_travel) do |f| %>
   <%= f.error_notification %>
@@ -12,6 +59,7 @@
     <%= f.input :expected_expenses %>
     <%= f.input :actual_expenses %>
     <%= f.input :payment_infomation %>
+    <%= f.input :receipts_url%>
   </div>
 
   <div class="form-actions">

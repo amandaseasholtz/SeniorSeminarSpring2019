@@ -6,7 +6,14 @@ class RequestsController < ApplicationController
 
 
   def index
+<<<<<<< HEAD
       @requests = Request.all
+=======
+
+      @requests = Request.all
+
+
+>>>>>>> 2d355dd31b0de7302167807140960e23c90786a8
       respond_to do |format|
         format.html {
             if (params[:spa] && params[:spa] == "true")
@@ -29,19 +36,29 @@ class RequestsController < ApplicationController
   def new
     @request = Request.new
 
+
+      @request.expected_expenses.build
+      @request.expected_costs.build
+      @request.payment_informations.build
+
     if (params[:spa] && params[:spa] == "true")
       render 'index_spa'
     end
+
   end
 
   # GET /requests/1/edit
   def edit
+    @request.expected_expenses.build
+    @request.expected_costs.build
+    @request.payment_informations.build
   end
 
   # POST /requests
   # POST /requests.json
   def create
     @request = Request.new(request_params)
+
 
     respond_to do |format|
       if @request.save
@@ -89,8 +106,14 @@ class RequestsController < ApplicationController
 
     def request_params
 
-      params.require(:request).permit(:name, :destination, :start_date, :end_date, :purpose,
-        :expected_expenses, :payment_information, :employ_department,:employ_department,:employee_id, 
-        :status, :reasoning, :budget_name, :expected_costs)
+
+      params.require(:request).permit(:name, :destination, :start_date, :end_date, :purpose,:employee_id,
+        :status, :reasoning, :budget_name,
+        expected_expense_attributes: [:id, :_destroy, :request_id, :expense],
+        payment_information_attributes: [:id, :_destroy, :request_id, :payment_information],
+        expected_cost_attributes: [:id, :_destroy, :request_id, :cost]
+
+        )
+
     end
 end

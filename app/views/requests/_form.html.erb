@@ -1,3 +1,50 @@
+<div class="nav">
+<% if account_signed_in? %>
+    <ul>
+      <li> <%= link_to "Home", homepage_index_path %> </li>
+      <% if current_account.accountable_type == "Budget" %>
+        <li> <%= link_to "Approve Budgets", requests_path%> </li>
+        <li> <%= link_to "Travel History", say_history_path %> </li>
+        <li> <%= link_to "Post-Travel", new_post_travel_path%> </li>
+        <li><%= link_to 'My Info', edit_budget_path(current_account.accountable_id), class: "dropdown-item"  %></li>
+        <li><%= link_to 'Account Settings', edit_account_registration_path, class: "dropdown-item"  %></li>
+        <li><%= link_to 'Sign out', destroy_account_session_path, :method=>'delete', class:"nav-link" %><li>
+      <%end%>
+
+      <% if current_account.accountable_type == "Payment" %>
+        <li><%= link_to 'Approve Payments', requests_path %> </li>
+        <li> <%= link_to "Travel History", requests_path%> </li>
+        <li> <%= link_to "Manage Post-Travels", post_travels_path%> </li>
+        <li> <%= link_to 'My Info', edit_payment_path(current_account.accountable_id), class: "dropdown-item"  %></li>
+        <li><%= link_to 'Account Settings', edit_account_registration_path, class: "dropdown-item"  %></li>
+        <li><%= link_to 'Sign out', destroy_account_session_path, :method=>'delete', class:"nav-link" %><li>
+      <%end%>
+
+
+      <% if current_account.accountable_type == "Employee" %>
+        <li><%= link_to "Request Travel", new_request_path(spa: false) %></li>
+        <li><%= link_to "Request Travel (SPA)", new_request_path(spa: true) %></li>
+        <li> <%= link_to "Travel History", requests_path%> </li>
+        <li> <%= link_to "Post-Travels", new_post_travel_path%> </li>
+        <li> <%= link_to "post Travels history", post_travels_path%> </li>
+        <li><%= link_to 'My Info', edit_employee_path(current_account.accountable_id), class: "dropdown-item" %> </li>
+        <li><%= link_to 'Account Settings', edit_account_registration_path, class: "dropdown-item"  %></li>
+        <li><%= link_to 'Sign out', destroy_account_session_path, :method=>'delete', class:"nav-link" %><li>
+      <%end%>
+
+      <%if current_account.accountable_type == "SuperAccount" %>
+        <li><a class = "nav-link" href = "/admin">Admin Dasboard</a></li>
+        <li><%= link_to 'Sign out', destroy_account_session_path, :method=>'delete', class:"nav-link" %><li>
+      <%end%>
+    </ul>
+  <%else%>
+    <ul>
+      <li> <%= link_to "Home", homepage_index_path %> </li>
+      <li><%= link_to 'Sign in', new_account_session_path%></li>
+      <li><%= link_to 'Sign up', new_account_registration_path%></li>
+    </ul>
+    <%end%>
+</div>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +83,7 @@
 				<div class="row">
 					<div class="booking-form">
 
-            <%= form_with(model: request, local: true) do |form| %>
+            <%= form_with(model: request, local: true) do |f| %>
               <% if request.errors.any? %>
                 <div id="error_explanation">
                   <h2><%= pluralize(request.errors.count, "error") %>
@@ -52,94 +99,111 @@
 
             <div class="field">
               <p class="rounded">
-                <span class="form-label">Name</span>
-                <%= form.text_field :name, id: :employee_name %>
+                <span class="f-label">Name</span>
+                <%= f.text_field :name, id: :employee_name %>
               </p>
             </div>
 
 
             <div class="field">
-            <span class="form-label">Destination</span>
-              <%= form.text_field :destination, id: :request_destination, size: 40 %>
+            <span class="f-label">Destination</span>
+              <%= f.text_field :destination, id: :request_destination, size: 40 %>
             </div>
 
 							<div class="row">
+							  <!--	<div class="col-md-6">
+									<div class="f-group">
+										<span class="f-label">Start Date</span>
+										<input class="f-control" type="date" required>
+									</div>
+                </div>-->
+
+                <!-- <div class="col-md-6">
+                  <div class="f-group">
+                    <span class="f-label">End Date</span>
+                    <input class="f-control" type="date" required>
+                  </div>
+                </div> -->
                 <div class="col-md-6">
-                  <span class="form-label">Start Date</span>
-                    <%= form.date_select :start_date, {:order => [:month, :day, :year],:prompt => true, :start_year => Time.now.year, :end_year => 2030} %>
+                  <span class="f-label">Start Date</span>
+                    <%= f.date_select :start_date, {:order => [:month, :day, :year],:prompt => true, :start_year => Time.now.year, :end_year => 2030} %>
                 </div>
                 <div class="col-md-6">
-                  <span class="form-label">End Date</span>
-                    <%= form.date_select :end_date, {:order => [:month, :day, :year],:prompt => true, :start_year => Time.now.year, :end_year => 2030} %>
+                  <span class="f-label">End Date</span>
+                    <%= f.date_select :end_date, {:order => [:month, :day, :year],:prompt => true, :start_year => Time.now.year, :end_year => 2030} %>
                 </div>
-              </div>
+
+                </div>
+
+
+
+
+
+
 
 							<%if request.name == nil%>
             <div class="field">
-            <span class="form-label">Purpose</span>
-            <div class="form-group">
-              <%= form.text_area :purpose, id: :request_purpose, rows: 10, cols: 60 %>
+            <span class="f-label">Purpose</span>
+            <div class="f-group">
+              <%= f.text_area :purpose, id: :request_purpose, rows: 10, cols: 60 %>
             </div>
             </div>
 
-            <div class="field">
-            <span class="form-label">Expected Expenses</span>
-              <input type="button" value= "add new expense" id="add">
-              <%= form.select :expected_expenses, options_for_select([["Choose Different cost(s)", ""], "food", "hotel", "travel"])%>
-            </div>
 
-            <div class="field">
-            <span class="form-label">Expected Costs</span>
-              <input type="button" value= "add new costs amount" id="add">
-              <%= form.text_area :expected_costs, id: :expected_costs, rows: 1, cols: 20 %>
-            </div>
+						<div class="row">
+
+
+						<tbody class='expenses'>
+						<%= f.simple_fields_for :expected_expense do |builder| %>
+							<%= render 'expected_expense_fields', f: builder %>
+							<%end%>
+							<%= link_to_add_association 'Add expense', f,  :expected_expenses, class: 'btn btn-primary'%>
+
+					</tbody>
+
+
+					<tbody class='costs'>
+					<%= f.simple_fields_for :expected_cost do |builder| %>
+						<%= render 'expected_cost_fields', f: builder %>
+						<%end%>
+						<%= link_to_add_association 'Add cost', f,  :expected_costs, class: 'btn btn-primary'%>
+					</tbody>
+
+
+
+
+
+					<tbody class='pays'>
+					<%= f.simple_fields_for :payment_information do |builder| %>
+					<%= render 'payment_information_fields', f: builder %>
+					<%end%>
+					<%= link_to_add_association 'Add pay from Department', f,  :payment_informations, class: 'btn btn-primary'%>
+
+					</tbody>
+
+					</div>
+
 
 
 
           	<div class="row">
 								<div class="col-md-6">
-									<div class="form-group">
-            <div class="form-group">
-            <span class="form-label">Payment_Department_Info</span>
-              <%= form.select :payment_information, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3"])%>
-              </div>
+									<div class="f-group">
+
                </div>
                 </div>
-
-								 <div class="form-group">
-                 <span class="form-label">Employee_Department</span>
-                 <%= form.select :employ_department, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3"])%>
-                 </div>
                </div>
 
 							 <%else %>
 
 							 <%end%>
 
-							 <%if request.budget_name == nil && request.payment_information == "Dept1"%>
 
-	 				      <div class="field">
-	 				        <%= form.label :your_advisor_is  %>
-	 				        <%= form.select :budget_name, options_for_select([["Choose Department(s)", ""], "bobby"])%>
-	 				      </div>
-	 				    <%elsif request.budget_name == nil && request.payment_information == "Dept2"%>
-	 				      <div class="field">
-	 				        <%= form.label :your_advisor_is  %>
-	 				        <%= form.select :budget_name, options_for_select([["Choose Department(s)", ""], "brenda"])%>
-	 				      </div>
+							<div class="f-btn">
+                <button class="submit-btn">Submit Request</button>
 
-	 				      <%elsif request.budget_name == nil && request.payment_information == "Dept3"%>
-	 				        <div class="field">
-	 				        <%= form.label :your_advisor_is  %>
-	 				        <%= form.select :budget_name, options_for_select([["Choose Department(s)", ""], "billy"])%>
-	 				      </div>
 
-	 				    <%else%>
-
-	 				    <%end%>
-							<div class="form-btn">
-								<button class="submit-btn">Submit Request</button>
-							</div>
+                </div>
 <%end%>
 					</div>
 			</div>
