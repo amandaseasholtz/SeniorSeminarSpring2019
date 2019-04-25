@@ -3,10 +3,10 @@ import axios from 'axios';
 
 import Calendar from 'react-calendar';
 
-export default class Post_travel extends React.Component {
+export default class post_travel extends React.Component {
 
-    state = { 
-        name: null, 
+    state = {
+        name: null,
         destination: null,
         start_date: null,
         end_date: null,
@@ -14,8 +14,12 @@ export default class Post_travel extends React.Component {
         expected_expenses: null,
         expected_costs: null,
         payment_information: null,
+<<<<<<< HEAD
         actual_expenses: null,
     
+=======
+
+>>>>>>> df259e35df1ddf69a307ae65e00164e22bcca75b
     };
 
     onButtonClick(event){
@@ -51,23 +55,25 @@ export default class Post_travel extends React.Component {
 
     render = () => {
         return(
+
             <div>
+
                 <h3>
                     Request Post
                 </h3>
                 <div className="ui container" style={{marginLeft:'40px'}}>
                     <form onSubmit ={this.onFormSubmit} className= "ui form" >
                         <label>Name</label>
-                        <input 
-                            type="text" 
-                            placeholder = 'Name' 
+                        <input
+                            type="text"
+                            placeholder = 'Name'
                             value={this.state.name}
                             onChange = {e => this.setState({name: e.target.value})}
                         />
                         <label>Destination</label>
-                        <input 
-                            type="text" 
-                            placeholder = 'Destination' 
+                        <input
+                            type="text"
+                            placeholder = 'Destination'
                             value={this.state.destination}
                             onChange = {e => this.setState({destination: e.target.value})}
                         />
@@ -83,18 +89,25 @@ export default class Post_travel extends React.Component {
                         />
                         <label>Purpose</label>
                         <textarea name="textarea" placeholder = 'Purpose' value={this.state.purpose} onChange = {e => this.setState({purpose: e.target.value})}></textarea>
-            
+
 
                         <select onChange = {e => this.setState({expected_expenses: e.target.value})}>
                             <option value="food">Food</option>
                             <option value="hotel">Hotel</option>
                             <option value="travel">Travel</option>
-                        </select> 
+                        </select>
 
+<<<<<<< HEAD
                         <label>Est Price</label>
                         <input 
                             type="text" 
                             placeholder = 'Est Price' 
+=======
+                        <label>Price</label>
+                        <input
+                            type="text"
+                            placeholder = 'Price'
+>>>>>>> df259e35df1ddf69a307ae65e00164e22bcca75b
                             value={this.state.expected_costs}
                             onChange = {e => this.setState({expected_costs: e.target.value})}
                         />
@@ -103,8 +116,10 @@ export default class Post_travel extends React.Component {
                             <option value="Dept1">Dept1</option>
                             <option value="Dept2">Dept2</option>
                             <option value="Dept3">Dept3</option>
-                        </select> 
+                        </select>
 
+
+<<<<<<< HEAD
 
                         <label>Actual Expenses</label>
                         <input 
@@ -114,13 +129,15 @@ export default class Post_travel extends React.Component {
                             onChange = {e => this.setState({actual_expenses: e.target.value})}
                         />
 
+=======
+>>>>>>> df259e35df1ddf69a307ae65e00164e22bcca75b
                         <button onClick={this.onButtonClick}>
                             Submit Request
-                            
+
                         </button>
                     </form>
                 </div>
             </div>
         );
-    }; 
-}   
+    };
+}
