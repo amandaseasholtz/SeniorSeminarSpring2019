@@ -104,40 +104,14 @@ export default class Trip extends React.Component {
                             <option value="Dept3">Dept3</option>
                         </select> 
 
-
+                      
                         <button onClick={this.onButtonClick}>
                             Submit Request
+                            
                         </button>
                     </form>
                 </div>
             </div>
         );
     }; 
-
-    onFormSubmit(event) {
-        event.preventDefault();
-
-        const newOrder = {
-            name: this.state.name,
-            address: this.state.address,
-            email: this.state.email,
-            pay_type: this.state.pay_type
-        };
-
-        var self = this;
-        axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
-        axios
-            .post("/requests", { ...newRequests })
-            .then(function (response) {
-                console.log(response.data);
-                self.props.history.push({
-                    pathname: '/'
-                });
-            })
-            .catch(function (error) {
-                console.log(error.response);
-                // alert("Cannot place order: ", error);
-                self.setState({ errors: error.response.data })
-            });
-    }
 }   
