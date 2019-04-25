@@ -7,15 +7,44 @@ class CreateRequests < ActiveRecord::Migration[5.2]
       t.date :end_date
 
       t.string :reasoning
-      t.string :employ_department
-      t.string :budget_name
-      t.decimal :expected_costs
 
 
-      t.string :budget_department
-      t.string :purpose
+
+      t.integer :field_num
+
       t.string :expected_expenses
+      t.decimal :expected_costs
       t.string :payment_information
+      t.string :budget_name
+
+
+
+      t.string :expected_expenses2
+      t.decimal :expected_costs2
+      t.string :payment_information2
+      t.string :budget_name2
+
+
+
+
+      t.string :expected_expenses3
+      t.decimal :expected_costs3
+      t.string :payment_information3
+      t.string :budget_name3
+
+
+
+
+
+      t.string :purpose
+
+
+
+
+
+
+
+
       t.string :status
 
 

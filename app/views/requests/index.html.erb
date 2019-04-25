@@ -15,7 +15,7 @@
       <th>Purpose</th>
       <th>Expected expenses</th>
       <th>Payment information</th>
-      <th>Your department</th>
+
       <th>Notes from Budget approver</th>
       <th colspan="3"></th>
     </tr>
@@ -39,7 +39,7 @@
           <td><%= request.expected_expenses %></td>
           <td><%= request.payment_information %></td>
 
-          <td><%= request.employ_department %></td>
+
           <td><%= request.reasoning %></td>
           <td><%= link_to 'Show', request %></td>
           <td><%= link_to 'Edit', edit_request_path(request) %></td>
@@ -57,8 +57,7 @@
     <thead>
       <tr>
         <th> name</th>
-        <th> Employee department</th>
-        <th> Budget approver</th>
+
         <th> Expected Expenses</th>
         <th> Expected costs</th>
         <th colspan="3"></th>
@@ -70,8 +69,7 @@
 
         <tr>
           <td><%= request.name %></td>
-          <td><%= request.employ_department %></td>
-          <td><%= request.budget_name%></td>    
+ 
           <td><%= request.expected_expenses%></td>
           <td><%= request.expected_costs%></td>      
           <td><%= link_to 'Show', request %></td>
@@ -85,10 +83,6 @@
             <%= form.label :Notes %>
             <%= form.text_area :reasoning, id: :request_reasoning, rows: 5, cols: 30 %>
             </div>
-
-
-
-
           <div class="actions">
           <%= form.submit %>
         </div>
@@ -102,7 +96,6 @@
 
           <tr>
             <td><%= request.name %></td>
-            <td><%= request.employ_department %></td>
             <td><%= request.budget_name%></td>
             <td><%= request.expected_expenses%></td>
             <td><%= request.expected_costs%></td>
@@ -114,14 +107,9 @@
                 <%= form.label :Status %>
                   <%= form.select :status, options_for_select([["Choose Department(s)", ""], "Accept", "Reject"])%>
                 </div>
-
                 <%= form.label :Notes %>
                 <%= form.text_area :reasoning, id: :request_reasoning, rows: 5, cols: 30 %>
                 </div>
-
-
-
-
               <div class="actions">
               <%= form.submit %>
             </div>
@@ -135,7 +123,6 @@
         <%elsif request.budget_name == "billy"%>
         <tr>
           <td><%= request.name %></td>
-          <td><%= request.employ_department %></td>
           <td><%= request.budget_name%></td>
           <td><%= request.expected_expenses%></td>
           <td><%= request.expected_costs%></td>

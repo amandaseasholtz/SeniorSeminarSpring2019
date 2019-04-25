@@ -87,7 +87,15 @@
                 </div>
               </div>
 
-							<%if request.name == nil%>
+
+              
+
+
+
+
+
+
+
             <div class="field">
             <span class="form-label">Purpose</span>
             <div class="form-group">
@@ -95,61 +103,359 @@
             </div>
             </div>
 
-            <div class="field">
-            <span class="form-label">Expected Expenses</span>
-              <input type="button" value= "add new expense" id="add">
-              <%= form.select :expected_expenses, options_for_select([["Choose Different cost(s)", ""], "food", "hotel", "travel"])%>
-            </div>
 
             <div class="field">
-            <span class="form-label">Expected Costs</span>
-              <input type="button" value= "add new costs amount" id="add">
-              <%= form.text_area :expected_costs, id: :expected_costs, rows: 1, cols: 20 %>
+            <span class="form-label">Choose how many fields you want</span>
+              <%= form.number_field :field_num, id: :request_field_num, rows: 1, cols: 20 %>
             </div>
 
 
+            <%if request.field_num == 1 || request.field_num == nil%>
 
-          	<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-            <div class="form-group">
-            <span class="form-label">Payment_Department_Info</span>
-              <%= form.select :payment_information, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3"])%>
-              </div>
-               </div>
+                    <div class="field">
+                    <span class="form-label">Expected Expenses</span>
+                      <%= form.select :expected_expenses, options_for_select([["Choose Different cost(s)", ""], "food", "hotel", "travel"])%>
+                    </div>
+
+                    <div class="field">
+                    <span class="form-label">Expected Costs</span>
+                      <%= form.number_field :expected_costs, id: :expected_costs, rows: 1, cols: 20 %>
+                    </div>
+
+
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <div class="form-group">
+                              <span class="form-label">Payment_Department_Info</span>
+                              <%= form.select :payment_information, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3"])%>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+
+                      <%if request.payment_information == "Dept1"%>
+
+                      <div class="field">
+                        <%= form.label :your_advisor_is  %>
+                        <%= form.select :budget_name, options_for_select([["Choose Department(s)", ""], "bobby"])%>
+                      </div>
+                      
+     
+                    <%elsif request.payment_information == "Dept2"%>
+                      <div class="field">
+                        <%= form.label :your_advisor_is  %>
+                        <%= form.select :budget_name, options_for_select([["Choose Department(s)", ""], "brenda"])%>
+                      </div>
+     
+                      <%elsif request.payment_information == "Dept3"%>
+                        <div class="field">
+                        <%= form.label :your_advisor_is  %>
+                        <%= form.select :budget_name, options_for_select([["Choose Department(s)", ""], "billy"])%>
+                      </div>
+     
+                    <%else%>
+     
+                    <%end%>
+
+
+
+
+
+
+
+
+                <%elsif request.field_num == 2%>
+
+                <div class="field">
+                <span class="form-label">Expected Expenses</span>
+                  <%= form.select :expected_expenses, options_for_select([["Choose Different cost(s)", ""], "food", "hotel", "travel"])%>
                 </div>
 
-								 <div class="form-group">
-                 <span class="form-label">Employee_Department</span>
-                 <%= form.select :employ_department, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3"])%>
-                 </div>
-               </div>
+                <div class="field">
+                <span class="form-label">Expected Costs</span>
+                  <%= form.number_field :expected_costs, id: :expected_costs, rows: 1, cols: 20 %>
+                </div>
 
-							 <%else %>
 
-							 <%end%>
 
-							 <%if request.budget_name == nil && request.payment_information == "Dept1"%>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <div class="form-group">
+                          <span class="form-label">Payment_Department_Info</span>
+                          <%= form.select :payment_information, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3"])%>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-	 				      <div class="field">
-	 				        <%= form.label :your_advisor_is  %>
-	 				        <%= form.select :budget_name, options_for_select([["Choose Department(s)", ""], "bobby"])%>
-	 				      </div>
-	 				    <%elsif request.budget_name == nil && request.payment_information == "Dept2"%>
-	 				      <div class="field">
-	 				        <%= form.label :your_advisor_is  %>
-	 				        <%= form.select :budget_name, options_for_select([["Choose Department(s)", ""], "brenda"])%>
-	 				      </div>
 
-	 				      <%elsif request.budget_name == nil && request.payment_information == "Dept3"%>
-	 				        <div class="field">
-	 				        <%= form.label :your_advisor_is  %>
-	 				        <%= form.select :budget_name, options_for_select([["Choose Department(s)", ""], "billy"])%>
-	 				      </div>
 
-	 				    <%else%>
+                  <div class="field">
+                  <span class="form-label">Expected Expenses</span>
+                    <%= form.select :expected_expenses2, options_for_select([["Choose Different cost(s)", ""], "food", "hotel", "travel"])%>
+                  </div>
 
-	 				    <%end%>
+                  <div class="field">
+                  <span class="form-label">Expected Costs</span>
+                    <%= form.number_field :expected_costs2, id: :expected_costs, rows: 1, cols: 20 %>
+                  </div>
+
+
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <div class="form-group">
+                            <span class="form-label">Payment_Department_Info</span>
+                            <%= form.select :payment_information2, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3"])%>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+
+
+                    <%if request.payment_information == "Dept1"%>
+
+                    <div class="field">
+                      <%= form.label :your_advisor_is  %>
+                      <%= form.select :budget_name, options_for_select([["Choose Department(s)", ""], "bobby"])%>
+                    </div>
+                    
+   
+                  <%elsif request.payment_information == "Dept2"%>
+                    <div class="field">
+                      <%= form.label :your_advisor_is  %>
+                      <%= form.select :budget_name, options_for_select([["Choose Department(s)", ""], "brenda"])%>
+                    </div>
+   
+                    <%elsif request.payment_information == "Dept3"%>
+                      <div class="field">
+                      <%= form.label :your_advisor_is  %>
+                      <%= form.select :budget_name, options_for_select([["Choose Department(s)", ""], "billy"])%>
+                    </div>
+   
+                  <%else%>
+   
+                  <%end%>
+
+
+
+                  <%if request.payment_information2 == "Dept1"%>
+
+                  <div class="field">
+                    <%= form.label :your_advisor_is  %>
+                    <%= form.select :budget_name2, options_for_select([["Choose Department(s)", ""], "bobby"])%>
+                  </div>
+                  
+ 
+                <%elsif request.payment_information2 == "Dept2"%>
+                  <div class="field">
+                    <%= form.label :your_advisor_is  %>
+                    <%= form.select :budget_name2, options_for_select([["Choose Department(s)", ""], "brenda"])%>
+                  </div>
+ 
+                  <%elsif request.payment_information2 == "Dept3"%>
+                    <div class="field">
+                    <%= form.label :your_advisor_is  %>
+                    <%= form.select :budget_name2, options_for_select([["Choose Department(s)", ""], "billy"])%>
+                  </div>
+ 
+                <%else%>
+ 
+                <%end%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <%elsif request.field_num == 3%>
+
+                    <div class="field">
+                    <span class="form-label">Expected Expenses</span>
+                      <%= form.select :expected_expenses, options_for_select([["Choose Different cost(s)", ""], "food", "hotel", "travel"])%>
+                    </div>
+    
+                    <div class="field">
+                    <span class="form-label">Expected Costs</span>
+                      <%= form.number_field :expected_costs, id: :expected_costs, rows: 1, cols: 20 %>
+                    </div>
+    
+    
+    
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <div class="form-group">
+                              <span class="form-label">Payment_Department_Info</span>
+                              <%= form.select :payment_information, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3"])%>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="field">
+                      <span class="form-label">Expected Expenses</span>
+                        <%= form.select :expected_expenses2, options_for_select([["Choose Different cost(s)", ""], "food", "hotel", "travel"])%>
+                      </div>
+    
+                      <div class="field">
+                      <span class="form-label">Expected Costs</span>
+                        <%= form.number_field :expected_costs2, id: :expected_costs, rows: 1, cols: 20 %>
+                      </div>
+    
+    
+    
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <div class="form-group">
+                                <span class="form-label">Payment_Department_Info</span>
+                                <%= form.select :payment_information2, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3"])%>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+
+
+                        <div class="field">
+                        <span class="form-label">Expected Expenses</span>
+                          <%= form.select :expected_expenses3, options_for_select([["Choose Different cost(s)", ""], "food", "hotel", "travel"])%>
+                        </div>
+      
+                        <div class="field">
+                        <span class="form-label">Expected Costs</span>
+                          <%= form.number_field :expected_costs3, id: :expected_costs, rows: 1, cols: 20 %>
+                        </div>
+      
+      
+      
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <div class="form-group">
+                                  <span class="form-label">Payment_Department_Info</span>
+                                  <%= form.select :payment_information3, options_for_select([["Choose Department(s)", ""], "Dept1", "Dept2", "Dept3"])%>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+
+
+                          <%if request.payment_information == "Dept1"%>
+
+                          <div class="field">
+                            <%= form.label :your_advisor_is  %>
+                            <%= form.select :budget_name, options_for_select([["Choose Department(s)", ""], "bobby"])%>
+                          </div>
+                          
+         
+                        <%elsif request.payment_information == "Dept2"%>
+                          <div class="field">
+                            <%= form.label :your_advisor_is  %>
+                            <%= form.select :budget_name, options_for_select([["Choose Department(s)", ""], "brenda"])%>
+                          </div>
+         
+                          <%elsif request.payment_information == "Dept3"%>
+                            <div class="field">
+                            <%= form.label :your_advisor_is  %>
+                            <%= form.select :budget_name, options_for_select([["Choose Department(s)", ""], "billy"])%>
+                          </div>
+         
+                        <%else%>
+         
+                        <%end%>
+      
+      
+      
+                        <%if request.payment_information2 == "Dept1"%>
+      
+                        <div class="field">
+                          <%= form.label :your_advisor_is  %>
+                          <%= form.select :budget_name2, options_for_select([["Choose Department(s)", ""], "bobby"])%>
+                        </div>
+                        
+       
+                      <%elsif request.payment_information2 == "Dept2"%>
+                        <div class="field">
+                          <%= form.label :your_advisor_is  %>
+                          <%= form.select :budget_name2, options_for_select([["Choose Department(s)", ""], "brenda"])%>
+                        </div>
+       
+                        <%elsif request.payment_information2 == "Dept3"%>
+                          <div class="field">
+                          <%= form.label :your_advisor_is  %>
+                          <%= form.select :budget_name2, options_for_select([["Choose Department(s)", ""], "billy"])%>
+                        </div>
+       
+                      <%else%>
+       
+                      <%end%>
+    
+    
+    
+    
+    
+                          <%if request.payment_information3 == "Dept1"%>
+    
+                          <div class="field">
+                            <%= form.label :your_advisor_is  %>
+                            <%= form.select :budget_name3, options_for_select([["Choose Department(s)", ""], "bobby"])%>
+                          </div>
+                          
+         
+                        <%elsif request.payment_information3 == "Dept2"%>
+                          <div class="field">
+                            <%= form.label :your_advisor_is  %>
+                            <%= form.select :budget_name3, options_for_select([["Choose Department(s)", ""], "brenda"])%>
+                          </div>
+         
+                          <%elsif request.payment_information3 == "Dept3"%>
+                            <div class="field">
+                            <%= form.label :your_advisor_is  %>
+                            <%= form.select :budget_name3, options_for_select([["Choose Department(s)", ""], "billy"])%>
+                          </div>
+         
+                        <%else%>
+         
+                        <%end%>
+
+
+
+                <%end%>
+
+
+
+
 							<div class="form-btn">
 								<button class="submit-btn">Submit Request</button>
 							</div>
