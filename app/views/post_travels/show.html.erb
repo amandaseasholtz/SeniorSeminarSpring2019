@@ -40,5 +40,12 @@
   <%= @post_travel.payment_infomation %>
 </p>
 
+<p>
+  <strong>The receipts:</strong>
+  <%=  image_tag(@post_travel.receipt.url, width: 100, height: 150) %>
+</p>
+
+
+
 <%= link_to 'Edit', edit_post_travel_path(@post_travel) %> |
 <%= link_to 'Back', post_travels_path %>

@@ -8,6 +8,7 @@ class CreatePostTravels < ActiveRecord::Migration[5.2]
       t.text :purpose
       t.decimal :expected_expenses
       t.decimal :actual_expenses
+      t.string :receipt
       t.text :payment_infomation
 
       t.timestamps

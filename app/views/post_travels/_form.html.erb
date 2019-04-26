@@ -12,6 +12,12 @@
     <%= f.input :expected_expenses %>
     <%= f.input :actual_expenses %>
     <%= f.input :payment_infomation %>
+
+    <div class="field">
+    <%= f.label :receipt %>
+    <%= f.file_field :receipt %>
+  </div>
+
   </div>
 
   <div class="form-actions">
