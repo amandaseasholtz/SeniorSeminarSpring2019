@@ -35,6 +35,12 @@
           <td>Rejected</td>
         <%end%>
 
+        <% @requests.each do |request| %>
+          <%if request.payment_information == "Dept1"%>
+            <%request.budget_name = "bobby"%>
+          <%end%>
+        <%end%>
+
           <td><%= request.destination %></td>
           <td><%= request.start_date %></td>
           <td><%= request.end_date %></td>

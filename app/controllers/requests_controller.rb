@@ -20,6 +20,8 @@ class RequestsController < ApplicationController
     else
       @requests = Request.all
     end
+
+    
   end
 
   # GET /requests/1
