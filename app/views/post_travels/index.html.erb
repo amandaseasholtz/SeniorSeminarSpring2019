@@ -7,11 +7,11 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>BUdget Status</th>
       <th>Destination</th>
       <th>Start date</th>
       <th>End date</th>
       <th>Purpose</th>
-      <th>Expected expenses</th>
       <th>Actual expenses</th>
       <th>Payment infomation</th>
       <th colspan="3"></th>
@@ -22,11 +22,26 @@
     <% @post_travels.each do |post_travel| %>
       <tr>
         <td><%= post_travel.name %></td>
+
+<%if post_travel.payment_status == "Resubmit"%>
+  <%post_travel.budget_status = "pending"%>
+<%end%>
+
+          <%if post_travel.budget_status == nil%>
+            <td>Pending</td>
+          <%elsif post_travel.budget_status == "Accept"%>
+            <td>Accepted</td>
+          <%elsif post_travel.budget_status == "Resubmit" || post_travel.payment_status == "Resubmit"%>
+            <td>Pending</td>
+          <%else%>
+            <td>Rejected</td>
+          <%end%>
+
+
         <td><%= post_travel.destination %></td>
         <td><%= post_travel.start_date %></td>
         <td><%= post_travel.end_date %></td>
         <td><%= post_travel.purpose %></td>
-        <td><%= post_travel.expected_expenses %></td>
         <td><%= post_travel.actual_expenses %></td>
         <td><%= post_travel.payment_infomation %></td>
         <td><%= link_to 'Show', post_travel %></td>
@@ -41,19 +56,26 @@
 
 <%= link_to 'New Post Travel', new_post_travel_path %>
 
-<% elsif current_account.accountable_type == "Payment" %>
+<% elsif current_account.accountable_type == "Budget" %>
 
 <table>
   <thead>
     <tr>
+      <th>Hello budget approvers</th>
+      <th>your current status</th>
       <th>Name</th>
       <th>Destination</th>
       <th>Start date</th>
       <th>End date</th>
       <th>Purpose</th>
-      <th>Expected expenses</th>
+
       <th>Actual expenses</th>
       <th>Payment infomation</th>
+
+
+
+
+      
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -70,7 +92,114 @@
         <td><%= post_travel.actual_expenses %></td>
         <td><%= post_travel.payment_infomation %></td>
         <td><%= link_to 'Show', post_travel %></td>
+
+        <%if post_travel.budget_status == nil || post_travel.budget_status == "Pending" && post_travel.payment_status == "Resubmit" %>
+        <td>
+          <%= form_with(model: post_travel, local: true) do |f| %>
+            <div class="field">
+              <%= f.select :budget_status, options_for_select([["Choose Status", ""], "Accept", "Reject", "Resubmit"])%>
+            </div>
+            <div class="actions">
+              <%= f.submit %>
+            </div>
+          <%end%>
+        </td>
+
+      <%end%>
+
+
       </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'New Post Travel', new_post_travel_path %>
+
+<% elsif current_account.accountable_type == "Payment" %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Budget Answer</th>
+      <th>Destination</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Purpose</th>
+      <th>Expected expenses</th>
+      <th>Actual expenses</th>
+      <th>Payment infomation</th>
+      <th>Respond</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @post_travels.each do |post_travel| %>
+
+
+      <%if post_travel.budget_status == "Accept" && post_travel.payment_status == nil%>
+        <tr>
+        
+      
+            <td><%= post_travel.name %></td>
+            <td><%= post_travel.budget_status %></td>
+            <td><%= post_travel.destination %></td>
+            <td><%= post_travel.start_date %></td>
+            <td><%= post_travel.end_date %></td>
+            <td><%= post_travel.purpose %></td>
+            <td><%= post_travel.expected_expenses %></td>
+            <td><%= post_travel.actual_expenses %></td>
+            <td><%= post_travel.payment_infomation %></td>
+            <td><%= link_to 'Show', post_travel %></td>
+            <%if post_travel.payment_status == nil || post_travel.payment_status == "Pending"%>
+              <td>
+                <%= form_with(model: post_travel, local: true) do |f| %>
+                  <div class="field">
+                    <%= f.select :payment_status, options_for_select([["Choose Status", ""], "Accept", "Reject", "Resubmit"])%>
+                  </div>
+                  <div class="actions">
+                    <%= f.submit %>
+                  </div>
+                <%end%>
+              </td>
+            <%end%>
+          </tr>
+      
+
+
+        <%elsif post_travel.budget_status == "Accept" && post_travel.payment_status == "Resubmit"%>
+        <tr>
+        
+      
+            <td><%= post_travel.name %></td>
+            <td><%= post_travel.budget_status %></td>
+            <td><%= post_travel.destination %></td>
+            <td><%= post_travel.start_date %></td>
+            <td><%= post_travel.end_date %></td>
+            <td><%= post_travel.purpose %></td>
+            <td><%= post_travel.expected_expenses %></td>
+            <td><%= post_travel.actual_expenses %></td>
+            <td><%= post_travel.payment_infomation %></td>
+            <td><%= link_to 'Show', post_travel %></td>
+            <%if post_travel.payment_status == nil || post_travel.payment_status == "Pending"%>
+              <td>
+                <%= form_with(model: post_travel, local: true) do |f| %>
+                  <div class="field">
+                    <%= f.select :payment_status, options_for_select([["Choose Status", ""], "Accept", "Reject", "Resubmit"])%>
+                  </div>
+                  <div class="actions">
+                    <%= f.submit %>
+                  </div>
+                <%end%>
+              </td>
+            <%end%>
+          </tr>
+        <%end%>
+
+
+
     <% end %>
   </tbody>
 </table>
