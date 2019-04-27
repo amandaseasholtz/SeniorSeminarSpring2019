@@ -105,6 +105,10 @@
             <div class="field">
               <%= f.select :budget_status, options_for_select([["Choose Status", ""], "Accept", "Reject", "Resubmit"])%>
             </div>
+            <div>
+              <%= form.label :Notes %>
+              <%= form.text_area :reasoning, id: :request_reasoning, rows: 5, cols: 30 %>
+            </div>
             <div class="actions">
               <%= f.submit %>
             </div>
