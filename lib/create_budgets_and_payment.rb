@@ -17,8 +17,6 @@ Employee.transaction do
     Employee.create( :name => 'eddie')
 
 end
-
-
 SuperAccount.transaction do
     SuperAccount.delete_all
     SuperAccount.create( :name => 'super' )
