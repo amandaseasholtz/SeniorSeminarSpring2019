@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2019_04_12_062349) do
     t.decimal "actual_expenses"
     t.string "receipt"
     t.text "payment_infomation"
+    t.string "notes"
     t.string "budget_status"
     t.string "payment_status"
     t.datetime "created_at", null: false

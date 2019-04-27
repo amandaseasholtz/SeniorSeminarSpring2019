@@ -11,6 +11,9 @@ class CreatePostTravels < ActiveRecord::Migration[5.2]
       t.string :receipt
       t.text :payment_infomation
 
+      t.string :notes
+      
+
 
       t.string :budget_status
       t.string :payment_status
