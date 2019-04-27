@@ -86,7 +86,7 @@ export default class post_travel extends React.Component {
                         <label>Purpose</label>
                         <textarea name="textarea" placeholder = 'Purpose' value={this.state.purpose} onChange = {e => this.setState({purpose: e.target.value})}></textarea>
 
-
+                        <label>Expenses:</label>
                         <select onChange = {e => this.setState({expected_expenses: e.target.value})}>
                             <option value="food">Food</option>
                             <option value="hotel">Hotel</option>
@@ -100,7 +100,7 @@ export default class post_travel extends React.Component {
                             value={this.state.expected_costs}
                             onChange = {e => this.setState({expected_costs: e.target.value})}
                         />
-
+                        <label>Department to Pay</label>
                         <select onChange = {e => this.setState({payment_information: e.target.value})}>
                             <option value="Dept1">Dept1</option>
                             <option value="Dept2">Dept2</option>

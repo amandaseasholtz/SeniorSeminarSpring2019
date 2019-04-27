@@ -64,10 +64,40 @@ export default class Trip extends React.Component {
                             value={this.state.destination}
                             onChange = {e => this.setState({destination: e.target.value})}
                         />
+                        <label>Start Date</label>
                         <Calendar
                             onChange={(start_date) => this.setState({start_date})}
                             value={this.state.start_date}
                         />
+                        <label>End Date</label>
+                        <Calendar
+                            onChange={(end_date) => this.setState({end_date})}
+                            value={this.state.end_date}
+                        />
+                        <label>Purpose</label>
+                        <textarea name="textarea" placeholder = 'Purpose' value={this.state.purpose} onChange = {e => this.setState({purpose: e.target.value})}></textarea>
+
+                        <label>Expenses:</label>
+                        <select onChange = {e => this.setState({expected_expenses: e.target.value})}>
+                            <option value="food">Food</option>
+                            <option value="hotel">Hotel</option>
+                            <option value="travel">Travel</option>
+                        </select>
+
+                        <label>Est Price</label>
+                        <input 
+                            type="text" 
+                            placeholder = 'Est Price' 
+                            value={this.state.expected_costs}
+                            onChange = {e => this.setState({expected_costs: e.target.value})}
+                        />
+                        <label>Department to Pay</label>
+                        <select onChange = {e => this.setState({payment_information: e.target.value})}>
+                            <option value="Dept1">Dept1</option>
+                            <option value="Dept2">Dept2</option>
+                            <option value="Dept3">Dept3</option>
+                        </select>
+
                         <button onClick={this.onButtonClick}>
                             Submit Request
                         </button>
