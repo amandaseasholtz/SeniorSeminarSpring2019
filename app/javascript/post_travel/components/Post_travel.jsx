@@ -87,6 +87,7 @@ export default class post_travel extends React.Component {
                         <textarea name="textarea" placeholder = 'Purpose' value={this.state.purpose} onChange = {e => this.setState({purpose: e.target.value})}></textarea>
 
                         <label>Expenses:</label>
+                        <label>Type</label>
                         <select onChange = {e => this.setState({expected_expenses: e.target.value})}>
                             <option value="food">Food</option>
                             <option value="hotel">Hotel</option>
