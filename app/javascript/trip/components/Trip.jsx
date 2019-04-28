@@ -27,35 +27,54 @@ export default class Trip extends React.Component {
 
     onFormSubmit = (event) => {
         event.preventDefault();
-        console.log(this.state);
+        console.log('State:', this.state);
 
-        // var self = this; //need to change all this to save info to database
-        // axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
-        // axios
-        //     .post("/requests", { ...this.state })
-        //     .then(function (response) {
-        //         console.log(response.data);
-        //         //self.props.history.push({
-        //         //    pathname: '/'
-        //         // });
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error.response);
-        //         // alert("Cannot place order: ", error);
-        //         self.setState({ errors: error.response.data })
-        //     });
+        const { expenseGroups } = this.state;
+
+        axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
+        axios
+            .post("/requests", { ...this.state })
+            .then( response => { //then -- waits for other previous to finish
+                console.log(response.data);
+                const { id } = response.data;
+                expenseGroups.forEach(expense => {
+                    console.log({ expense: expense.expected_expenses, request_id: id })
+                    axios.post("/expected_expenses", {request: { expense: expense.expected_expenses, request_id: id }}) //C said try this
+                    //axios.post("/expected_expenses", { expense: expense.expected_expenses, request_id: id })
+                    // axios.post("/expected_costs", { cost: expense.expected_costs, request_id: id })
+                    // axios.post("/expected_costs", { cost: expense.expected_costs, request_id: id })
+                });
+            })
+            .catch(error => console.log('Error:', error.response));
+
+
+        //  axios
+        //      .post("/requests", { ...this.state })
+        //       expenseGroups.forEach 
+        //      .post("/expected_costs", { ...this.state })
+        //      .post("/expected_expenses", { ...this.state })
+        //      .post("/payment_informations", { ...this.state })
+        //      .then(function (response) {
+        //          console.log(response.data);
+        //          //self.props.history.push({
+        //          //    pathname: '/'
+        //          // });
+        //      })
+        //      .catch(function (error) {
+        //          console.log(error.response);
+        //          // alert("Cannot place order: ", error);
+        //          self.setState({ errors: error.response.data })
+        //      });
     }
 
     addExpense = (e) => {
         e.preventDefault();
         const newExpenseGroups = [...this.state.expenseGroups];
-        console.log(expenseTemplate);
         newExpenseGroups.push({...expenseTemplate});
         this.setState({ ...this.state, expenseGroups: newExpenseGroups })
     }
 
     handleItemChange = (index, path, newValue) => {
-        console.log('The index is', index, 'the path is', path, 'the newValue is', newValue)
         const newExpenses = [...this.state.expenseGroups];
         const newExpense = newExpenses[index];
         newExpense[path] = newValue;

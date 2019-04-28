@@ -34,7 +34,7 @@ namespace :admin do
     resources :payments, only: [:edit, :update]
     resources :requests
     resources :post_travels
-  
+    resources :expected_expenses
   end
 
 
