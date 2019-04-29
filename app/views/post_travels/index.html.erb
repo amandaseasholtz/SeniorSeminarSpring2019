@@ -32,8 +32,30 @@
             <td>Accepted</td>
           <%elsif post_travel.budget_status == "Resubmit"%>
             <td>pending</td>
+            <%elsif post_travel.budget_status == "RESUBMIT"%>
+            <td>UPDATED AND PENDING</td>
           <%else%>
             <td>Rejected</td>
+          <%end%>
+
+
+
+
+
+          <%if post_travel.budget_status == "Resubmit"%>
+
+          <td>
+            <%= form_with(model: post_travel, local: true) do |f| %>
+              <div class="field">
+                <%= f.select :budget_status, options_for_select([["Resubmit by ", ""], "RESUBMIT"])%>
+              </div>
+              <div class="actions">
+              <%= f.submit %>
+            </div>
+            <%end%>
+          </td>
+  
+  
           <%end%>
 
         <td><%= post_travel.payment_status%></td>
@@ -85,11 +107,17 @@
     <% @post_travels.each do |post_travel| %>
       <tr>
         <td><%= post_travel.name %></td>
+
         <%if post_travel.budget_status != nil%>
-        <td><%= post_travel.budget_status%></td>
-        <%else%>
-        <td>Pending</td>
+           <td><%= post_travel.budget_status%></td>
+
         <%end%>
+
+        <%if post_travel.budget_status == "RESUBMIT"%>
+          <td>HAS BEEN UPDATED</td>
+
+        <%end%>
+
 
         <td><%= post_travel.destination %></td>
         <td><%= post_travel.start_date %></td>
@@ -99,7 +127,7 @@
         <td><%= post_travel.payment_infomation %></td>
         <td><%= link_to 'Show', post_travel %></td>
 
-        <%if post_travel.budget_status == nil || post_travel.budget_status == "Pending" %>
+        <%if post_travel.budget_status == nil || post_travel.budget_status == "Pending" || post_travel.budget_status == "RESUBMIT"  %>
         <td>
           <%= form_with(model: post_travel, local: true) do |f| %>
             <div class="field">
