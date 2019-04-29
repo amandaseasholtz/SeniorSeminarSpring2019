@@ -11,7 +11,12 @@
     <%= f.input :purpose %>
 
     <%= f.input :actual_expenses %>
-    <%= f.input :payment_infomation %>
+    <div>
+    <%= f.label "payment Information"%>
+      <%= f.select :payment_infomation, [['Dept1','Dept1'],['Dept2','Dept2'],['Dept3','Dept3']]%>
+    </div>
+
+
 
     <div class="field">
     <%= f.label :receipt %>
