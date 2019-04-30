@@ -30,24 +30,33 @@ export default class Trip extends React.Component {
         console.log('State:', this.state);
 
         const { expenseGroups } = this.state;
-
+        
         axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
         axios
             .post("/requests", { ...this.state })
             .then( response => { //then -- waits for other previous to finish
                 console.log(response.data);
                 const { id } = response.data;
-                expenseGroups.forEach(expense => {
-                    console.log({ expense: expense.expected_expenses, request_id: id })
-                    axios.post("/expected_expenses", {request: { expense: expense.expected_expenses, request_id: id }}) //C said try this
-                    //axios.post("/expected_expenses", { expense: expense.expected_expenses, request_id: id })
+                
+                for (var i =0; i<this.state.expenseGroups.length; i++){
+                    const expenseGroup = {
+                        id: this.state.id,
+                        expected_costs: this.state.expected_costs,
+                        expected_expenses: this.state.expected_expenses,
+                        payment_informations: this.state.payment_informations,
+                    }
+                    
+                   
+                        console.log({...expenseGroups})
+                        axios.post("/expected_expenses", {...expenseGroups}) 
+                        axios.post("/expected_expenses", { expense: expense.expected_expenses, request_id: id })
+                        axios.post("/expected_costs", { cost: expense.expected_costs, request_id: id })
                     // axios.post("/expected_costs", { cost: expense.expected_costs, request_id: id })
-                    // axios.post("/expected_costs", { cost: expense.expected_costs, request_id: id })
-                });
-            })
-            .catch(error => console.log('Error:', error.response));
+                }
+                })
+                .catch(error => console.log('Error:', error.response));
 
-
+          
         //  axios
         //      .post("/requests", { ...this.state })
         //       expenseGroups.forEach 
