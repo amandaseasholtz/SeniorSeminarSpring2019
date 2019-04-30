@@ -24,11 +24,11 @@ SuperAccount.transaction do
   
 Account.transaction do
     Account.delete_all
-    Account.create( :email => 'b1@b.com', :password => '123456', :password_confirmation => '123456', 
+    Account.create( :email => 'b1@b.com', :budget => '123456', :password => '123456', :password_confirmation => '123456', 
                     :accountable => Budget.find_by_name("bobby"))
-    Account.create( :email => 'b2@b.com', :password => '123456', :password_confirmation => '123456', 
+    Account.create( :email => 'b2@b.com', :budget => '5000', :password => '123456', :password_confirmation => '123456', 
                     :accountable => Budget.find_by_name("brenda"))
-    Account.create( :email => 'b3@b.com', :password => '123456', :password_confirmation => '123456', 
+    Account.create( :email => 'b3@b.com', :budget => '9000', :password => '123456', :password_confirmation => '123456', 
                     :accountable => Budget.find_by_name("billy"))
     Account.create( :email => 'p1@p.com', :password => '123456', :password_confirmation => '123456', 
                     :accountable => Payment.find_by_name("paul"))

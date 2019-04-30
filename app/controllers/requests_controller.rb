@@ -7,6 +7,7 @@ class RequestsController < ApplicationController
 
   def index
       #@requests = Request.all
+
       if current_account.accountable.name == "brenda"
         @requests = Request.where(budget_name: "brenda") + Request.where(budget_name2: "brenda") + Request.where(budget_name3: "brenda")
 
@@ -20,6 +21,9 @@ class RequestsController < ApplicationController
     else
       @requests = Request.all
     end
+
+
+
 
     
   end
