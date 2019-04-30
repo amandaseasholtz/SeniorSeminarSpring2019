@@ -25,10 +25,7 @@
   <%= @post_travel.purpose %>
 </p>
 
-<p>
-  <strong>Expected expenses:</strong>
-  <%= @post_travel.expected_expenses %>
-</p>
+
 
 <p>
   <strong>Actual expenses:</strong>
@@ -41,10 +38,10 @@
 </p>
 
 <p>
-  <strong>The receipts:</strong>
-  <%=  image_tag(@post_travel.receipt.url, width: 100, height: 150) %>
+  <strong>The receipts (Click on link to view Receipts):</strong>
+  <%=  @post_travel.receipt.url %>
+  <%= link_to "View Receipts Pdf", @post_travel.receipt_url %>
 </p>
-
 
 
 <%= link_to 'Edit', edit_post_travel_path(@post_travel) %> |

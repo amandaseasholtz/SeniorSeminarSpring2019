@@ -5,7 +5,7 @@ class PostTravel < ApplicationRecord
   mount_uploader :receipt,  UploadUploader
 
   validates :receipt, allow_blank: true, format: {
-with:%r{\.(gif|jpg|png)\Z}i,
-message: 'must be a URL for GIF, JPG or PNG image.'
+with:%r{\.(pdf)\Z}i,
+message: 'must be a PDF.'
 }
 end
