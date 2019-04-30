@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_12_062349) do
+ActiveRecord::Schema.define(version: 2019_04_30_150015) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -55,6 +55,16 @@ ActiveRecord::Schema.define(version: 2019_04_12_062349) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "expects", force: :cascade do |t|
+    t.string "expected_expenses"
+    t.decimal "expected_costs"
+    t.string "payment_information"
+    t.integer "request_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["request_id"], name: "index_expects_on_request_id"
   end
 
   create_table "payments", force: :cascade do |t|

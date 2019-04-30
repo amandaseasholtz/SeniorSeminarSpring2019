@@ -3,6 +3,7 @@
 
 Rails.application.routes.draw do
 
+
   resources :departments
   resources :post_travels
 
@@ -32,8 +33,11 @@ namespace :admin do
     resources :employees, only: [:edit, :update]
     resources :budgets, only: [:edit, :update]
     resources :payments, only: [:edit, :update]
-    resources :requests
-    resources :post_travels
+    resources :requests do
+      resources :expects
+    end
+      resources :post_travels, except: [:index], controller: 'requests/expects'
+    resources :expect
   
   end
 

@@ -31,11 +31,14 @@ class RequestsController < ApplicationController
   # GET /requests/1
   # GET /requests/1.json
   def show
+    @request = Request.find(params[:id])
+    @expects = @request.expects
   end
 
   # GET /requests/new
   def new
     @request = Request.new
+
   end
 
   # GET /requests/1/edit

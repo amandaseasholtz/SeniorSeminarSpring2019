@@ -138,6 +138,31 @@
   <%= @request.reasoning %>
 </p>
 
+
+
+<div class="media">
+  <div class="media-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @expects.each do |expect| %>
+          <tr>
+            <td><h4><%= expect.expected_expenses %></h4></td>
+            <td><h4><%= expect.expected_costs %></h4></td>
+            <td><h4><%= expect.payment_information %></h4></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 <% if current_account.accountable_type == "Employee" %>
   <%= link_to 'Edit', edit_request_path(@request) %> |
 <%end%>

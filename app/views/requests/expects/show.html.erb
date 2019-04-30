@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Expected expenses:</strong>
+  <%= @expect.expected_expenses %>
+</p>
+
+<p>
+  <strong>Expected costs:</strong>
+  <%= @expect.expected_costs %>
+</p>
+
+<p>
+  <strong>Payment information:</strong>
+  <%= @expect.payment_information %>
+</p>
+
+<p>
+  <strong>Request:</strong>
+  <%= @expect.request %>
+</p>
+
+<%= link_to 'Edit', edit_expect_path(@expect) %> |
+<%= link_to 'Back', expects_path %>
