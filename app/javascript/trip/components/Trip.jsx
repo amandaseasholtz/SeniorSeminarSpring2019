@@ -28,7 +28,7 @@ export default class Trip extends React.Component {
 
     onFormSubmit = (event) => {
         event.preventDefault();
-        console.log('State:', this.state);
+        //console.log('State:', this.state);
 
         const { expenseGroups } = this.state;
         
@@ -47,7 +47,7 @@ export default class Trip extends React.Component {
                         expected_expenses: this.state.expenseGroups[i].expected_expenses,
                         payment_informations: this.state.expenseGroups[i].payment_informations,
                     }
-                    console.log(expenseGroup);
+                    //console.log(expenseGroup);
                     
                    
                        // console.log({...expenseGroups})
@@ -58,7 +58,9 @@ export default class Trip extends React.Component {
                 }
                 })
                 .catch(error => {console.log('Error:', error.response)
-            console.log(error)});
+            //console.log(error)
+        });
+            
 
           
         //  axios

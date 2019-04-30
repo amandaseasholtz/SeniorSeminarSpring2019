@@ -66,9 +66,11 @@ ActiveRecord::Schema.define(version: 2019_04_23_221854) do
 
   create_table "expected_expenses", force: :cascade do |t|
     t.integer "request_id"
-    t.string "expense"
+    t.integer "expense"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "expected_expenses"
+    t.string "payment_informations"
     t.index ["request_id"], name: "index_expected_expenses_on_request_id"
   end
 

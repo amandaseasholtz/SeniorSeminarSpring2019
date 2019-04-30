@@ -33,9 +33,7 @@ class RequestsController < ApplicationController
     @request = Request.new
 
 
-      @request.expected_expenses.build
-      @request.expected_costs.build
-      @request.payment_informations.build
+    
 
     if (params[:spa] && params[:spa] == "true")
       render 'index_spa'
@@ -45,16 +43,14 @@ class RequestsController < ApplicationController
 
   # GET /requests/1/edit
   def edit
-    @request.expected_expenses.build
-    @request.expected_costs.build
-    @request.payment_informations.build
+
   end
 
   # POST /requests
   # POST /requests.json
   def create
     @request = Request.new(request_params)
-
+    
 
     respond_to do |format|
       if @request.save
@@ -103,8 +99,7 @@ class RequestsController < ApplicationController
     def request_params
 
 
-      params.require(:request).permit(:name, :destination, :start_date, :end_date, :purpose, :reasoning, :budget_name
-        )
-
+      params.require(:request).permit(:name, :destination, :start_date, :end_date, :purpose, :reasoning, :budget_name)
+    
     end
 end
