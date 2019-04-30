@@ -14,6 +14,7 @@ const expenseTemplate = {
 export default class Trip extends React.Component {
 
     state = {
+        id: null,
         name: null,
         destination: null,
         start_date: null,
@@ -48,8 +49,8 @@ export default class Trip extends React.Component {
                     
                    
                         console.log({...expenseGroups})
-                        axios.post("/expected_expenses", {...expenseGroups}) 
-                        axios.post("/expected_expenses", { expense: expense.expected_expenses, request_id: id })
+                        axios.post("/expected_expenses/", {...expenseGroups}) 
+                        axios.post("/expected_expenses/", { expense: expense.expected_expenses, request_id: id })
                         axios.post("/expected_costs", { cost: expense.expected_costs, request_id: id })
                     // axios.post("/expected_costs", { cost: expense.expected_costs, request_id: id })
                 }

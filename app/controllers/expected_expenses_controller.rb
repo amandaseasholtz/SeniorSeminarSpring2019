@@ -7,13 +7,13 @@ class ExpectedExpensesController < ApplicationController
   
     def index
         
-        @requests = Request.all
+        @expense = Request.all
 
 
        
           #format.json {render json: @products}
-        end
-    end  
+    end
+    
     # GET /requests/1
     # GET /requests/1.json
     def show
@@ -32,7 +32,7 @@ class ExpectedExpensesController < ApplicationController
     # POST /requests
     # POST /requests.json
     def create
-        puts request_params
+        
       @expense = ExpectedExpense.new(request_params)
       @expense.save
 
@@ -40,7 +40,7 @@ class ExpectedExpensesController < ApplicationController
       respond_to do |format|
         if @expense.save
           format.html { redirect_to @expense, notice: 'Request was successfully created.' }
-          format.json { render :show, status: :created, location: @expense}
+          format.json { render template: "requests/show", status: :created, location: @expense}
         else
           format.html { render :new }
           format.json { render json: @expense.errors, status: :unprocessable_entity }
@@ -70,7 +70,9 @@ class ExpectedExpensesController < ApplicationController
   
   
       def request_params
-        params.require(:request).permit!
-      end
- 
   
+        params.permit( :request_id, :expense, :expected_expense)
+
+      end
+    
+    end

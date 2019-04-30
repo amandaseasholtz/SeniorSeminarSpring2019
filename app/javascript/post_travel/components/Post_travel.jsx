@@ -13,7 +13,7 @@ export default class post_travel extends React.Component {
         purpose: null,
         expected_expenses: null,
         expected_costs: null,
-        payment_information: null,
+        payment_informations: null,
         actual_expenses: null,
     
     };
