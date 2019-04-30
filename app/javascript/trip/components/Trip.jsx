@@ -49,37 +49,16 @@ export default class Trip extends React.Component {
                     }
                     //console.log(expenseGroup);
                     
-                   
                        // console.log({...expenseGroups})
-                       // axios.post("/expected_expenses/", {...expenseGroups}) 
+                      
                         axios.post("/expected_expenses/", expenseGroup)
-                     //   axios.post("/expected_costs", { cost: expense.expected_costs, request_id: id })
-                    // axios.post("/expected_costs", { cost: expense.expected_costs, request_id: id })
+                     
                 }
                 })
                 .catch(error => {console.log('Error:', error.response)
             //console.log(error)
         });
             
-
-          
-        //  axios
-        //      .post("/requests", { ...this.state })
-        //       expenseGroups.forEach 
-        //      .post("/expected_costs", { ...this.state })
-        //      .post("/expected_expenses", { ...this.state })
-        //      .post("/payment_informations", { ...this.state })
-        //      .then(function (response) {_costs:
-        //          console.log(response.data);
-        //          //self.props.history.push({
-        //          //    pathname: '/'
-        //          // });
-        //      })
-        //      .catch(function (error) {
-        //          console.log(error.response);
-        //          // alert("Cannot place order: ", error);
-        //          self.setState({ errors: error.response.data })
-        //      });
     }
 
     addExpense = (e) => {
