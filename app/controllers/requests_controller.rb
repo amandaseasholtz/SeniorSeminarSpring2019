@@ -4,29 +4,24 @@ class RequestsController < ApplicationController
   # GET /requests
   # GET /requests.json
 
-
   def index
-      #@requests = Request.all
-
-      if current_account.accountable.name == "brenda"
-        @requests = Request.where(budget_name: "brenda") + Request.where(budget_name2: "brenda") + Request.where(budget_name3: "brenda")
-
-    elsif current_account.accountable.name == "bobby"
-      @requests = Request.where(budget_name: "bobby") + Request.where(budget_name2: "bobby") + Request.where(budget_name3: "bobby")
 
 
-    elsif current_account.accountable.name == "billy"
-      @requests = Request.where(budget_name: "billy") + Request.where(budget_name2: "billy") + Request.where(budget_name3: "billy")
+   if current_account.accountable.name == "brenda"
+      @requests = Request.where(budget_name: "brenda") + Request.where(budget_name2: "brenda") + Request.where(budget_name3: "brenda")
 
-    else
-      @requests = Request.all
-    end
-
+  elsif current_account.accountable.name == "bobby"
+    @requests = Request.where(budget_name: "bobby") + Request.where(budget_name2: "bobby") + Request.where(budget_name3: "bobby")
 
 
+  elsif current_account.accountable.name == "billy"
+    @requests = Request.where(budget_name: "billy") + Request.where(budget_name2: "billy") + Request.where(budget_name3: "billy")
 
-    
+  else
+    @requests = Request.all 
   end
+end
+
 
   # GET /requests/1
   # GET /requests/1.json
@@ -39,17 +34,22 @@ class RequestsController < ApplicationController
   def new
     @request = Request.new
 
+
+
+
   end
 
   # GET /requests/1/edit
   def edit
+
+    @expects = @request.expects
   end
 
   # POST /requests
   # POST /requests.json
   def create
-    @request = Request.new(request_params)
 
+    @request = Request.new(request_params)
     respond_to do |format|
       if @request.save
         format.html { redirect_to @request, notice: 'Request was successfully created.' }

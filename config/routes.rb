@@ -33,11 +33,13 @@ namespace :admin do
     resources :employees, only: [:edit, :update]
     resources :budgets, only: [:edit, :update]
     resources :payments, only: [:edit, :update]
+
     resources :requests do
-      resources :expects
+      resources :expects, except: [:index], controller: 'requests/expects'
     end
-      resources :post_travels, except: [:index], controller: 'requests/expects'
-    resources :expect
+
+    resources :post_travels
+
   
   end
 

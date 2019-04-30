@@ -1,10 +1,11 @@
-class ExpectsController < ApplicationController
-  before_action :set_expect, only: [:show, :edit, :update, :destroy]
+class Requests::ExpectsController < ApplicationController
+
 
   # GET /expects
   # GET /expects.json
   def index
     @expects = Expect.all
+    
   end
 
   # GET /expects/1
@@ -14,6 +15,8 @@ class ExpectsController < ApplicationController
 
   # GET /expects/new
   def new
+    
+    @request = Request.find(params[:request_id])
     @expect = Expect.new
   end
 
@@ -24,15 +27,17 @@ class ExpectsController < ApplicationController
   # POST /expects
   # POST /expects.json
   def create
+    @request = Request.find(params[:request_id])
     @expect = Expect.new(expect_params)
+    @expect.request = @request
 
     respond_to do |format|
       if @expect.save
-        format.html { redirect_to @expect, notice: 'Expect was successfully created.' }
-        format.json { render :show, status: :created, location: @expect }
+        format.html { redirect_to @request, notice: 'Expect was successfully created.' }
+        format.json { render :show, status: :created, location: @request }
       else
         format.html { render :new }
-        format.json { render json: @expect.errors, status: :unprocessable_entity }
+        format.json { render json: @request.errors, status: :unprocessable_entity }
       end
     end
   end

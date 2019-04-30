@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+
+
+
+
 <p>
   <strong> name:</strong>
     <%= @request.name %>
@@ -30,10 +34,7 @@
 </p>
 
 <% if @request.field_num == 1 || @request.field_num == nil%>
-  <p>
-    <strong>Expected expenses:</strong>
-    <%= @request.expected_expenses %>
-  </p>
+
 
 
   <%elsif @request.field_num == 2%>
@@ -66,10 +67,7 @@
 
 
 <% if @request.field_num == 1 || @request.field_num == nil%>
-  <p>
-    <strong>Expected Costs:</strong>
-    <%= @request.expected_costs %>
-  </p>
+
 
   <%elsif @request.field_num == 2%>
   <p>
@@ -98,15 +96,9 @@
 
 
 
-<p>
-<strong>TOTAL COSTS:</strong>
-<%= @request.total_costs %>
-</p>
+
 <% if @request.field_num == 1 || @request.field_num == nil%>
-  <p>
-    <strong>Payment information:</strong>
-    <%= @request.payment_information %>
-  </p>
+
   <%elsif @request.field_num == 2%>
   <p>
     <strong>Payment information:</strong>
@@ -140,21 +132,22 @@
 
 
 
+
 <div class="media">
   <div class="media-body">
     <table class="table table-hover">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Category</th>
-          <th>Quantity</th>
+          <th>Expense</th>
+          <th>Cost</th>
+          <th>Payment Information</th>
         </tr>
       </thead>
       <tbody>
         <% @expects.each do |expect| %>
           <tr>
             <td><h4><%= expect.expected_expenses %></h4></td>
-            <td><h4><%= expect.expected_costs %></h4></td>
+            <td><h4>$<%= expect.expected_costs %></h4></td>
             <td><h4><%= expect.payment_information %></h4></td>
           </tr>
         <% end %>
@@ -163,7 +156,75 @@
   </div>
 </div>
 
+
+
+
+
+
+
+
+
+
 <% if current_account.accountable_type == "Employee" %>
   <%= link_to 'Edit', edit_request_path(@request) %> |
+  <% @expects.each do |expect| %>
+    <% if expect.payment_information == "Dept1" %>
+    <td>
+      <%= form_with(model: @request, local: true) do |form| %>
+        <%if @request.budget_name == nil%>
+        <div class="field">
+          <%= form.select :budget_name,[['billy','billy']] %>
+        </div>
+        <div class="actions">
+          <%= form.submit %>
+        </div>
+        <%else%>
+        <%end%>
+      <%end%>
+    </td>
+    <%end%>
+    
+   
+    <% if expect.payment_information == "Dept2" %>
+    <td>
+      <%= form_with(model: @request, local: true) do |form| %>
+
+        <%if @request.budget_name == nil%>
+        <div class="field">
+          <%= form.select :budget_name,[['brenda','brenda']] %>
+        </div>
+        <div class="actions">
+          <%= form.submit %>
+        </div>
+        <%else%>
+        <%end%>
+      <%end%>
+    </td>
+    <%end%>
+    
+    
+    
+    <% if expect.payment_information == "Dept3" %>
+    <td>
+      <%= form_with(model: @request, local: true) do |form| %>
+        <%if @request.budget_name == nil%>
+        <div class="field">
+          <%= form.select :budget_name,[['bobby','bobby']] %>
+        </div>
+        <div class="actions">
+          <%= form.submit %>
+        </div>
+        <%else%>
+        <%end%>
+      <%end%>
+    </td>
+    <%end%>
+    
+    
+    <%end%>
 <%end%>
 <%= link_to 'Back', homepage_index_path %>
+
+<% if current_account.accountable_type == "Employee" %>
+<%= link_to "Add New Expense", new_request_expect_path(@request), class: 'pull-right'%>
+<%end%>
