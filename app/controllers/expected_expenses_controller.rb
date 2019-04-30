@@ -71,7 +71,8 @@ class ExpectedExpensesController < ApplicationController
   
       def request_params
   
-        params.permit( :request_id, :expense, :expected_expense)
+        params.permit(:id, :request_id, :expense, :expected_expenses, :payment_informations)
+        
 
       end
     

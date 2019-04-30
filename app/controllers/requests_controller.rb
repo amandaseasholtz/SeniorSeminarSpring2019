@@ -103,12 +103,7 @@ class RequestsController < ApplicationController
     def request_params
 
 
-      params.require(:request).permit(:name, :destination, :start_date, :end_date, :purpose,:employee_id,
-        :status, :reasoning, :budget_name,
-        expected_expense_attributes: [:id, :_destroy, :request_id, :expense],
-        payment_information_attributes: [:id, :_destroy, :request_id, :payment_informations],
-        expected_cost_attributes: [:id, :_destroy, :request_id, :cost]
-
+      params.require(:request).permit(:name, :destination, :start_date, :end_date, :purpose, :reasoning, :budget_name
         )
 
     end

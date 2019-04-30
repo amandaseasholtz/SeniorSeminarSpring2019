@@ -37,25 +37,28 @@ export default class Trip extends React.Component {
             .post("/requests", { ...this.state })
             .then( response => { //then -- waits for other previous to finish
                 console.log(response.data);
-                const { id } = response.data;
-                
+                const id  = response.data;
+               
                 for (var i =0; i<this.state.expenseGroups.length; i++){
+                   
                     const expenseGroup = {
-                        id: this.state.id,
-                        expected_costs: this.state.expected_costs,
-                        expected_expenses: this.state.expected_expenses,
-                        payment_informations: this.state.payment_informations,
+                        request_id: response.data,
+                        expense: this.state.expenseGroups[i].expected_costs,
+                        expected_expenses: this.state.expenseGroups[i].expected_expenses,
+                        payment_informations: this.state.expenseGroups[i].payment_informations,
                     }
+                    console.log(expenseGroup);
                     
                    
-                        console.log({...expenseGroups})
-                        axios.post("/expected_expenses/", {...expenseGroups}) 
-                        axios.post("/expected_expenses/", { expense: expense.expected_expenses, request_id: id })
-                        axios.post("/expected_costs", { cost: expense.expected_costs, request_id: id })
+                       // console.log({...expenseGroups})
+                       // axios.post("/expected_expenses/", {...expenseGroups}) 
+                        axios.post("/expected_expenses/", expenseGroup)
+                     //   axios.post("/expected_costs", { cost: expense.expected_costs, request_id: id })
                     // axios.post("/expected_costs", { cost: expense.expected_costs, request_id: id })
                 }
                 })
-                .catch(error => console.log('Error:', error.response));
+                .catch(error => {console.log('Error:', error.response)
+            console.log(error)});
 
           
         //  axios
@@ -64,7 +67,7 @@ export default class Trip extends React.Component {
         //      .post("/expected_costs", { ...this.state })
         //      .post("/expected_expenses", { ...this.state })
         //      .post("/payment_informations", { ...this.state })
-        //      .then(function (response) {
+        //      .then(function (response) {_costs:
         //          console.log(response.data);
         //          //self.props.history.push({
         //          //    pathname: '/'
