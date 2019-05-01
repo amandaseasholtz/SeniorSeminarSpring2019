@@ -33,97 +33,16 @@
   <%= @request.purpose %>
 </p>
 
-<% if @request.field_num == 1 || @request.field_num == nil%>
-
-
-
-  <%elsif @request.field_num == 2%>
-    <p>
-      <strong>Expected expenses:</strong>
-      <%= @request.expected_expenses %>
-    </p>
-
-    <p>
-      <strong>Expected expenses2:</strong>
-      <%= @request.expected_expenses2 %>
-    </p>
-
-  <%elsif @request.field_num == 3 %>
   <p>
-  <strong>Expected expenses:</strong>
-  <%= @request.expected_expenses %>
-</p>
+    <strong>Expected expenses:</strong>
+    <%= @expense.expected_expenses %>
+  </p>
 
-<p>
-  <strong>Expected expenses2:</strong>
-  <%= @request.expected_expenses2 %>
-</p>
-
-<p>
-<strong>Expected expenses3:</strong>
-<%= @request.expected_expenses3 %>
-</p>
-<%end%>
-
-
-<% if @request.field_num == 1 || @request.field_num == nil%>
-
-
-  <%elsif @request.field_num == 2%>
+  
   <p>
     <strong>Expected Costs:</strong>
-    <%= @request.expected_costs %>
-  </p>
-  <p>
-    <strong>Expected Costs2:</strong>
-    <%= @request.expected_costs2 %>
-  </p>
-  <%elsif @request.field_num == 3 %>
-  <p>
-    <strong>Expected Costs:</strong>
-    <%= @request.expected_costs %>
-  </p>
-  <p>
-    <strong>Expected Costs2:</strong>
-    <%= @request.expected_costs2 %>
-  </p>
-  <p>
-    <strong>Expected Costs3:</strong>
-    <%= @request.expected_costs3 %>
-  </p>
-<%end%>
-
-
-
-
-
-<% if @request.field_num == 1 || @request.field_num == nil%>
-
-  <%elsif @request.field_num == 2%>
-  <p>
-    <strong>Payment information:</strong>
-    <%= @request.payment_information %>
-  </p>
-  <p>
-    <strong>Payment information:</strong>
-    <%= @request.payment_information2 %>
-  </p>
-  <%elsif @request.field_num == 3 %>
-  <p>
-    <strong>Payment information:</strong>
-    <%= @request.payment_information %>
-  </p>
-  <p>
-    <strong>Payment information:</strong>
-    <%= @request.payment_information2 %>
-  </p>
-
-  <p>
-    <strong>Payment information:</strong>
-    <%= @request.payment_information3 %>
-  </p>
-<%end%>
-
+    <%= @expense.expected_costs %>
+</p>
 
 <p>
   <strong>Notes:</strong>
@@ -247,6 +166,7 @@
 
 
 
+<%= link_to 'Edit', edit_request_path(@request) %> |
 <%= link_to 'Back', homepage_index_path %>
 
 <% if current_account.accountable_type == "Employee" %>

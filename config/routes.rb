@@ -15,7 +15,7 @@ namespace :admin do
       resources :budgets
       resources :employees
       resources :payments
-      resources :requests
+      resources :requests;
       
 
 
@@ -44,6 +44,8 @@ namespace :admin do
     end
 
   
+
+    resources :expected_expenses
   end
 
 

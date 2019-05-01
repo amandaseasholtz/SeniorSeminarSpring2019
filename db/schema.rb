@@ -76,6 +76,32 @@ ActiveRecord::Schema.define(version: 2019_05_01_001858) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["request_id"], name: "index_expects_on_request_id"
+
+  create_table "expected_costs", force: :cascade do |t|
+    t.integer "request_id"
+    t.decimal "cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["request_id"], name: "index_expected_costs_on_request_id"
+  end
+
+  create_table "expected_expenses", force: :cascade do |t|
+    t.integer "request_id"
+    t.integer "expense"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "expected_expenses"
+    t.string "payment_informations"
+    t.index ["request_id"], name: "index_expected_expenses_on_request_id"
+  end
+
+  create_table "payment_informations", force: :cascade do |t|
+    t.integer "request_id"
+    t.string "payment_information"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["request_id"], name: "index_payment_informations_on_request_id"
+
   end
 
   create_table "payments", force: :cascade do |t|
@@ -93,6 +119,7 @@ ActiveRecord::Schema.define(version: 2019_05_01_001858) do
     t.date "start_date"
     t.date "end_date"
     t.text "purpose"
+    t.string "receipts_url"
     t.decimal "expected_expenses"
     t.decimal "actual_expenses"
     t.string "receipt"
@@ -110,6 +137,7 @@ ActiveRecord::Schema.define(version: 2019_05_01_001858) do
     t.date "start_date"
     t.date "end_date"
     t.string "reasoning"
+
     t.integer "field_num"
     t.string "expected_expenses"
     t.decimal "expected_costs"
@@ -123,6 +151,10 @@ ActiveRecord::Schema.define(version: 2019_05_01_001858) do
     t.decimal "expected_costs3"
     t.string "payment_information3"
     t.string "budget_name3"
+
+    t.string "employ_department"
+    t.string "budget_department"
+
     t.string "purpose"
     t.string "status"
     t.decimal "total_costs"

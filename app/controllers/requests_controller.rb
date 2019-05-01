@@ -20,6 +20,19 @@ class RequestsController < ApplicationController
 
   else
     @requests = Request.all 
+
+
+      respond_to do |format|
+        format.html {
+            if (params[:spa] && params[:spa] == "true")
+                render 'index_spa'
+            # the else case below is by default
+            else
+               render 'index'
+            end
+        }
+        #format.json {render json: @products}
+      end
   end
 end
 
@@ -34,6 +47,14 @@ end
   # GET /requests/new
   def new
     @request = Request.new
+
+
+    
+
+    if (params[:spa] && params[:spa] == "true")
+      render 'index_spa'
+    end
+
   end
 
   # GET /requests/1/edit

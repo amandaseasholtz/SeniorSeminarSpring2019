@@ -5,19 +5,16 @@ class PostTravelsController < ApplicationController
   # GET /post_travels.json
   def index
     @post_travels = PostTravel.all
-    #if current_account.accountable.name == "brenda"
-    #  @post_travels = Request.where(budget_name: "brenda") + Request.where(budget_name2: "brenda") + Request.where(budget_name3: "brenda")
-#
-  #  elsif current_account.accountable.name == "bobby"
-  #    @post_travels = Request.where(budget_name: "bobby") + Request.where(budget_name2: "bobby") + Request.where(budget_name3: "bobby")
-#
-
- #   elsif current_account.accountable.name == "billy"
-  #    @post_travels = Request.where(budget_name: "billy") + Request.where(budget_name2: "billy") + Request.where(budget_name3: "billy")
-
-   # else
-    #  @post_travels = PostTravel.all
-   # end
+      respond_to do |format|
+        format.html {
+            if (params[:spa] && params[:spa] == "true")
+                render 'index_spa'
+            # the else case below is by default
+            else
+               render 'index'
+            end
+        }
+      end
   end
 
   # GET /post_travels/1
@@ -30,6 +27,11 @@ class PostTravelsController < ApplicationController
   # GET /post_travels/new
   def new
     @post_travel = PostTravel.new
+
+    if (params[:spa] && params[:spa] == "true")
+      render 'index_spa'
+    end
+    
   end
 
   # GET /post_travels/1/edit

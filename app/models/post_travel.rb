@@ -13,4 +13,8 @@ class PostTravel < ApplicationRecord
 with:%r{\.(pdf)\Z}i,
 message: 'must be a PDF.'
 }
+  belongs_to :payment, optional: true
+
+  has_one :employee
+  has_one :payment
 end

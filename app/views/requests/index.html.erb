@@ -60,7 +60,13 @@
       <th>Start Date</th>
       <th>End Date</th>
       <th>Purpose</th>
+<<<<<<< HEAD
 
+=======
+      <th>Expected expenses</th>
+      <th>Payment information</th>
+      <th>the costs</th>
+>>>>>>> 7589f2e74520d78eda150c6fd79cc522e7477108
 
       <th>Notes from Budget approver</th>
       <th>Resubmissions</th>
@@ -87,6 +93,12 @@
           <td><%= request.start_date %></td>
           <td><%= request.end_date %></td>
           <td><%= request.purpose %></td>
+<<<<<<< HEAD
+=======
+          <td><%= request.expected_expenses %></td>
+          <td><%= request.payment_informations %></td>
+          <td><%= request.expected_costs%></td>
+>>>>>>> 7589f2e74520d78eda150c6fd79cc522e7477108
 
           <td><%= request.reasoning %></td>
           <%if request.status == "Resubmit"%>
@@ -115,6 +127,38 @@
 
 
 <% if current_account.accountable_type == "Budget" %>
+  <table>
+    <thead>
+      <tr>
+        <th> Name</th>
+        <th> Employee Department</th>
+        <th> Budget Approver</th>
+        <th> Expected Expenses</th>
+        <th> Expected Costs</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @requests.each do |request| %>
+        <%if request.budget_name == "bobby" %>
+
+        <tr>
+          <td><%= request.name %></td>
+          <td><%= request.employ_department %></td>
+          <td><%= request.budget_name%></td>
+          <td><%= request.expected_expenses%></td>
+          <td><%= request.expected_costs%></td>
+          <td><%= link_to 'Show', request %></td>
+          <td>
+          <%if request.status == nil%>
+            <%= form_with(model: request, local: true) do |form| %>
+              <div class="field">
+                <%= form.label :Status %>
+                <%= form.select :status, options_for_select([["Choose Department(s)", ""], "Accept", "Reject"])%>
+              </div>
+            <%= form.label :Notes %>
+            <%= form.text_area :reasoning, id: :request_reasoning, rows: 5, cols: 30 %>
+            </div>
 
 
 <table>

@@ -65,6 +65,12 @@
         <td><%= post_travel.purpose %></td>
         <td><%= post_travel.actual_expenses %></td>
         <td><%= post_travel.payment_infomation %></td>
+
+
+
+        <td><%= post_travel.receipts_url %></td>
+
+        
         <td><%= link_to 'Show', post_travel %></td>
         <td><%= link_to 'Edit', edit_post_travel_path(post_travel) %></td>
         <td><%= link_to 'Destroy', post_travel, method: :delete, data: { confirm: 'Are you sure?' } %></td>

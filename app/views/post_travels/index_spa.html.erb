@@ -1,0 +1,9 @@
+<% if notice %>
+    <aside id="notice"><%= notice %></aside>
+<% end %>
+
+<%= content_tag :div,
+    id: "post_travel"  do %>
+
+    <%= javascript_pack_tag 'post_travel' %>
+<% end %>
