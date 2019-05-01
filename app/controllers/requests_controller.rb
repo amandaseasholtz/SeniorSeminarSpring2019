@@ -7,6 +7,7 @@ class RequestsController < ApplicationController
   def index
 
 
+
    if current_account.accountable.name == "brenda"
       @requests = Request.where(budget_name: "brenda") + Request.where(budget_name2: "brenda") + Request.where(budget_name3: "brenda")
 
@@ -33,10 +34,6 @@ end
   # GET /requests/new
   def new
     @request = Request.new
-
-
-
-
   end
 
   # GET /requests/1/edit

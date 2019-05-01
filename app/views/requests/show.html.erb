@@ -132,6 +132,24 @@
 
 
 
+<% if current_account.accountable_type == "Budget" %>
+<p>
+  <Strong>Your Departments Budget</Strong>
+  $<%=current_account.budget%>
+</p>
+<%end%>
+
+<%if @request.status == "Accept"%>
+<% @expects.each do |expect| %>
+
+    <%= current_account.budget =  current_account.budget - expect.expected_costs%>
+
+
+<%end%>
+
+
+<%end%>
+
 
 <div class="media">
   <div class="media-body">
@@ -223,6 +241,12 @@
     
     <%end%>
 <%end%>
+
+
+
+
+
+
 <%= link_to 'Back', homepage_index_path %>
 
 <% if current_account.accountable_type == "Employee" %>
