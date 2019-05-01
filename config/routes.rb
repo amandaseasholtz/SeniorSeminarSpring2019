@@ -30,6 +30,7 @@ namespace :admin do
     get 'say/history'
     get 'say/info'
     get 'say/post'
+    get 'analysis/data'
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     resources :employees, only: [:edit, :update]
     resources :budgets, only: [:edit, :update]
