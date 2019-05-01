@@ -19,6 +19,7 @@ export default class Trip extends React.Component {
         destination: null,
         start_date: null,
         expenseGroups: [{...expenseTemplate}],
+        navigate: false,
     };
 
     routeChange() {
@@ -27,8 +28,9 @@ export default class Trip extends React.Component {
     }
 
     onFormSubmit = (event) => {
+        this.setState({ navigate: true })
         event.preventDefault();
-        //console.log('State:', this.state);
+        console.log('State:', this.state);
 
         const { expenseGroups } = this.state;
         
@@ -38,6 +40,7 @@ export default class Trip extends React.Component {
             .then( response => { //then -- waits for other previous to finish
                 console.log(response.data);
                 const id  = response.data;
+
                
                 for (var i =0; i<this.state.expenseGroups.length; i++){
                    
@@ -76,6 +79,13 @@ export default class Trip extends React.Component {
     }
 
     render = () => {
+
+        const { navigate } = this.state
+
+    // here is the important part
+    if (navigate) {
+      return <Redirect to="homepage/index" push={true} />
+    }
         const { expenseGroups } = this.state;
         return (
             <div>
@@ -130,6 +140,7 @@ export default class Trip extends React.Component {
                         <button onClick={this.addExpense}>Add another expense</button>
                         <button onClick={this.onFormSubmit}>
                             Submit Request
+                        
                         </button>
                     </div>
                 </div>
