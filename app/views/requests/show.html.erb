@@ -33,16 +33,7 @@
   <%= @request.purpose %>
 </p>
 
-  <p>
-    <strong>Expected expenses:</strong>
-    <%= @expense.expected_expenses %>
-  </p>
 
-  
-  <p>
-    <strong>Expected Costs:</strong>
-    <%= @expense.expected_costs %>
-</p>
 
 <p>
   <strong>Notes:</strong>
@@ -60,10 +51,7 @@
 
 <%if @request.status == "Accept"%>
 <% @expects.each do |expect| %>
-
-    <%= current_account.budget =  current_account.budget - expect.expected_costs%>
-
-
+    <%=current_account.budget%>
 <%end%>
 
 
@@ -165,8 +153,9 @@
 
 
 
-
-<%= link_to 'Edit', edit_request_path(@request) %> |
+<% if current_account.accountable_type == "Employee" %>
+<%= link_to 'Edit', edit_request_path(@request) %> 
+<%end%>
 <%= link_to 'Back', homepage_index_path %>
 
 <% if current_account.accountable_type == "Employee" %>

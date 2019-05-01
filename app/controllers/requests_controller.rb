@@ -6,33 +6,22 @@ class RequestsController < ApplicationController
 
   def index
 
-
-
-   if current_account.accountable.name == "brenda"
-      @requests = Request.where(budget_name: "brenda") + Request.where(budget_name2: "brenda") + Request.where(budget_name3: "brenda")
-
-  elsif current_account.accountable.name == "bobby"
-    @requests = Request.where(budget_name: "bobby") + Request.where(budget_name2: "bobby") + Request.where(budget_name3: "bobby")
-
-
-  elsif current_account.accountable.name == "billy"
-    @requests = Request.where(budget_name: "billy") + Request.where(budget_name2: "billy") + Request.where(budget_name3: "billy")
-
-  else
     @requests = Request.all 
 
 
-      respond_to do |format|
-        format.html {
-            if (params[:spa] && params[:spa] == "true")
-                render 'index_spa'
-            # the else case below is by default
-            else
-               render 'index'
-            end
-        }
-        #format.json {render json: @products}
-      end
+
+
+
+  respond_to do |format|
+    format.html {
+        if (params[:spa] && params[:spa] == "true")
+            render 'index_spa'
+        # the else case below is by default
+        else
+           render 'index'
+        end
+    }
+    #format.json {render json: @products}
   end
 end
 

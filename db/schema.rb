@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 2019_05_01_001858) do
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
 
-
   create_table "actuals", force: :cascade do |t|
     t.string "expense"
     t.decimal "cost"
@@ -68,15 +67,6 @@ ActiveRecord::Schema.define(version: 2019_05_01_001858) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "expects", force: :cascade do |t|
-    t.string "expected_expenses"
-    t.decimal "expected_costs"
-    t.string "payment_information"
-    t.integer "request_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["request_id"], name: "index_expects_on_request_id"
-
   create_table "expected_costs", force: :cascade do |t|
     t.integer "request_id"
     t.decimal "cost"
@@ -87,12 +77,20 @@ ActiveRecord::Schema.define(version: 2019_05_01_001858) do
 
   create_table "expected_expenses", force: :cascade do |t|
     t.integer "request_id"
-    t.integer "expense"
+    t.string "expense"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "expected_expenses"
-    t.string "payment_informations"
     t.index ["request_id"], name: "index_expected_expenses_on_request_id"
+  end
+
+  create_table "expects", force: :cascade do |t|
+    t.string "expected_expenses"
+    t.decimal "expected_costs"
+    t.string "payment_information"
+    t.integer "request_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["request_id"], name: "index_expects_on_request_id"
   end
 
   create_table "payment_informations", force: :cascade do |t|
@@ -101,7 +99,6 @@ ActiveRecord::Schema.define(version: 2019_05_01_001858) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["request_id"], name: "index_payment_informations_on_request_id"
-
   end
 
   create_table "payments", force: :cascade do |t|
@@ -137,24 +134,13 @@ ActiveRecord::Schema.define(version: 2019_05_01_001858) do
     t.date "start_date"
     t.date "end_date"
     t.string "reasoning"
-
     t.integer "field_num"
     t.string "expected_expenses"
     t.decimal "expected_costs"
     t.string "payment_information"
     t.string "budget_name"
-    t.string "expected_expenses2"
-    t.decimal "expected_costs2"
-    t.string "payment_information2"
-    t.string "budget_name2"
-    t.string "expected_expenses3"
-    t.decimal "expected_costs3"
-    t.string "payment_information3"
-    t.string "budget_name3"
-
     t.string "employ_department"
     t.string "budget_department"
-
     t.string "purpose"
     t.string "status"
     t.decimal "total_costs"
