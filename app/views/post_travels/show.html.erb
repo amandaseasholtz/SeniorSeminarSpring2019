@@ -44,5 +44,41 @@
 </p>
 
 
+<div class="media">
+  <div class="media-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Expense</th>
+          <th>Cost</th>
+          <th>Payment Information</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @actuals.each do |actual| %>
+          <tr>
+            <td><h4><%= actual.expense %></h4></td>
+            <td><h4>$<%= actual.cost %></h4></td>
+            <td><h4><%= actual.payment_information %></h4></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 <%= link_to 'Edit', edit_post_travel_path(@post_travel) %> |
 <%= link_to 'Back', post_travels_path %>
+
+
+
+<%= link_to "Add New Expense", new_post_travel_actual_path(@post_travel), class: 'pull-right'%>

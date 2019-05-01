@@ -1,0 +1,13 @@
+
+<%= simple_form_for[@post_travel, @actual] do |form| %>
+
+  <div class="form-inputs">
+    <%= form.input :expense %>
+    <%= form.input :cost %>
+    <%= form.input :payment_information %>
+ </div>
+
+  <div class="form-actions">
+    <%= form.button :submit %>
+  </div>
+<% end %>

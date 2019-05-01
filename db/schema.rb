@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_30_150015) do
+ActiveRecord::Schema.define(version: 2019_05_01_001858) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(version: 2019_04_30_150015) do
     t.index ["accountable_type", "accountable_id"], name: "index_accounts_on_accountable_type_and_accountable_id"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
+  end
+
+
+  create_table "actuals", force: :cascade do |t|
+    t.string "expense"
+    t.decimal "cost"
+    t.string "payment_information"
+    t.integer "post_travel_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_travel_id"], name: "index_actuals_on_post_travel_id"
   end
 
   create_table "budgets", force: :cascade do |t|

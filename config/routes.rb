@@ -4,8 +4,9 @@
 Rails.application.routes.draw do
 
 
+
   resources :departments
-  resources :post_travels
+
 
 
 namespace :admin do
@@ -38,7 +39,9 @@ namespace :admin do
       resources :expects, except: [:index], controller: 'requests/expects'
     end
 
-    resources :post_travels
+    resources :post_travels do
+      resources :actuals, except: [:index], controller: 'post_travels/actuals'
+    end
 
   
   end

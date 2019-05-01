@@ -23,6 +23,8 @@ class PostTravelsController < ApplicationController
   # GET /post_travels/1
   # GET /post_travels/1.json
   def show
+    @post_travel = PostTravel.find(params[:id])
+    @actuals = @post_travel.actuals
   end
 
   # GET /post_travels/new
