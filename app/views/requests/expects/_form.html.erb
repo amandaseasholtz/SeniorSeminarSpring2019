@@ -1,0 +1,13 @@
+
+<%= simple_form_for [@request, @expect] do |form| %>
+
+  <div class="form-inputs">
+    <%= form.select :expected_expenses, [['Hotel','Hotel'],['Food','Food'],['Travel','Travel']] %>
+    <%= form.input :expected_costs %>
+    <%= form.select :payment_information, [['Dept1','Dept1'],['Dept2','Dept2'],['Dept3','Dept3']]  %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.button :submit %>
+  </div>
+<% end %>

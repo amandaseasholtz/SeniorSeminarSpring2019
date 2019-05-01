@@ -25,10 +25,7 @@
   <%= @post_travel.purpose %>
 </p>
 
-<p>
-  <strong>Expected expenses:</strong>
-  <%= @post_travel.expected_expenses %>
-</p>
+
 
 <p>
   <strong>Actual expenses:</strong>
@@ -39,9 +36,49 @@
   <strong>Payment infomation:</strong>
   <%= @post_travel.payment_infomation %>
 </p>
+
 <p>
-  <strong> Receipts From Employee</strong>
-  <%=@post_travel.receipts_url%>
+  <strong>The receipts (Click on link to view Receipts):</strong>
+  <%=  @post_travel.receipt.url %>
+  <%= link_to "View Receipts Pdf", @post_travel.receipt_url %>
 </p>
+
+
+<div class="media">
+  <div class="media-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Expense</th>
+          <th>Cost</th>
+          <th>Payment Information</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @actuals.each do |actual| %>
+          <tr>
+            <td><h4><%= actual.expense %></h4></td>
+            <td><h4>$<%= actual.cost %></h4></td>
+            <td><h4><%= actual.payment_information %></h4></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 <%= link_to 'Edit', edit_post_travel_path(@post_travel) %> |
 <%= link_to 'Back', post_travels_path %>
+
+
+
+<%= link_to "Add New Expense", new_post_travel_actual_path(@post_travel), class: 'pull-right'%>

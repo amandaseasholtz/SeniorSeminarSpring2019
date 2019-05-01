@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Expects</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Expected expenses</th>
+      <th>Expected costs</th>
+      <th>Payment information</th>
+      <th>Request</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @expects.each do |expect| %>
+      <tr>
+        <td><%= expect.expected_expenses %></td>
+        <td><%= expect.expected_costs %></td>
+        <td><%= expect.payment_information %></td>
+        <td><%= expect.request %></td>
+        <td><%= link_to 'Show', expect %></td>
+        <td><%= link_to 'Edit', edit_expect_path(expect) %></td>
+        <td><%= link_to 'Destroy', expect, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Expect', new_expect_path %>

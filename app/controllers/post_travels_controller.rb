@@ -20,6 +20,8 @@ class PostTravelsController < ApplicationController
   # GET /post_travels/1
   # GET /post_travels/1.json
   def show
+    @post_travel = PostTravel.find(params[:id])
+    @actuals = @post_travel.actuals
   end
 
   # GET /post_travels/new
@@ -84,6 +86,7 @@ class PostTravelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_travel_params
-      params.require(:post_travel).permit(:name, :destination, :start_date, :end_date, :purpose, :expected_expenses, :actual_expenses, :payment_infomation, :receipts_url)
+      params.require(:post_travel).permit(:name, :destination, :start_date, :end_date,
+       :purpose, :actual_expenses, :payment_infomation, :receipt, :budget_status, :payment_status)
     end
 end

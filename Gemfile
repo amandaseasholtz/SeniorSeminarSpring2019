@@ -69,7 +69,7 @@ gem "jquery-rails"
 gem "bootstrap", "~> 4.2.1"
 gem "font-awesome-rails"
 gem 'devise'
-
+gem 'groupdate'
 gem 'simple_form'
 
 gem 'administrate'
@@ -81,6 +81,6 @@ gem 'mini_magick'
 
 gem 'faker'
 gem 'kaminari'
-
+gem "chartkick"
 gem 'cocoon' #for nested forms
 

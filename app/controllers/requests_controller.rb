@@ -4,28 +4,33 @@ class RequestsController < ApplicationController
   # GET /requests
   # GET /requests.json
 
-
   def index
 
-      @requests = Request.all
+    @requests = Request.all 
 
 
-      respond_to do |format|
-        format.html {
-            if (params[:spa] && params[:spa] == "true")
-                render 'index_spa'
-            # the else case below is by default
-            else
-               render 'index'
-            end
-        }
-        #format.json {render json: @products}
-      end
+
+
+
+  respond_to do |format|
+    format.html {
+        if (params[:spa] && params[:spa] == "true")
+            render 'index_spa'
+        # the else case below is by default
+        else
+           render 'index'
+        end
+    }
+    #format.json {render json: @products}
   end
+end
+
 
   # GET /requests/1
   # GET /requests/1.json
   def show
+    @request = Request.find(params[:id])
+    @expects = @request.expects
   end
 
   # GET /requests/new
@@ -44,14 +49,14 @@ class RequestsController < ApplicationController
   # GET /requests/1/edit
   def edit
 
+    @expects = @request.expects
   end
 
   # POST /requests
   # POST /requests.json
   def create
-    @request = Request.new(request_params)
-    
 
+    @request = Request.new(request_params)
     respond_to do |format|
       if @request.save
         format.html { redirect_to @request, notice: 'Request was successfully created.' }
@@ -98,8 +103,10 @@ class RequestsController < ApplicationController
 
     def request_params
 
+      params.require(:request).permit(:name, :destination, :start_date, :end_date, :purpose,
+        :expected_expenses,:expected_expenses2,:expected_expenses3, :payment_information,:payment_information2,:payment_information3, :employee_id, 
+        :status, :reasoning, :budget_name,:budget_name2,:budget_name3, :expected_costs,:expected_costs2,:expected_costs3,:field_num, :total_costs)
 
-      params.require(:request).permit(:name, :destination, :start_date, :end_date, :purpose, :reasoning, :budget_name)
-    
+
     end
 end

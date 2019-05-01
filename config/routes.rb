@@ -3,8 +3,10 @@
 
 Rails.application.routes.draw do
 
+
+
   resources :departments
-  resources :post_travels
+
 
 
 namespace :admin do
@@ -28,12 +30,22 @@ namespace :admin do
     get 'say/history'
     get 'say/info'
     get 'say/post'
+    get 'analysis/data'
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     resources :employees, only: [:edit, :update]
     resources :budgets, only: [:edit, :update]
     resources :payments, only: [:edit, :update]
-    resources :requests
-    resources :post_travels
+
+    resources :requests do
+      resources :expects, except: [:index], controller: 'requests/expects'
+    end
+
+    resources :post_travels do
+      resources :actuals, except: [:index], controller: 'post_travels/actuals'
+    end
+
+  
+
     resources :expected_expenses
   end
 

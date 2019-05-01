@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_23_221854) do
+ActiveRecord::Schema.define(version: 2019_05_01_001858) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
+    t.decimal "budget"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -25,6 +26,16 @@ ActiveRecord::Schema.define(version: 2019_04_23_221854) do
     t.index ["accountable_type", "accountable_id"], name: "index_accounts_on_accountable_type_and_accountable_id"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
+  end
+
+  create_table "actuals", force: :cascade do |t|
+    t.string "expense"
+    t.decimal "cost"
+    t.string "payment_information"
+    t.integer "post_travel_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_travel_id"], name: "index_actuals_on_post_travel_id"
   end
 
   create_table "budgets", force: :cascade do |t|
@@ -66,12 +77,20 @@ ActiveRecord::Schema.define(version: 2019_04_23_221854) do
 
   create_table "expected_expenses", force: :cascade do |t|
     t.integer "request_id"
-    t.integer "expense"
+    t.string "expense"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "expected_expenses"
-    t.string "payment_informations"
     t.index ["request_id"], name: "index_expected_expenses_on_request_id"
+  end
+
+  create_table "expects", force: :cascade do |t|
+    t.string "expected_expenses"
+    t.decimal "expected_costs"
+    t.string "payment_information"
+    t.integer "request_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["request_id"], name: "index_expects_on_request_id"
   end
 
   create_table "payment_informations", force: :cascade do |t|
@@ -100,7 +119,11 @@ ActiveRecord::Schema.define(version: 2019_04_23_221854) do
     t.string "receipts_url"
     t.decimal "expected_expenses"
     t.decimal "actual_expenses"
+    t.string "receipt"
     t.text "payment_infomation"
+    t.string "notes"
+    t.string "budget_status"
+    t.string "payment_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -111,11 +134,16 @@ ActiveRecord::Schema.define(version: 2019_04_23_221854) do
     t.date "start_date"
     t.date "end_date"
     t.string "reasoning"
-    t.string "employ_department"
+    t.integer "field_num"
+    t.string "expected_expenses"
+    t.decimal "expected_costs"
+    t.string "payment_information"
     t.string "budget_name"
+    t.string "employ_department"
     t.string "budget_department"
     t.string "purpose"
     t.string "status"
+    t.decimal "total_costs"
     t.integer "employee_id"
     t.integer "budget_id"
     t.datetime "created_at", null: false

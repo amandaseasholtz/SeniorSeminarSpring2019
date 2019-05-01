@@ -20,27 +20,28 @@
       <li> <%= link_to "Home", homepage_index_path %> </li>
       <% if current_account.accountable_type == "Budget" %>
         <li> <%= link_to "Approve Budgets", requests_path%> </li>
-        <li> <%= link_to "Travel History", say_history_path %> </li>
-        <li> <%= link_to "Post-Travel", new_post_travel_path%> </li>
+        <li> <%= link_to "Data analysis", analysis_data_path%> </li>
+        <li> <%= link_to "Approve Post-Travels", post_travels_path%> </li>
         <li><%= link_to 'My Info', edit_budget_path(current_account.accountable_id), class: "dropdown-item"  %></li>
         <li><%= link_to 'Account Settings', edit_account_registration_path, class: "dropdown-item"  %></li>
         <li><%= link_to 'Sign out', destroy_account_session_path, :method=>'delete', class:"nav-link" %><li>
       <%end%>
 
       <% if current_account.accountable_type == "Payment" %>
-        <li><%= link_to 'Approve Payments', requests_path %> </li>
-        <li> <%= link_to "Travel History", requests_path%> </li>
-        <li> <%= link_to "Manage Post-Travels", post_travels_path%> </li>
+        <li><%= link_to 'budgets approved', requests_path %> </li>
+        <li> <%= link_to "manage Post-Travels", post_travels_path%> </li>
+        <li> <%= link_to "Data analysis", analysis_data_path%> </li>
         <li> <%= link_to 'My Info', edit_payment_path(current_account.accountable_id), class: "dropdown-item"  %></li>
         <li><%= link_to 'Account Settings', edit_account_registration_path, class: "dropdown-item"  %></li>
         <li><%= link_to 'Sign out', destroy_account_session_path, :method=>'delete', class:"nav-link" %><li>
       <%end%>
-
+ 
 
       <% if current_account.accountable_type == "Employee" %>
         <li><%= link_to "Request Travel", new_request_path(spa: false) %></li>
         <li><%= link_to "Request Travel (SPA)", new_request_path(spa: true) %></li>
         <li> <%= link_to "Travel History", requests_path%> </li>
+        <li> <%= link_to "Data analysis", analysis_data_path%> </li>
         <li> <%= link_to "Post-Travel", new_post_travel_path(spa: false)%> </li>
         <li> <%= link_to "Post-Travel (SPA)", new_post_travel_path(spa: true)%> </li>
         <li> <%= link_to "Post Travels history", post_travels_path%> </li>
